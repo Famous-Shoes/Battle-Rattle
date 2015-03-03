@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Battle Rattle by Famous-Shoes</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Battle Rattle</h1>
+        <h2>Ride the express elevator to hell in full battle rattle.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/Famous-Shoes/BattleRattle/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/Famous-Shoes/BattleRattle/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/Famous-Shoes/BattleRattle" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <p>Battle Rattle adds infantry gear to RimWorld to allow pawns to haul heavy loads, carry multiple weapons, and emergency gear. It's in early development and shouldn't be used in serious RimWorld sessions (aren't they all serious?)</p>
+
+<p>So far, what we have is some logic, some working better, some not so much. Zero textures.</p>
+
+<h3>
+<a id="weapon-carriers" class="anchor" href="#weapon-carriers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Weapon Carriers</h3>
+
+<p>These are mostly functional, but the logic needs more polish (not to mention textures.) You can holster (or sling) a pawn's equipped weapon and then equip another weapon. Equipping a holstered weapon if one is already equipped will drop the equipped weapon, so you can drop the sniper rifle and charge that alphalo with your combat knife without losing precious seconds. A weapon carrier will keep a holstered weapon even when it's dropped, so pawns can quickly grab a their gear.</p>
+
+<ol>
+<li>Drop-leg holsters for side-arms and personal defense weapons.</li>
+<li>Shoulder holsters for side-arms.</li>
+<li>Three-point slings for long and medium arms and a heavy sling for light machine guns.</li>
+<li>Sheaths and scabbards for knifes and swords.</li>
+</ol>
+
+<p>Once these are polished, armor with integrated holsters and sheaths will likely be next.</p>
+
+<h3>
+<a id="rucks" class="anchor" href="#rucks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rucks</h3>
+
+<p>These are barely proof of concept; they do allow a pawns to load them, carry them (hands-free), drop them, and unload them. But, the logic is hairy and not at all pawn-friendly. Some digging into the job system and getting these finished should be easy. Famous last words. At the moment, only an implementation for the long-range ruck is in the code. Smaller rucks (assualt and patrol) and a medic ruck with a capacity bonus for medical kits will be added as soon as the core ruck code is smoothed out.</p>
+
+<h3>
+<a id="pouches" class="anchor" href="#pouches" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pouches</h3>
+
+<p>Not yet started, the first will be a trauma pouch (blow out kit) that can hold one or a couple of medical kits for battlefield "repair". If possible, might even have this allow for self-healing by the wearer.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
