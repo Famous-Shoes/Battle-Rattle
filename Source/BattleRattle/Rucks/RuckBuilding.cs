@@ -26,20 +26,17 @@ namespace BattleRattle.Rucks {
     // No generic available in 3.5
     public IList Storage {get; set;}
 
-    private static Texture2D CLOSE_ICON;
-    private static Texture2D CLOSE_DISABLED_ICON;
-    private static SoundDef CLOSE_SOUND;
-
-    private static Texture2D PACK_ICON;
-    private static Texture2D PACK_DISABLED_ICON;
-    private static SoundDef PACK_SOUND;
-
-    private static Texture2D UNPACK_ICON;
-    private static Texture2D UNPACK_DISABLED_ICON;
-    private static SoundDef UNPACK_SOUND;
-
     private RuckIs mode = RuckIs.Closed;
     private Thing unpacking = null;
+
+    private SpecialThingFilterDef closedFilter;
+    private SpecialThingFilterDef openFilter;
+
+    private Command_Action closeGizmo;
+    private Command_Action closeDisabledGizmo;
+
+    private Command_Action packGizmo;
+    private Command_Action packDisabledGizmo;
 
 
     #region Lifecycle
@@ -47,32 +44,14 @@ namespace BattleRattle.Rucks {
     public override void PostMake() {
       base.PostMake();
 
-      if (CLOSE_ICON == null) {
-        var root = this.def.defName.Replace("_Building", "").Replace("_", "/") + "/Button_";
-        CLOSE_ICON = ContentFinder<Texture2D>.Get(root + "Close", true);
-        CLOSE_DISABLED_ICON = ContentFinder<Texture2D>.Get(root + "Closed", true);
-        CLOSE_SOUND = SoundDef.Named("Click");
-
-        PACK_ICON = ContentFinder<Texture2D>.Get(root + "Pack", true);
-        PACK_DISABLED_ICON = ContentFinder<Texture2D>.Get(root + "Packing", true);
-        PACK_SOUND = SoundDef.Named("Click");
-
-        UNPACK_ICON = ContentFinder<Texture2D>.Get(root + "Unpack", true);
-        UNPACK_DISABLED_ICON = ContentFinder<Texture2D>.Get(root + "Unpacking", true);
-        UNPACK_SOUND = SoundDef.Named("Click");
-      }
+      Capacity = 600000;
+      CapacityUsed = 0;
 
       this.Storage = new ArrayList();
     }
 
-    private SpecialThingFilterDef closedFilter;
-    private SpecialThingFilterDef openFilter;
-
     public override void SpawnSetup() {
       base.SpawnSetup();
-
-      Capacity = 600000;
-      CapacityUsed = 0;
 
       Close();
     }
@@ -119,7 +98,7 @@ namespace BattleRattle.Rucks {
         
       var pickup = new Verse.FloatMenuOption();
       pickup.action = () => this.StartPickup(actor);
-      pickup.label = "Wear " + this.Label.ToString().ToLower();
+      pickup.label = "Wear " + Labels.ForSentenceBrief(this);
 
       yield return pickup;
     }
@@ -128,57 +107,102 @@ namespace BattleRattle.Rucks {
       foreach (var g in base.GetGizmos()) {
         yield return g;
       }
-        
-      var closeAction = new Command_Action();
-      closeAction.action = Close;
-      closeAction.activateSound = CLOSE_SOUND;
-      if (this.mode == RuckIs.Closed) {
-        closeAction.icon = CLOSE_DISABLED_ICON;
-        closeAction.Disable("Already closed.");
-        closeAction.defaultDesc = "The " + Labels.ForSentenceBrief(this) + " is closed.";
-        closeAction.defaultLabel = "Closed";
+
+      if (this.mode != RuckIs.Closed) {
+        yield return CloseGizmo;
 
       } else {
-        closeAction.icon = CLOSE_ICON;
-        closeAction.defaultLabel = "Close";
-        closeAction.defaultDesc = "Close this pack so people won't pack or unpack it.";
+        yield return CloseDisabledGizmo;
       }
-      yield return closeAction;
-        
-      var packAction = new Command_Action();
-      packAction.action = Pack;
-      packAction.activateSound = PACK_SOUND;
-      if (this.mode == RuckIs.Packing) {
-        packAction.icon = PACK_DISABLED_ICON;
-        packAction.Disable("Already packing.");
-        packAction.defaultDesc = "This " + Labels.ForSentenceBrief(this) + " is being packed.";
-        packAction.defaultLabel = "Packing";
+
+      if (this.mode != RuckIs.Packing) {
+        yield return PackGizmo;
 
       } else {
-        packAction.icon = PACK_ICON;
-        packAction.defaultLabel = "Pack";
-        packAction.defaultDesc = "Start packing this " + Labels.ForSentenceBrief(this) + ".";
+        yield return PackDisabledGizmo;
       }
-      yield return packAction;
 
       foreach (Thing t in this.Storage) {
-        var unpackAction = new Command_Action();
-        unpackAction.action = () => this.Unpack(t);
-        unpackAction.defaultDesc = "Switch to packing the " + Labels.ForSentenceBrief(t);
-        unpackAction.activateSound = PACK_SOUND;
+        var unpackGizmo = new Command_Action();
+        unpackGizmo.action = () => this.Unpack(t);
+        unpackGizmo.defaultDesc = "Switch to packing the " + Labels.ForSentenceBrief(t);
+        unpackGizmo.activateSound = SoundDef.Named("Click");
 
         if (this.mode == RuckIs.Unpacking && this.unpacking == t) {
-          unpackAction.defaultLabel = "Unpacking " + Labels.ForTitleBrief(t);
-          unpackAction.icon = UNPACK_DISABLED_ICON;
-          unpackAction.Disable("Already unpacking the " + Labels.ForSentenceBrief(t) + ".");
-        
+          unpackGizmo.defaultLabel = "Unpacking " + Labels.ForTitleBrief(t);
+          unpackGizmo.icon = ButtonIcon("UnpackDisabled");
+          unpackGizmo.Disable("Already unpacking the " + Labels.ForSentenceBrief(t) + ".");
+
         } else {
-          unpackAction.defaultLabel = "Unpack " + Labels.ForTitleBrief(t);
-          unpackAction.icon = UNPACK_ICON;
+          unpackGizmo.defaultLabel = "Unpack " + Labels.ForTitleBrief(t);
+          unpackGizmo.icon = ButtonIcon("Unpack");
         }
 
-        yield return unpackAction;
+        yield return unpackGizmo;
       }
+    }
+
+    private Command_Action CloseGizmo {
+      get {
+        if (this.closeGizmo == null) {
+          this.closeGizmo = new Command_Action();
+          this.closeGizmo.action = Close;
+          this.closeGizmo.activateSound = SoundDef.Named("Click");
+          this.closeGizmo.icon = ButtonIcon("Close");
+          this.closeGizmo.defaultLabel = "Close";
+          this.closeGizmo.defaultDesc = "Close this pack so people won't pack"
+            + " or unpack it.";
+        }
+
+        return this.closeGizmo;
+      }
+    }
+
+    private Command_Action CloseDisabledGizmo {
+      get {
+        if (this.closeDisabledGizmo == null) {
+          this.closeDisabledGizmo = new Command_Action();
+          this.closeDisabledGizmo.icon = ButtonIcon("CloseDisabled");
+          this.closeDisabledGizmo.Disable("Already closed.");
+          this.closeDisabledGizmo.defaultLabel = "Closed";
+        }
+
+        return this.closeDisabledGizmo;
+      }
+    }
+
+    private Command_Action PackGizmo {
+      get {
+        if (this.packGizmo == null) {
+          this.packGizmo = new Command_Action();
+          this.packGizmo.action = Pack;
+          this.packGizmo.icon = ButtonIcon("Pack");
+          this.packGizmo.defaultDesc = "Start packing the "
+            + Labels.ForSentenceBrief(this) + ".";
+          this.packGizmo.defaultLabel = "Pack";
+        }
+
+        return this.packGizmo;
+      }
+    }
+
+    private Command_Action PackDisabledGizmo {
+      get {
+        if (this.packDisabledGizmo == null) {
+          this.packDisabledGizmo = new Command_Action();
+          this.packDisabledGizmo.icon = ButtonIcon("PackDisabled");
+          this.packDisabledGizmo.Disable("Already packing.");
+          this.packDisabledGizmo.defaultLabel = "Packing";
+        }
+
+        return this.packDisabledGizmo;
+      }
+    }
+
+    private Texture2D ButtonIcon(string name) {
+      return ContentFinder<Texture2D>.Get(
+        this.def.defName.Replace("_Building", "").Replace("_", "/") + "/Button_" + name, true
+      );
     }
 
     #endregion
