@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE doc [
+  <!ENTITY weaponCarrierBase SYSTEM "Mods/Battle Rattle/Defs/BaseDefs/WeaponCarrier.Base.xml">
+]>
+
+<ThingDefs>
+
+  &weaponCarrierBase;
+
+  <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarrier_Base">
+    <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
+    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
+    <graphicClass>Graphic_Single</graphicClass>
+    
+    <defName>BattleRattle_WeaponCarrier_SlingLight</defName>
+    
+    <label>Light Combat Sling</label>
+		<description>
+      A light, three-point sling for carrying long and medium barrelled weapons, such as an assault rifle or personal defence weapon.
+    </description>
+    
+    <equipText>Ready</equipText>
+    <storeText>Sling</storeText>
+    
+    <storablePattern>(pdw|rifle|shotgun|smg)</storablePattern>
+    
+    <graphicPath>BattleRattle/WeaponCarrier/SlingLight/Icon</graphicPath>
+
+    <costStuffCount>6</costStuffCount>
+
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+      </bodyPartGroups>
+      <commonality>1</commonality>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>Military</li>
+      </tags>
+      <worngraphicPath>BattleRattle/WeaponCarrier/SlingLight/Worn</worngraphicPath>
+    </apparel>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.01</MoveSpeed>
+      <WorkSpeedGlobal>-0.01</WorkSpeedGlobal>
+    </equippedStatOffsets>
+
+    <statBases>
+      <DeteriorationRate>1</DeteriorationRate>
+      <Flammability>1.0</Flammability>
+      <MaxHealth>100</MaxHealth>
+      <WorkToMake>15000</WorkToMake>
+    </statBases>
+    
+    <stuffCategories>
+      <li>Fabric</li>
+    </stuffCategories>
+    
+  </ThingDef>
+
+</ThingDefs>
