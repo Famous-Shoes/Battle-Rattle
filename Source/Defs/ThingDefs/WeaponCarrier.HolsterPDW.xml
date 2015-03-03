@@ -30,6 +30,13 @@
     <costStuffCount>4</costStuffCount>
 
     <apparel>
+      <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <commonality>1</commonality>
+      <layers>
+        <li>Shell</li>
+      </layers>
       <tags>
         <li>Military</li>
       </tags>

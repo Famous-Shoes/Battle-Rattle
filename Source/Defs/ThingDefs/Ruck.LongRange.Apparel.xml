@@ -25,6 +25,16 @@
     <costStuffCount>150</costStuffCount>
 
     <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+      </bodyPartGroups>
+      <commonality>1</commonality>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>Military</li>
+      </tags>
       <worngraphicPath>BattleRattle/Ruck/LongRange/Worn</worngraphicPath>
     </apparel>
 
