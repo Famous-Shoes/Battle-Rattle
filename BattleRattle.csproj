@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{310DD5B5-9087-4BFC-8634-FF1C73728135}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>BattleRattle</RootNamespace>
+    <AssemblyName>BattleRattle</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <Description>Take the express elevator to hell in full battle rattle.</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DocumentationFile>bin\Release\BattleRattle.xml</DocumentationFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\..\RimWorld727Win\RimWorld727Win_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\..\RimWorld727Win\RimWorld727Win_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Source\BattleRattle\Apparel\AbstractApparel.cs" />
+    <Compile Include="Source\BattleRattle\Apparel\IApparel.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\IRuck.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\MatchAllFilterWorker.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\RuckApparel.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\RuckBuilding.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\RuckFilterWorker.cs" />
+    <Compile Include="Source\BattleRattle\Things\Labels.cs" />
+    <Compile Include="Source\BattleRattle\WeaponCarriers\IWeaponCarrier.cs" />
+    <Compile Include="Source\BattleRattle\WeaponCarriers\WeaponCarrier.cs" />
+    <Compile Include="Source\BattleRattle\WeaponCarriers\WeaponCarrierDef.cs" />
+  </ItemGroup>
+</Project>
