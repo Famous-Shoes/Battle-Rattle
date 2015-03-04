@@ -1,0 +1,53 @@
+<ThingDef Name="BattleRattle_WeaponCarriers_Base" Abstract="True">
+  <eType>Apparel</eType>
+ 
+  <category>Item</category>
+  <useStandardHealth>True</useStandardHealth>
+  
+  <alwaysHaulable>True</alwaysHaulable>
+  <selectable>True</selectable>
+      
+  <drawGUIOverlay>True</drawGUIOverlay>
+  <graphicClass>Graphic_Single</graphicClass>
+  <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+  
+  <altitudeLayer>Item</altitudeLayer>
+  <pathCost>0</pathCost>
+
+  <colorGenerator Class="ColorGenerator_StandardApparel"/>
+
+  <tickerType>Never</tickerType>
+  
+  <comps>
+    <li>
+      <compClass>CompForbiddable</compClass>
+    </li>
+    <li>
+      <compClass>CompColorable</compClass>
+    </li>
+    <li>
+      <compClass>CompQuality</compClass>
+    </li>
+  </comps>
+  
+  <recipeMaker>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <recipeUsers>
+      <li>TableTailor</li>
+    </recipeUsers>
+    <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+  </recipeMaker>
+  
+  <statBases>
+    <DeteriorationRate>1</DeteriorationRate>
+    <Flammability>1.0</Flammability>
+  </statBases>
+  
+  <thingCategories>
+    <li>Apparel</li>
+  </thingCategories>
+
+</ThingDef>

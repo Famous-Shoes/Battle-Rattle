@@ -19,11 +19,15 @@ namespace BattleRattle.Apparel {
     }
 
     public virtual void OnWorn() {
+      #if DEBUG
       Log.Message(this.Label + " worn by " + this.wearer.Nickname + ". Override to remove this logging.");
+      #endif
     }
 
     public virtual void OnDropped() {
+      #if DEBUG
       Log.Message(this.Label + " dropped. Override to remove this logging.");
+      #endif
     }
 
   }

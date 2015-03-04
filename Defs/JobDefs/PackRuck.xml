@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<JobDefs>
+
+	<JobDef>
+		<defName>BattleRattle_Rucks_PackRuck</defName>
+		<driverClass>BattleRattle.Rucks.PackRuck_JobDriver</driverClass>
+		<reportString>Mending TargetB.</reportString>
+
+		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
+
+</JobDefs>

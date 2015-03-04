@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<WorkTypeDefs>
+
+	<WorkTypeDef>
+		<defName>PackRuck</defName>
+		<pawnLabel>Packing</pawnLabel>
+		<gerundLabel>Packing</gerundLabel>
+		<description>Packing a ruck.</description>
+		<verb>Pack</verb>
+		<naturalPriority>350</naturalPriority>
+		<workTags>
+			<li>Hauling</li>
+		</workTags>
+	</WorkTypeDef>
+
+</WorkTypeDefs>

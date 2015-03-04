@@ -152,6 +152,8 @@ namespace BattleRattle.WeaponCarriers {
           this.equipPrimaryGizmo.icon = ButtonIcon("EquipStored");
         }
 
+        this.equipPrimaryGizmo.defaultLabel = CarrierDef.equipText
+          + " " + Labels.ForTitleBrief(this.stored);
         this.equipPrimaryGizmo.defaultDesc = CarrierDef.equipText
           + " " + this.wearer.Nickname + "'s "
           + Labels.ForSentenceBrief(this.stored) + ".";
@@ -168,6 +170,9 @@ namespace BattleRattle.WeaponCarriers {
           this.storePrimaryGizmo.activateSound = SoundDef.Named("Click");
           this.storePrimaryGizmo.icon = ButtonIcon("StorePrimary");
         }
+
+        this.storePrimaryGizmo.defaultLabel = CarrierDef.storeText
+          + " " + Labels.ForTitleBrief(this.wearer.equipment.Primary);
 
         this.storePrimaryGizmo.defaultDesc = CarrierDef.storeText 
           + " " + this.wearer.Nickname + "'s "
@@ -186,6 +191,8 @@ namespace BattleRattle.WeaponCarriers {
           this.removeStoredGizmo.icon = ButtonIcon("RemoveStored");
         }
 
+        this.removeStoredGizmo.defaultLabel = "Remove "
+          + " " + Labels.ForTitleBrief(this.stored);
         this.removeStoredGizmo.defaultDesc = "Remove "
           + Labels.ForSentenceBrief(this.stored) 
           + " from the " + Labels.ForSentenceBrief(this) + ".";

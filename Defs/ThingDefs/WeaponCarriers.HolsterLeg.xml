@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE doc [
+  <!ENTITY weaponCarrierBase SYSTEM "Mods/Battle Rattle/Defs/BaseDefs/WeaponCarriers.Base.xml">
+]>
+
+<ThingDefs>
+
+  &weaponCarrierBase;
+
+  <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
+    <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
+    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
+    <graphicClass>Graphic_Single</graphicClass>
+    
+    <defName>BattleRattle_WeaponCarriers_HolsterDropLeg</defName>
+    
+    <label>Drop-Leg Holster</label>
+		<description>
+      A drop-leg holster that holds a side-arm against the thigh. Tends to bruise a bit on long tabs, but easy to forget when working.
+    </description>
+    
+    <equipText>Draw</equipText>
+    <storeText>Holster</storeText>
+    
+    <storablePattern>pistol</storablePattern>
+    
+    <graphicPath>BattleRattle/WeaponCarriers/HolsterDropLeg/Icon</graphicPath>
+
+    <costStuffCount>4</costStuffCount>
+
+    <apparel>
+      <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <commonality>1</commonality>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>Military</li>
+      </tags>
+    </apparel>
+    
+    <equippedStatOffsets>
+      <MoveSpeed>-0.01</MoveSpeed>
+    </equippedStatOffsets>
+
+    <statBases>
+      <DeteriorationRate>1</DeteriorationRate>
+      <Flammability>1.0</Flammability>
+      <MaxHealth>100</MaxHealth>
+      <WorkToMake>15000</WorkToMake>
+    </statBases>
+    
+    <stuffCategories>
+      <li>Fabric</li>
+    </stuffCategories>
+    
+  </ThingDef>
+
+</ThingDefs>

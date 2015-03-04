@@ -28,6 +28,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>bin\Release\BattleRattle.xml</DocumentationFile>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -46,13 +48,14 @@
     <Compile Include="Source\BattleRattle\Apparel\AbstractApparel.cs" />
     <Compile Include="Source\BattleRattle\Apparel\IApparel.cs" />
     <Compile Include="Source\BattleRattle\Rucks\IRuck.cs" />
-    <Compile Include="Source\BattleRattle\Rucks\MatchAllFilterWorker.cs" />
-    <Compile Include="Source\BattleRattle\Rucks\RuckApparel.cs" />
-    <Compile Include="Source\BattleRattle\Rucks\RuckBuilding.cs" />
-    <Compile Include="Source\BattleRattle\Rucks\RuckFilterWorker.cs" />
     <Compile Include="Source\BattleRattle\Things\Labels.cs" />
     <Compile Include="Source\BattleRattle\WeaponCarriers\IWeaponCarrier.cs" />
     <Compile Include="Source\BattleRattle\WeaponCarriers\WeaponCarrier.cs" />
     <Compile Include="Source\BattleRattle\WeaponCarriers\WeaponCarrierDef.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\Ruck.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\PackRuck_JobDriver.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\PackRuck_WorkGiver.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\PackRuck_SettingsTab.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\RuckDef.cs" />
   </ItemGroup>
 </Project>
