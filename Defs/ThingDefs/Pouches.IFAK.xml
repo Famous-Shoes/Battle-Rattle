@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <!DOCTYPE doc [
-  <!ENTITY ruckBase SYSTEM "Mods/Battle Rattle/Defs/BaseDefs/Rucks.Base.xml">
+  <!ENTITY pouchBase SYSTEM "Mods/Battle Rattle/Defs/BaseDefs/Pouches.Base.xml">
 ]>
 
 <ThingDefs>
 
-  &ruckBase;
+  &pouchBase;
 
-  <ThingDef Class="BattleRattle.Rucks.RuckDef" ParentName="BattleRattle_Rucks_Base">
+  <ThingDef ParentName="BattleRattle_Pouches_Base">
     <!-- As of RW A9, thingClass and graphicClass are not correctly read from the parent. -->
-    <thingClass>BattleRattle.Rucks.Ruck</thingClass>
+    <thingClass>BattleRattle.Pouches.IFAK</thingClass>
     <graphicClass>Graphic_Single</graphicClass>
     
-    <defName>BattleRattle_Rucks_Medic</defName>
+    <defName>BattleRattle_Pouches_IFAK</defName>
     
-    <label>Medic's Ruck</label>
-		<description>A medium-sized rucksack specially designed to carry medical supplies. It can carry other stuff, but not very much.</description>
-    <graphicPath>BattleRattle/Rucks/LongRange/Icon</graphicPath>
+    <label>IFAK</label>
+		<description>A pouch containing a medical kit for immediate battlefield treatment. The wearer can use this themselves and doctors can use it to treat the wearer.</description>
+    <graphicPath>BattleRattle/Pouches/IFAK/Icon</graphicPath>
 
-    <capacity>100000</capacity>
-    <packRadius>10</packRadius>
     <costStuffCount>150</costStuffCount>
-    <designedForCategories>
-      <li>Medicine</li>
-    </designedForCategories>
-    <designCapacityMultiplier>0.2</designCapacityMultiplier>
 
     <apparel>
       <bodyPartGroups>
-        <li>Torso</li>
+        <li>Legs</li>
       </bodyPartGroups>
       <commonality>1</commonality>
       <layers>
@@ -38,13 +32,12 @@
       <tags>
         <li>Military</li>
       </tags>
-      <worngraphicPath>BattleRattle/Rucks/LongRange/Worn</worngraphicPath>
     </apparel>
 
     <equippedStatOffsets>
-      <AimingDelayFactor>-0.5</AimingDelayFactor>
-      <MoveSpeed>-0.05</MoveSpeed>
-      <WorkSpeedGlobal>-0.5</WorkSpeedGlobal>
+      <AimingDelayFactor>-1.0</AimingDelayFactor>
+      <MoveSpeed>-0.1</MoveSpeed>
+      <WorkSpeedGlobal>-1.0</WorkSpeedGlobal>
     </equippedStatOffsets>
 
     <statBases>

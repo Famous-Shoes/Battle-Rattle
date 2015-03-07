@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 
 using BattleRattle.Apparel;
-using BattleRattle.Things;
+using BattleRattle.Utility;
 
 
 namespace BattleRattle.WeaponCarriers {
@@ -124,6 +124,10 @@ namespace BattleRattle.WeaponCarriers {
         yield return g;
       }
 
+      if (this.wearer.Downed) {
+        yield break;
+      }
+
       if (this.stored == null && this.CanStoreThing(this.wearer.equipment.Primary)) {
         yield return StorePrimaryGizmo;
       }
@@ -149,7 +153,7 @@ namespace BattleRattle.WeaponCarriers {
           this.equipPrimaryGizmo = new Command_Action();
           this.equipPrimaryGizmo.action = () => EquipPrimary();
           this.equipPrimaryGizmo.activateSound = SoundDef.Named("Click");
-          this.equipPrimaryGizmo.icon = ButtonIcon("EquipStored");
+          this.equipPrimaryGizmo.icon = Buttons.Icon(this, "EquipStored");
         }
 
         this.equipPrimaryGizmo.defaultLabel = CarrierDef.equipText
@@ -168,7 +172,7 @@ namespace BattleRattle.WeaponCarriers {
           this.storePrimaryGizmo = new Command_Action();
           this.storePrimaryGizmo.action = () => StorePrimary();
           this.storePrimaryGizmo.activateSound = SoundDef.Named("Click");
-          this.storePrimaryGizmo.icon = ButtonIcon("StorePrimary");
+          this.storePrimaryGizmo.icon = Buttons.Icon(this, "StorePrimary");
         }
 
         this.storePrimaryGizmo.defaultLabel = CarrierDef.storeText
@@ -188,7 +192,7 @@ namespace BattleRattle.WeaponCarriers {
           this.removeStoredGizmo = new Command_Action();
           this.removeStoredGizmo.action = () => RemoveStored();
           this.removeStoredGizmo.activateSound = SoundDef.Named("Click");
-          this.removeStoredGizmo.icon = ButtonIcon("RemoveStored");
+          this.removeStoredGizmo.icon = Buttons.Icon(this, "RemoveStored");
         }
 
         this.removeStoredGizmo.defaultLabel = "Remove "
@@ -199,12 +203,6 @@ namespace BattleRattle.WeaponCarriers {
 
         return this.removeStoredGizmo;
       }
-    }
-
-    private Texture2D ButtonIcon(string name) {
-      return ContentFinder<Texture2D>.Get(
-        this.def.defName.Replace("_", "/") + "/Button_" + name, true
-      );
     }
 
     public override string Label {

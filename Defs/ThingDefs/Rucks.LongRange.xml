@@ -20,7 +20,7 @@
     <graphicPath>BattleRattle/Rucks/LongRange/Icon</graphicPath>
 
     <capacity>1000000</capacity>
-    <packRadius>100</packRadius>
+    <packRadius>20</packRadius>
     <costStuffCount>150</costStuffCount>
 
     <apparel>

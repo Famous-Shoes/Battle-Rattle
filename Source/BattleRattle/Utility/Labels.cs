@@ -4,7 +4,7 @@ using Verse;
 using System.Globalization;
 using System.Collections.Generic;
 
-namespace BattleRattle.Things {
+namespace BattleRattle.Utility {
   public static class Labels {
 
     private static readonly IDictionary<string, string> LOWER_CASE;

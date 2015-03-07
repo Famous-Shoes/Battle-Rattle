@@ -9,7 +9,7 @@ using Verse.AI;
 using UnityEngine;
 
 using BattleRattle.Apparel;
-using BattleRattle.Things;
+using BattleRattle.Utility;
 using System.Text;
 
 namespace BattleRattle.Rucks {
@@ -265,7 +265,7 @@ namespace BattleRattle.Rucks {
         unpackGizmo.defaultLabel = "Unpack " + Labels.ForTitleBrief(t);
         unpackGizmo.defaultDesc = "Unpack all the " + Labels.ForTitleBrief(t) 
           + " from the " + Labels.ForTitleBrief(this) + ".";
-        unpackGizmo.icon = ButtonIcon("Unpack");
+        unpackGizmo.icon = Buttons.Icon(this, "Unpack");
 
         yield return unpackGizmo;
       }
@@ -276,10 +276,14 @@ namespace BattleRattle.Rucks {
         yield return g;
       }
 
+      if (this.wearer.Downed) {
+        yield break;
+      }
+
       var drop = new Command_Action();
 
       drop.action = Drop;
-      drop.icon = ButtonIcon("Drop");
+      drop.icon = Buttons.Icon(this, "Drop");
       drop.defaultLabel = "Drop " + Labels.ForTitleBrief(this);
       drop.defaultDesc = "Have " + this.wearer.Nickname + " drop the " 
         + Labels.ForSentenceBrief(this) + ".";
@@ -294,7 +298,7 @@ namespace BattleRattle.Rucks {
           this.closeGizmo = new Command_Action();
           this.closeGizmo.action = StopPacking;
           this.closeGizmo.activateSound = SoundDef.Named("Click");
-          this.closeGizmo.icon = ButtonIcon("Close");
+          this.closeGizmo.icon = Buttons.Icon(this, "Close");
           this.closeGizmo.defaultLabel = "Close";
           this.closeGizmo.defaultDesc = "Close this pack so people won't pack"
             + " or unpack it.";
@@ -308,7 +312,7 @@ namespace BattleRattle.Rucks {
       get {
         if (this.closeDisabledGizmo == null) {
           this.closeDisabledGizmo = new Command_Action();
-          this.closeDisabledGizmo.icon = ButtonIcon("CloseDisabled");
+          this.closeDisabledGizmo.icon = Buttons.Icon(this, "CloseDisabled");
           this.closeDisabledGizmo.Disable("Already closed.");
           this.closeDisabledGizmo.defaultLabel = "Closed";
         }
@@ -322,7 +326,7 @@ namespace BattleRattle.Rucks {
         if (this.packGizmo == null) {
           this.packGizmo = new Command_Action();
           this.packGizmo.action = StartPacking;
-          this.packGizmo.icon = ButtonIcon("Pack");
+          this.packGizmo.icon = Buttons.Icon(this, "Pack");
           this.packGizmo.defaultDesc = "Start packing the "
             + Labels.ForSentenceBrief(this) + ".";
           this.packGizmo.defaultLabel = "Pack";
@@ -336,19 +340,13 @@ namespace BattleRattle.Rucks {
       get {
         if (this.packDisabledGizmo == null) {
           this.packDisabledGizmo = new Command_Action();
-          this.packDisabledGizmo.icon = ButtonIcon("PackDisabled");
+          this.packDisabledGizmo.icon = Buttons.Icon(this, "PackDisabled");
           this.packDisabledGizmo.Disable("Already packing.");
           this.packDisabledGizmo.defaultLabel = "Packing";
         }
 
         return this.packDisabledGizmo;
       }
-    }
-
-    private Texture2D ButtonIcon(string name) {
-      return ContentFinder<Texture2D>.Get(
-        this.def.defName.Replace("_", "/") + "/Button_" + name, true
-      );
     }
 
     #endregion
