@@ -41,7 +41,7 @@
         <li>Glitter</li>
         <li>Military</li>
       </tags>
-      <worngraphicPath>BattleRattle/WeaponCarrier/HolsterShoulder/Worn</worngraphicPath>
+      <worngraphicPath>BattleRattle/WeaponCarriers/HolsterShoulder/Worn</worngraphicPath>
     </apparel>
 
     <equippedStatOffsets>

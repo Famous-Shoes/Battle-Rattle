@@ -13,19 +13,19 @@
     <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
     <graphicClass>Graphic_Single</graphicClass>
     
-    <defName>BattleRattle_WeaponCarriers_SlingLight</defName>
+    <defName>BattleRattle_WeaponCarriers_Grenade</defName>
     
-    <label>Light Combat Sling</label>
+    <label>Grenade Pouch</label>
 		<description>
-      A light, three-point sling for carrying long and medium barrelled weapons, such as an assault rifle or personal defence weapon.
+      Holds one frag or EMP grenade.
     </description>
     
     <equipText>Ready</equipText>
-    <storeText>Sling</storeText>
+    <storeText>Stow</storeText>
     
-    <storablePattern>(pdw|rifle|shotgun|smg)</storablePattern>
+    <storablePattern>grenade</storablePattern>
     
-    <graphicPath>BattleRattle/WeaponCarriers/SlingLight/Icon</graphicPath>
+    <graphicPath>BattleRattle/WeaponCarriers/Grenade/Icon</graphicPath>
 
     <costStuffCount>6</costStuffCount>
 
@@ -40,7 +40,7 @@
       <tags>
         <li>Military</li>
       </tags>
-      <worngraphicPath>BattleRattle/WeaponCarriers/SlingLight/Worn</worngraphicPath>
+      <worngraphicPath>BattleRattle/WeaponCarriers/Grenade/Worn</worngraphicPath>
     </apparel>
 
     <equippedStatOffsets>

@@ -39,7 +39,8 @@
       <tags>
         <li>Glitter</li>
       </tags>
-    </apparel>
+      <graphicPath>BattleRattle/WeaponCarriers/Scabbard/Worn</graphicPath>
+   </apparel>
     
     <equippedStatOffsets>
       <MoveSpeed>-0.1</MoveSpeed>
