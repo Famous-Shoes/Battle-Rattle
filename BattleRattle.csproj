@@ -62,7 +62,10 @@
     <Compile Include="Source\BattleRattle\Pouches\IFAK.cs" />
     <Compile Include="Source\BattleRattle\Utility\Labels.cs" />
     <Compile Include="Source\BattleRattle\Utility\Buttons.cs" />
-    <Compile Include="Source\BattleRattle\BattleFieldMedicine\Treat_JobDriver.cs" />
-    <Compile Include="Source\BattleRattle\BattleFieldMedicine\Treat_WorkGiver.cs" />
+    <Compile Include="Source\BattleRattle\BattleFieldMedicine\TraumaKitDef.cs" />
+    <Compile Include="Source\BattleRattle\BattleFieldMedicine\TreatWithIFAK_JobDriver.cs" />
+    <Compile Include="Source\BattleRattle\BattleFieldMedicine\TreatOther_WorkGiver.cs" />
+    <Compile Include="Source\BattleRattle\BattleFieldMedicine\TreatSelf_WorkGiver.cs" />
+    <Compile Include="Source\BattleRattle\BattleFieldMedicine\TreatWithMedicine_JobDriver.cs" />
   </ItemGroup>
 </Project>

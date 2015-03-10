@@ -6,15 +6,33 @@ using Verse;
 using BattleRattle.Utility;
 using RimWorld;
 using System.Collections;
+using BattleRattle.BattleFieldMedicine;
 
 namespace BattleRattle.Pouches {
-  public class IFAK:AbstractApparel {
+  public class IFAK: AbstractApparel {
 
     private Medicine medicine;
 
+    public static ThingDef Def {
+      get {
+        return ThingDef.Named("BattleRattle_Pouches_IFAK");
+      }
+    }
+
+    public static IFAK UsableFrom(Pawn target) {
+      foreach (RimWorld.Apparel apparel in target.apparel.WornApparel) {
+        var ifak = apparel as IFAK;
+        if (ifak != null && !ifak.IsEmpty) {
+          return ifak;
+        }
+      }
+
+      return null;
+    }
+
     public override void PostMake () {
       base.PostMake ();
-      this.medicine = (Medicine) ThingMaker.MakeThing(ThingDefOf.Medicine);
+      this.medicine = (Medicine) ThingMaker.MakeThing(TraumaKitDef.Instance);
     }
 
     public override IEnumerable<Verse.Gizmo> GetWornGizmos () {
@@ -29,7 +47,7 @@ namespace BattleRattle.Pouches {
       if (!this.IsEmpty && this.wearer.healthTracker.ShouldGetTreatment) {
         var use = new Command_Action();
 
-        use.action = Use;
+        use.action = () => UseOn(this.wearer, this.wearer);
         use.icon = Buttons.Icon(this, "Use");
         use.defaultLabel = "Use " + Labels.ForTitleBrief(this);
         use.defaultDesc = "Have " + this.wearer.Nickname + " use the " 
@@ -40,9 +58,17 @@ namespace BattleRattle.Pouches {
       }
     }
 
-    private void Use() {
-      Medicine.ApplyOnPawn(this.medicine, this.wearer, this.wearer);
-      this.medicine = null;
+    public void UseOn(Pawn patient, Pawn responder) {
+      if (this.medicine != null) {
+        Medicine.ApplyOnPawn(this.medicine, patient, responder);
+        this.medicine = null;
+      }
+    }
+
+    public Medicine PackedKit {
+      get {
+        return this.medicine;
+      }
     }
 
     public bool IsEmpty {

@@ -2,13 +2,14 @@
 using RimWorld;
 using Verse;
 using Verse.AI;
+using BattleRattle.Pouches;
 
 namespace BattleRattle.BattleFieldMedicine {
-  public class Treat_WorkGiver : WorkGiver_Treat {
+  public class TreatOther_WorkGiver : WorkGiver_Treat {
 
     public const float SIGNIFICANT_BLEEDING = 0.1f;
 
-    public Treat_WorkGiver(WorkGiverDef giverDef) : base(giverDef) {}
+    public TreatOther_WorkGiver(WorkGiverDef giverDef) : base(giverDef) {}
 
 
     public override bool HasJobOnThing(Pawn responder, Thing thing) {
@@ -18,6 +19,17 @@ namespace BattleRattle.BattleFieldMedicine {
         Log.Message(
           "Checked for battlefield medicine job by " + responder 
           + " on null patient. No job."
+        );
+        #endif
+
+        return false;
+      }
+
+      if (patient == responder) {
+        #if DEBUG
+        Log.Message(
+          "Checked for battlefield medicine job by " + responder 
+          + " on self. No job."
         );
         #endif
 
@@ -80,15 +92,17 @@ namespace BattleRattle.BattleFieldMedicine {
         return false;
       }
 
-      var medicine = GetClosestTraumaKit(responder, patient);
+      Thing medicine = GetMedicine(responder, patient);
       if (medicine == null) {
         #if DEBUG
         Log.Message(
           "Checked for battlefield medicine job by " + responder 
           + " on patient " + patient 
-          + ". No trauma kit availble to " + responder + "; no job."
+          + ". No trauma kit or IFAK availble to " + responder + "; no job."
         );
         #endif
+
+        return false;
       }
 
       if (!responder.CanReserveAndReach(medicine, ReservationType.Total, PathMode.Touch, Danger.Deadly)) {
@@ -110,35 +124,46 @@ namespace BattleRattle.BattleFieldMedicine {
       var patient = thing as Pawn;
 
       if (GenMedicine.PatientGetsMedicine(patient) && Medicine.GetMedicineCountToFullyHeal(patient) > 0) {
-        var medicine = GetClosestTraumaKit(responder, patient);
-        if (medicine != null) {
+        var medicine = GetMedicine(responder, patient);
+        if (medicine == null) {
           #if DEBUG
           Log.Message(
-            "Creating treatment job by " + responder + " on patient " + patient 
-            + " with medicine " + medicine + "."
+            "No trauma kit available to " + responder + " for patient " + patient  
+            + ", not creating treatment job."
           );
           #endif
 
-          return new Job(
-            DefDatabase<JobDef>.GetNamed("BattleRattle_BattleFieldMedicine_Treat_JobDriver", true),
-            patient, 
-            medicine
-          );
+          return null;
         }
-      }
 
-      #if DEBUG
-      Log.Message(
-        "No trauma kit available to " + responder + " for patient " + patient  
-        + ", not creating treatment job."
-      );
-      #endif
+        #if DEBUG
+        Log.Message(
+          "Creating treatment job by " + responder + " on patient " + patient 
+          + " with medicine " + medicine + "."
+        );
+        #endif
+
+        var driver = (medicine is IFAK) 
+          ? TreatWithIFAK_JobDriver.Def 
+          : TreatWithMedicine_JobDriver.Def;
+
+        return new Job(driver, patient, medicine);
+      }
 
       return null;
     }
 
+    private static Thing GetMedicine(Pawn responder, Pawn patient) {
+      Thing medicine = GetClosestTraumaKit(responder, patient);
+      if (medicine == null) {
+        medicine = GetClosestIFAK(responder, patient);
+      }
+
+      return medicine;
+    }
+
     private static Thing GetClosestTraumaKit(Pawn responder, Pawn patient) {
-      Predicate<Thing> predicate = (Thing x) => 
+      Predicate<Thing> onlyUsableTraumaKits = (Thing x) => 
         !x.IsForbidden(responder.Faction) 
         && responder.AwareOf(x) 
         && responder.CanReserve(x, ReservationType.Total)
@@ -146,12 +171,34 @@ namespace BattleRattle.BattleFieldMedicine {
 
       return GenClosest.ClosestThing_Global_Reachable(
         patient.Position, 
-        Find.ListerThings.ThingsOfDef(ThingDef.Named("BattleRattle_BattleFieldMedicine_TraumaKit")), 
+        Find.ListerThings.ThingsOfDef(TraumaKitDef.Instance), 
         PathMode.ClosestTouch, 
         TraverseParms.For(responder, Danger.Deadly, true), 
         9999f, 
-        predicate
+        onlyUsableTraumaKits
       );
+    }
+
+    private static Thing GetClosestIFAK(Pawn responder, Pawn patient) {
+      Predicate<Thing> onlyUsableIFAKs = (Thing x) => 
+        !x.IsForbidden(responder.Faction) 
+        && !((IFAK) x).IsEmpty
+        && responder.AwareOf(x) 
+        && responder.CanReserve(x, ReservationType.Total)
+      ;
+
+      return FindWornIFAK(responder, patient) ?? GenClosest.ClosestThing_Global_Reachable(
+        patient.Position, 
+        Find.ListerThings.ThingsOfDef(IFAK.Def), 
+        PathMode.ClosestTouch, 
+        TraverseParms.For(responder, Danger.Deadly, true), 
+        9999f, 
+        onlyUsableIFAKs
+      );
+    }
+
+    private static Thing FindWornIFAK(Pawn responder, Pawn patient) {
+      return IFAK.UsableFrom(patient) ?? IFAK.UsableFrom(responder);
     }
 
     private static bool PawnNeedsImmediateTreatment(Pawn pawn) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Resources>
 
-  <ThingDef>
+  <ThingDef Class="BattleRattle.BattleFieldMedicine.TraumaKitDef">
     <defName>BattleRattle_BattleFieldMedicine_TraumaKit</defName>
     <eType>Medicine</eType>
     <category>Item</category>
@@ -27,6 +27,8 @@
     <graphicClass>Graphic_Single</graphicClass>
     <soundInteract>Standard_Drop</soundInteract>
     <soundDrop>Standard_Drop</soundDrop>
+    
+    <ticksForTreatment>600</ticksForTreatment>
 
     <comps>
       <li>

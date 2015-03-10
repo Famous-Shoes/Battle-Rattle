@@ -2,9 +2,21 @@
 <WorkGivers>
 
   <WorkGiverDef>
-    <defName>BattleRattle_BattleFieldMedicine_Treat_WorkGiver</defName>
-    <giverClass>BattleRattle.BattleFieldMedicine.Treat_WorkGiver</giverClass>
+    <defName>BattleRattle_BattleFieldMedicine_TreatOther_WorkGiver</defName>
+    <giverClass>BattleRattle.BattleFieldMedicine.TreatOther_WorkGiver</giverClass>
     <workType>Doctor</workType>
+    <verb>treat</verb>
+    <gerund>treating</gerund>
+    <requiredActivities>
+      <li>Manipulation</li>
+    </requiredActivities>
+    <priorityInType>100</priorityInType>
+  </WorkGiverDef>
+  
+  <WorkGiverDef>
+    <defName>BattleRattle_BattleFieldMedicine_TreatSelf_WorkGiver</defName>
+    <giverClass>BattleRattle.BattleFieldMedicine.TreatSelf_WorkGiver</giverClass>
+    <workType>Patient</workType>
     <verb>treat</verb>
     <gerund>treating</gerund>
     <requiredActivities>

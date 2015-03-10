@@ -2,8 +2,16 @@
 <JobDefs>
 
 	<JobDef>
-		<defName>BattleRattle_BattleFieldMedicine_Treat_JobDriver</defName>
-		<driverClass>BattleRattle.BattleFieldMedicine.Treat_JobDriver</driverClass>
+		<defName>BattleRattle_BattleFieldMedicine_TreatWithMedicine_JobDriver</defName>
+		<driverClass>BattleRattle.BattleFieldMedicine.TreatWithMedicine_JobDriver</driverClass>
+		<reportString>Treating TargetA.</reportString>
+
+		<alwaysShowWeapon>false</alwaysShowWeapon>
+	</JobDef>
+  
+  <JobDef>
+		<defName>BattleRattle_BattleFieldMedicine_TreatWithIFAK_JobDriver</defName>
+		<driverClass>BattleRattle.BattleFieldMedicine.TreatWithIFAK_JobDriver</driverClass>
 		<reportString>Treating TargetA.</reportString>
 
 		<alwaysShowWeapon>false</alwaysShowWeapon>
