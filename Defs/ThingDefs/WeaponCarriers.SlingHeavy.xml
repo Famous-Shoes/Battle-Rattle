@@ -16,9 +16,7 @@
     <defName>BattleRattle_WeaponCarriers_SlingHeavy</defName>
     
     <label>Heavy Combat Sling</label>
-		<description>
-      A heavily padded combat sling for carrying a light machine gun. Some have been rumoured to use this to carry a minigun about. But this isn't the movies, so don't do that.
-    </description>
+		<description>A heavily padded combat sling for carrying a light machine gun. Some have been rumoured to use this to carry a minigun about. But this isn't the movies, so don't do that.</description>
     
     <equipText>Ready</equipText>
     <storeText>Sling</storeText>

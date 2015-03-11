@@ -16,9 +16,7 @@
     <defName>BattleRattle_WeaponCarriers_SlingLight</defName>
     
     <label>Light Combat Sling</label>
-		<description>
-      A light, three-point sling for carrying long and medium barrelled weapons, such as an assault rifle or personal defence weapon.
-    </description>
+		<description>A light, three-point sling for carrying long and medium barrelled weapons, such as a sniper or assault rifle.</description>
     
     <equipText>Ready</equipText>
     <storeText>Sling</storeText>

@@ -16,9 +16,7 @@
     <defName>BattleRattle_WeaponCarriers_Grenade</defName>
     
     <label>Grenade Pouch</label>
-		<description>
-      Holds one frag or EMP grenade.
-    </description>
+		<description>Holds one frag or EMP grenade.</description>
     
     <equipText>Ready</equipText>
     <storeText>Stow</storeText>

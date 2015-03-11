@@ -16,9 +16,7 @@
     <defName>BattleRattle_WeaponCarriers_Scabbard</defName>
     
     <label>Scabbard</label>
-		<description>
-      A long scabbard for a sword or gladius. Hard as hell to run with a sword flapping about and it gets the wearer pulled into large machinery at every opportunity. But, when standing still far behind the lines, it does look mighty heroic.
-    </description>
+		<description>A long scabbard for a sword or gladius. Hard as hell to run with a sword flapping about and it gets the wearer pulled into large machinery at every opportunity. But, when standing still far behind the lines, it does look mighty heroic.</description>
     
     <equipText>Draw</equipText>
     <storeText>Sheath</storeText>

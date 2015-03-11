@@ -16,9 +16,7 @@
     <defName>BattleRattle_WeaponCarriers_HolsterPDW</defName>
     
     <label>PDW Holster</label>
-		<description>
-      A large drop-leg holster that clips a personal defence weapon to the thigh. Bulk and heavy, hard to run with and snags on everything.
-    </description>
+		<description>A large drop-leg holster that clips a personal defence weapon to the thigh. Bulk and heavy, hard to run with and snags on everything.</description>
     
     <equipText>Draw</equipText>
     <storeText>Holster</storeText>

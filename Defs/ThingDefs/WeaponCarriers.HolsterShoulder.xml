@@ -16,9 +16,7 @@
     <defName>BattleRattle_WeaponCarriers_HolsterShoulder</defName>
     
     <label>Shoulder Holster</label>
-		<description>
-      A shoulder holster that holds a side-arm under the arm. Easy to run with but has a tendency to pinch when operating heavy-machinery. It also helps in delivering snappy one-liners and cutting a dashing figure.  
-    </description>
+		<description>A shoulder holster that holds a side-arm under the arm. Easy to run with but has a tendency to pinch when operating heavy-machinery. It also helps in delivering snappy one-liners and cutting a dashing figure.</description>
     
     <equipText>Draw</equipText>
     <storeText>Holster</storeText>

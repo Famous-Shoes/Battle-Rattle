@@ -16,9 +16,7 @@
     <defName>BattleRattle_WeaponCarriers_HolsterDropLeg</defName>
     
     <label>Drop-Leg Holster</label>
-		<description>
-      A drop-leg holster that holds a side-arm against the thigh. Tends to bruise a bit on long tabs, but easy to forget when working.
-    </description>
+		<description>A drop-leg holster that holds a side-arm against the thigh. Tends to bruise a bit on long tabs, but easy to forget when working.</description>
     
     <equipText>Draw</equipText>
     <storeText>Holster</storeText>
