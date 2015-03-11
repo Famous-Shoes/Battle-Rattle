@@ -39,7 +39,7 @@
       <tags>
         <li>Glitter</li>
       </tags>
-      <graphicPath>BattleRattle/WeaponCarriers/Scabbard/Worn</graphicPath>
+      <worngraphicPath>BattleRattle/WeaponCarriers/Scabbard/Worn</worngraphicPath>
    </apparel>
     
     <equippedStatOffsets>

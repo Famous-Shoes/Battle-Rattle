@@ -189,7 +189,7 @@ namespace BattleRattle.BattleFieldMedicine {
 
       return FindWornIFAK(responder, patient) ?? GenClosest.ClosestThing_Global_Reachable(
         patient.Position, 
-        Find.ListerThings.ThingsOfDef(IFAK.Def), 
+        Find.ListerThings.ThingsOfDef(IFAKDef.Instance), 
         PathMode.ClosestTouch, 
         TraverseParms.For(responder, Danger.Deadly, true), 
         9999f, 

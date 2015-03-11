@@ -13,9 +13,11 @@ namespace BattleRattle.Pouches {
 
     private Medicine medicine;
 
-    public static ThingDef Def {
+    public static int CAPACITY = 1;
+
+    public IFAKDef Def {
       get {
-        return ThingDef.Named("BattleRattle_Pouches_IFAK");
+        return (IFAKDef) this.def;
       }
     }
 
@@ -28,11 +30,6 @@ namespace BattleRattle.Pouches {
       }
 
       return null;
-    }
-
-    public override void PostMake () {
-      base.PostMake ();
-      this.medicine = (Medicine) ThingMaker.MakeThing(TraumaKitDef.Instance);
     }
 
     public override IEnumerable<Verse.Gizmo> GetWornGizmos () {
@@ -75,6 +72,43 @@ namespace BattleRattle.Pouches {
       get {
         return this.medicine == null;
       }
+    }
+
+    public int PackRadius {
+      get {
+        return Def.packRadius;
+      }
+    }
+
+    private void Fill() {
+      this.medicine = (Medicine) ThingMaker.MakeThing(TraumaKitDef.Instance);
+    }
+
+    public void Pack(Thing packing, Pawn packer) {
+      if (packing == null || packing.def != TraumaKitDef.Instance) {
+        Log.Warning("Tried to pack [" + packing + "] into " + this + ".");
+        return;
+      }
+
+      if (!this.IsEmpty) {
+        Log.Warning("Tried to pack non-empty " + this + ".");
+        return;
+      }
+
+      if (packing.stackCount <= 0) {
+        Log.Error("Tried to pack zero stack of " + packing + " into " + this + ".");
+        return;
+      }
+
+      var packed = (Medicine) packing;
+      if (packing.stackCount > CAPACITY) {
+        packed = (Medicine) packing.SplitOff(CAPACITY);
+      }
+
+      // FIXME this is too extreme, need to only destroy the trauma kit that
+      // was packed.
+      packer.carryHands.GetContainer().DestroyContents();
+      Fill();
     }
 
     public override string Label {

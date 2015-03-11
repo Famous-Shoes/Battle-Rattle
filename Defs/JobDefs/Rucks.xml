@@ -4,7 +4,7 @@
 	<JobDef>
 		<defName>BattleRattle_Rucks_PackRuck</defName>
 		<driverClass>BattleRattle.Rucks.PackRuck_JobDriver</driverClass>
-		<reportString>Mending TargetB.</reportString>
+		<reportString>Packing TargetB.</reportString>
 
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>

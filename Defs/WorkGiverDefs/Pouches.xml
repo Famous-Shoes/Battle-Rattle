@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<WorkGivers>
+
+  <WorkGiverDef>
+    <defName>BattleRattle_Pouches_PackIFAK_WorkGiver</defName>
+    <giverClass>BattleRattle.Pouches.PackIFAK_WorkGiver</giverClass> 
+    <workType>Doctor</workType>
+    <verb>packing</verb>
+    <gerund>packing</gerund>
+    <requiredActivities>
+      <li>Manipulation</li>
+    </requiredActivities>
+  </WorkGiverDef>
+  
+</WorkGivers>

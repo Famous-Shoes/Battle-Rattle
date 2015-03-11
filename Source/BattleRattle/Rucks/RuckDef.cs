@@ -11,5 +11,9 @@ namespace BattleRattle.Rucks {
     public List<string> designedForCategories;
     public float designCapacityMultiplier;
 
+    public static RuckDef Instance(string kind) {
+      return (RuckDef) ThingDef.Named("BattleRattle_Rucks_" + kind);
+    }
+
   }
 }

@@ -55,7 +55,6 @@
     <Compile Include="Source\BattleRattle\WeaponCarriers\WeaponCarrierDef.cs" />
     <Compile Include="Source\BattleRattle\Rucks\Ruck.cs" />
     <Compile Include="Source\BattleRattle\Rucks\PackRuck_JobDriver.cs" />
-    <Compile Include="Source\BattleRattle\Rucks\PackRuck_WorkGiver.cs" />
     <Compile Include="Source\BattleRattle\Rucks\PackRuck_SettingsTab.cs" />
     <Compile Include="Source\BattleRattle\Rucks\RuckDef.cs" />
     <Compile Include="Source\BattleRattle\Pouches\IPouch.cs" />
@@ -67,5 +66,9 @@
     <Compile Include="Source\BattleRattle\BattleFieldMedicine\TreatOther_WorkGiver.cs" />
     <Compile Include="Source\BattleRattle\BattleFieldMedicine\TreatSelf_WorkGiver.cs" />
     <Compile Include="Source\BattleRattle\BattleFieldMedicine\TreatWithMedicine_JobDriver.cs" />
+    <Compile Include="Source\BattleRattle\Pouches\PackIFAK_JobDriver.cs" />
+    <Compile Include="Source\BattleRattle\Pouches\PackIFAK_WorkGiver.cs" />
+    <Compile Include="Source\BattleRattle\Rucks\PackRuck_WorkGiver.cs" />
+    <Compile Include="Source\BattleRattle\Pouches\IFAKDef.cs" />
   </ItemGroup>
 </Project>

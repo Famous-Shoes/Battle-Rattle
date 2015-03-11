@@ -53,7 +53,7 @@ namespace BattleRattle.BattleFieldMedicine {
       var ifakWorn = (ifak.wearer == responder || ifak.wearer == patient);
       if (!ifakWorn) {
         #if DEBUG
-        Log.Message(" - " + responder + " moving to " + ifak + ".");
+        Log.Message(" - " + responder + " will move to " + ifak + ".");
         #endif
 
         yield return Toils_Goto.GotoThing(TargetIndex.B, PathMode.Touch);

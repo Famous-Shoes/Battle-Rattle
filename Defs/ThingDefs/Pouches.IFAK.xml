@@ -8,7 +8,7 @@
 
   &pouchBase;
 
-  <ThingDef ParentName="BattleRattle_Pouches_Base">
+  <ThingDef Class="BattleRattle.Pouches.IFAKDef" ParentName="BattleRattle_Pouches_Base">
     <!-- As of RW A9, thingClass and graphicClass are not correctly read from the parent. -->
     <thingClass>BattleRattle.Pouches.IFAK</thingClass>
     <graphicClass>Graphic_Single</graphicClass>
@@ -21,6 +21,9 @@
 
     <costStuffCount>150</costStuffCount>
 
+    <ticksForPacking>120</ticksForPacking>
+    <packRadius>20</packRadius>
+    
     <apparel>
       <bodyPartGroups>
         <li>Legs</li>
