@@ -2,13 +2,13 @@
 
 <ModMetaData>
 
-  <name>Battle Rattle 2015.03.10-01</name>
-  <description>Take the express elevator to hell in full battle rattle.</description>
+  <name>Battle Rattle</name>
+  <description>Battle Rattle 2015.03.14-01 - Take the express elevator to hell in full battle rattle.</description>
   <url>https://github.com/Famous-Shoes/Battle-Rattle/releases/latest</url>
   <author>Famous Shoes</author>
   
   <targetVersion>Alpha 9</targetVersion>
-  <version>2015.03.10-01</version>
-  <currentVersion>https://github.com/Famous-Shoes/Battle-Rattle/blob/master/About.xml</currentVersion>
+  <version>2015.03.14-01</version>
+  <currentVersionURL>https://github.com/Famous-Shoes/Battle-Rattle/blob/master/About.xml</currentVersionURL>
 
 </ModMetaData>
