@@ -3,7 +3,6 @@
 
   <WorkGiverDef Name="PackRuck_Abstract" Abstract="True">
     <giverClass>BattleRattle.Rucks.PackRuck_WorkGiver</giverClass> 
-    <workType>Doctor</workType>
     <verb>packing</verb>
     <gerund>packing</gerund>
     <requiredActivities>
@@ -14,16 +13,20 @@
   <WorkGiverDef Class="BattleRattle.Rucks.PackRuck_WorkGiverDef" ParentName="PackRuck_Abstract">
     <defName>PackRuck_Assault</defName>
     <ruckDefName>BattleRattle_Rucks_Assault</ruckDefName>
-  </WorkGiverDef>
+    <workType>PackRuck</workType>
+ </WorkGiverDef>
   
   <WorkGiverDef Class="BattleRattle.Rucks.PackRuck_WorkGiverDef" ParentName="PackRuck_Abstract">
     <defName>PackRuck_LongRange</defName>
     <ruckDefName>BattleRattle_Rucks_LongRange</ruckDefName>
+    <workType>PackRuck</workType>
   </WorkGiverDef>
   
   <WorkGiverDef Class="BattleRattle.Rucks.PackRuck_WorkGiverDef" ParentName="PackRuck_Abstract">
     <defName>PackRuck_Medic</defName>
     <ruckDefName>BattleRattle_Rucks_Medic</ruckDefName>
+    <workType>Doctor</workType>
+
   </WorkGiverDef>
   
 </WorkGivers>
