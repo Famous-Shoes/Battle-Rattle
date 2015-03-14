@@ -19,8 +19,6 @@
 		<description>A pouch containing a medical kit for immediate battlefield treatment. The wearer can use this themselves and doctors can use it to treat the wearer.</description>
     <graphicPath>BattleRattle/Pouches/IFAK/Icon</graphicPath>
 
-    <costStuffCount>150</costStuffCount>
-
     <ticksForPacking>120</ticksForPacking>
     <packRadius>20</packRadius>
     
@@ -34,6 +32,7 @@
       </layers>
       <tags>
         <li>Military</li>
+        <li>MilitaryCold</li>
       </tags>
     </apparel>
 

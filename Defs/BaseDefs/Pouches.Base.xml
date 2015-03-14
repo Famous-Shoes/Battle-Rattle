@@ -3,7 +3,8 @@
 
   <category>Item</category>
   <useStandardHealth>True</useStandardHealth>
-  
+  <techLevel>Midworld</techLevel>
+
   <alwaysHaulable>True</alwaysHaulable>
   <selectable>True</selectable>
       
@@ -36,25 +37,10 @@
     </li>
   </comps>
   
-  <recipeMaker>
-    <workSpeedStat>TailoringSpeed</workSpeedStat>
-    <workSkill>Crafting</workSkill>
-    <effectWorking>Tailor</effectWorking>
-    <soundWorking>Recipe_Tailor</soundWorking>
-    <recipeUsers>
-      <li>TableTailor</li>
-    </recipeUsers>
-    <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
-  </recipeMaker>
-  
   <statBases>
     <DeteriorationRate>1</DeteriorationRate>
     <Flammability>1.0</Flammability>
   </statBases>
-  
-  <stuffCategories>
-    <li>Fabric</li>
-  </stuffCategories>
   
   <thingCategories>
     <li>Apparel</li>

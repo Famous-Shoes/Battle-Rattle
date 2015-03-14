@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_Pouches_IFAK_Recipe</defName>
+    <label>Make pouch, individial first-aid kit</label>
+    <description>Craft an empty Individial First-Aid Kit (IFAK), which can be packed with one trauma kit; requires thirty fabric, two buckles, and a professional's skill with crafting and a practicioner's skill with medicine.</description>
+    <jobString>Crafting IFAK</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    
+    <workAmount>1200</workAmount>
+
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Synthread</li>
+            <li>Hyperweave</li>
+            <li>DevilstrandCloth</li>
+					</thingDefs>
+        </filter>
+        <count>30</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BattleRattle_Miscellaneous_Buckle</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_Pouches_IFAK>1</BattleRattle_Pouches_IFAK>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>8</minLevel>
+      </li>
+      <li>
+        <skill>Medicine</skill>
+        <minLevel>6</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

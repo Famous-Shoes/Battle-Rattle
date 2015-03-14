@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_Rucks_LongRange_Recipe</defName>
+    <label>Make rucksack, long-range</label>
+    <description>Craft a large-frame rucksack; requires 250 fabric, eight buckles, and a practicioner's skill with crafting.</description>
+    <jobString>Crafting long-range ruck</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+
+    <workAmount>3600</workAmount>
+    <productHasIngredientStuff>True</productHasIngredientStuff>
+    
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Synthread</li>
+            <li>Hyperweave</li>
+            <li>DevilstrandCloth</li>
+					</thingDefs>
+        </filter>
+        <count>250</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BattleRattle_Miscellaneous_Buckle</li>
+          </thingDefs>
+        </filter>
+        <count>8</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_Rucks_LongRange>1</BattleRattle_Rucks_LongRange>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>6</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

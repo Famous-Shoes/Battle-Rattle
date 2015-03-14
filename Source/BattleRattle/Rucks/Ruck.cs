@@ -24,8 +24,6 @@ namespace BattleRattle.Rucks {
     public ThingFilter PackableAll {get; set;}
     public int PackRadius {get; set;}
 
-    private RuckDef ruckDef;
-
     private Command_Action closeGizmo;
     private Command_Action closeDisabledGizmo;
     private Command_Action packGizmo;
@@ -38,14 +36,19 @@ namespace BattleRattle.Rucks {
     public static int FULL_CELL_MULT = 1000000;
 
 
+    public RuckDef Def {
+      get {
+        return (RuckDef) this.def;
+      }
+    }
+
+
     #region Lifecycle
 
     public override void PostMake() {
       base.PostMake();
 
-      this.ruckDef = (RuckDef) this.def;
-
-      PackRadius = Math.Min(10, this.ruckDef.packRadius);
+      PackRadius = Math.Min(10, this.Def.packRadius);
 
       PackableAll = new ThingFilter();
       PackableAll.SetAllow(ThingCategoryDef.Named("Apparel"), true);
@@ -60,6 +63,11 @@ namespace BattleRattle.Rucks {
 
       PackableCurrent = new ThingFilter();
       PackableCurrent.DisallowAll();
+      if (this.Def.designedFor != null) {
+        foreach (var defName in this.Def.designedFor) {
+          PackableCurrent.SetAllow(ThingDef.Named(defName), true);
+        }
+      }
       PackableCurrent.ResolveReferences();
 
       this.container = new ThingContainer();
@@ -108,8 +116,19 @@ namespace BattleRattle.Rucks {
       }
     }
 
+    public int Capacity {
+      get {
+        var quality = QualityCategory.Awful;
+        this.TryGetQuality(out quality);
+       
+        var qualityAdjustment = 1 + ((int) quality * 0.1f);
+
+        return Mathf.RoundToInt(this.Def.capacity * qualityAdjustment);
+      }
+    }
+
     public int CanFit(Thing thing) {
-      var remaining = this.ruckDef.capacity - this.capacityUsed;
+      var remaining = this.Capacity - this.capacityUsed;
 
       if (remaining <= 0) {
         return 0;
@@ -173,19 +192,29 @@ namespace BattleRattle.Rucks {
       return true;
     }
 
-    private static int CapacityUnitFor(Thing thing) {
+    private int CapacityUnitFor(Thing thing) {
       // TODO Just placeholder nonsense. Should calculate based on:
       // Crafted items: ingredient count
       // Resources: stack limit
       // Should also be cached/singletonized or something
+      int unit;
+
       if (thing.def.IsApparel || thing.def.IsMeleeWeapon || thing.def.IsRangedWeapon) {
-        return 100000;
+        unit = 100000;
 
       } else {
         var limit = (thing.def.stackLimit > 0) ? thing.def.stackLimit : 75;
 
-        return FULL_CELL_MULT / limit;
+        unit = FULL_CELL_MULT / limit;
       }
+
+      if (this.Def.designedFor != null) {
+        if (this.Def.designedFor.IndexOf(thing.def.defName) != -1) {
+          unit *= Mathf.RoundToInt(this.Def.designCapacityMultiplier);
+        }
+      }
+
+      return unit;
     }
 
     #endregion
@@ -203,6 +232,11 @@ namespace BattleRattle.Rucks {
 
     public void Unpack(Thing unpacking) {
       Thing dropped;
+
+      #if DEBUG
+      Log.Message("Unpacking " + unpacking + " from " + this + ".");
+      #endif
+
       var success = this.container.TryDrop(
         unpacking, this.Position, ThingPlaceMode.Near, out dropped
       );
@@ -227,7 +261,7 @@ namespace BattleRattle.Rucks {
       text.Append(base.GetInspectString());
       if (this.capacityUsed > 0) {
         var percent = (int) Math.Round(
-          (100 / (double) this.ruckDef.capacity) * this.capacityUsed
+          (100 / (double) this.Capacity) * this.capacityUsed
         );
         text.AppendLine();
         text.AppendLine(percent + "% full.");
@@ -235,6 +269,17 @@ namespace BattleRattle.Rucks {
           text.AppendLine("  » " +  t.stackCount + " " + Labels.ForTitleBrief(t));
         }
       }
+
+      #if DEBUG
+      var quality = QualityCategory.Awful;
+      this.TryGetQuality(out quality);
+      var qualityAdjustment = 1 + ((int) quality * 0.1f);
+
+      text.AppendLine();
+      text.AppendLine("Quality: " + (int) quality);
+      text.AppendLine("Quality Adjustment for Capacity: " + qualityAdjustment);
+      text.AppendLine("Capacity: " + this.Capacity + ", Used: " + this.capacityUsed);
+      #endif
 
       return text.ToString();
     }
@@ -258,14 +303,21 @@ namespace BattleRattle.Rucks {
         yield return PackDisabledGizmo;
       }
 
-      foreach (var t in this.container) {
+      foreach (Thing t in this.container) {
         var unpackGizmo = new Command_Action();
         unpackGizmo.action = () => Unpack(t);
         unpackGizmo.activateSound = SoundDef.Named("Click");
-        unpackGizmo.defaultLabel = "Unpack " + Labels.ForTitleBrief(t);
         unpackGizmo.defaultDesc = "Unpack all the " + Labels.ForTitleBrief(t) 
           + " from the " + Labels.ForTitleBrief(this) + ".";
         unpackGizmo.icon = Buttons.Icon(this, "Unpack");
+        unpackGizmo.defaultLabel = Labels.ForTitleBrief(t);
+
+        #if DEBUG
+        Log.Message(
+          "Found " + t + " in " + this + "; adding unpack gizmo: " 
+          + unpackGizmo + "."
+        );
+        #endif
 
         yield return unpackGizmo;
       }
@@ -284,7 +336,6 @@ namespace BattleRattle.Rucks {
 
       drop.action = Drop;
       drop.icon = Buttons.Icon(this, "Drop");
-      drop.defaultLabel = "Drop " + Labels.ForTitleBrief(this);
       drop.defaultDesc = "Have " + this.wearer.Nickname + " drop the " 
         + Labels.ForSentenceBrief(this) + ".";
       drop.activateSound = SoundDef.Named("Click");
@@ -299,8 +350,8 @@ namespace BattleRattle.Rucks {
           this.closeGizmo.action = StopPacking;
           this.closeGizmo.activateSound = SoundDef.Named("Click");
           this.closeGizmo.icon = Buttons.Icon(this, "Close");
-          this.closeGizmo.defaultLabel = "Close";
-          this.closeGizmo.defaultDesc = "Close this pack so people won't pack"
+          this.closeGizmo.defaultDesc = "Close this "
+            + Labels.ForSentenceBrief(this) + " so people won't pack"
             + " or unpack it.";
         }
 
@@ -314,7 +365,8 @@ namespace BattleRattle.Rucks {
           this.closeDisabledGizmo = new Command_Action();
           this.closeDisabledGizmo.icon = Buttons.Icon(this, "CloseDisabled");
           this.closeDisabledGizmo.Disable("Already closed.");
-          this.closeDisabledGizmo.defaultLabel = "Closed";
+          this.closeDisabledGizmo.defaultDesc = "The "
+            + Labels.ForSentenceBrief(this) + " is closed; not being packed.";
         }
 
         return this.closeDisabledGizmo;
@@ -329,7 +381,6 @@ namespace BattleRattle.Rucks {
           this.packGizmo.icon = Buttons.Icon(this, "Pack");
           this.packGizmo.defaultDesc = "Start packing the "
             + Labels.ForSentenceBrief(this) + ".";
-          this.packGizmo.defaultLabel = "Pack";
         }
 
         return this.packGizmo;
@@ -342,7 +393,8 @@ namespace BattleRattle.Rucks {
           this.packDisabledGizmo = new Command_Action();
           this.packDisabledGizmo.icon = Buttons.Icon(this, "PackDisabled");
           this.packDisabledGizmo.Disable("Already packing.");
-          this.packDisabledGizmo.defaultLabel = "Packing";
+          this.packGizmo.defaultDesc = "The "
+            + Labels.ForSentenceBrief(this) + " is being packed.";
         }
 
         return this.packDisabledGizmo;

@@ -9,9 +9,15 @@ namespace BattleRattle.Rucks {
 
     public PackRuck_WorkGiver(WorkGiverDef def): base(def) {}
 
+    public PackRuck_WorkGiverDef Def {
+      get {
+        return (PackRuck_WorkGiverDef) this.def;
+      }
+    }
+
     public override ThingRequest PotentialWorkThingRequest {
       get {
-        return ThingRequest.ForDef(ThingDef.Named("BattleRattle_Rucks_LongRange"));
+        return ThingRequest.ForDef(this.Def.RuckDef);
       }
     }
 

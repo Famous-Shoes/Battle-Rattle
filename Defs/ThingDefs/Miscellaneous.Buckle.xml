@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ThingDefs>
+
+  <ThingDef>
+    <defName>BattleRattle_Miscellaneous_Buckle</defName>
+        <thingClass>ThingWithComponents</thingClass>
+    <category>Item</category>
+    <eType>Item</eType>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <useStandardHealth>true</useStandardHealth>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <stackLimit>500</stackLimit>
+    <comps>
+      <li>
+        <compClass>CompForbiddable</compClass>
+      </li>
+    </comps>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <pathCost>15</pathCost>
+    
+    <label>buckle</label>
+    <description>Buckles, used when crafting rucksacks, holsters, and such.</description>
+    <graphicPath>BattleRattle/Miscellaneous/Buckle/Icon</graphicPath>
+    <graphicClass>Graphic_Single</graphicClass>
+    <resourceReadoutPriority>First</resourceReadoutPriority>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <useStandardHealth>false</useStandardHealth>
+    <resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
+    <statBases>
+      <MarketValue>0.1</MarketValue>
+    </statBases>
+    <thingCategories>
+      <li>Manufactured</li>
+    </thingCategories>
+    <stackLimit>500</stackLimit>
+  </ThingDef>
+
+</ThingDefs>

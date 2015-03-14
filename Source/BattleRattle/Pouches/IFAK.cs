@@ -1,12 +1,12 @@
-﻿using System;
+﻿using System.Collections.Generic;
+
+using RimWorld;
+using Verse;
 
 using BattleRattle.Apparel;
-using System.Collections.Generic;
-using Verse;
-using BattleRattle.Utility;
-using RimWorld;
-using System.Collections;
 using BattleRattle.BattleFieldMedicine;
+using BattleRattle.Utility;
+
 
 namespace BattleRattle.Pouches {
   public class IFAK: AbstractApparel {

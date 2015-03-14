@@ -12,6 +12,11 @@ namespace BattleRattle.BattleFieldMedicine {
 
     public TreatSelf_WorkGiver(WorkGiverDef giverDef) : base(giverDef) {}
 
+    public override ThingRequest PotentialWorkThingRequest {
+      get {
+        return ThingRequest.ForGroup(ThingRequestGroup.Pawn);
+      }
+    }
 
     public override bool HasJobOnThing(Pawn responder, Thing thing) {
       var patient = thing as Pawn;

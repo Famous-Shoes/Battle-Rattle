@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE doc [
+  <!ENTITY weaponCarrierBase SYSTEM "Mods/Battle Rattle/Defs/BaseDefs/WeaponCarriers.Base.xml">
+]>
+
+<ThingDefs>
+
+  &weaponCarrierBase;
+
+  <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
+    <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
+    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
+    <graphicClass>Graphic_Single</graphicClass>
+    
+    <defName>BattleRattle_Pouches_Grenade_Frag</defName>
+    
+    <label>Grenade Pouch</label>
+		<description>
+      Holds one fragmentations grenade.
+    </description>
+    
+    <equipText>Ready</equipText>
+    <storeText>Stow</storeText>
+    
+    <storablePattern>grenade</storablePattern>
+    
+    <graphicPath>BattleRattle/Pouches/Grenade_Frag/Icon</graphicPath>
+
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+      </bodyPartGroups>
+      <commonality>1</commonality>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>Military</li>
+        <li>MilitaryCold</li>
+      </tags>
+      <worngraphicPath>BattleRattle/Pouches/Grenade_Frag/Worn</worngraphicPath>
+    </apparel>
+
+    <equippedStatOffsets>
+      <MoveSpeed>-0.01</MoveSpeed>
+      <WorkSpeedGlobal>-0.01</WorkSpeedGlobal>
+    </equippedStatOffsets>
+
+    <statBases>
+      <DeteriorationRate>1</DeteriorationRate>
+      <Flammability>1.0</Flammability>
+      <MaxHealth>100</MaxHealth>
+    </statBases>
+    
+  </ThingDef>
+
+</ThingDefs>

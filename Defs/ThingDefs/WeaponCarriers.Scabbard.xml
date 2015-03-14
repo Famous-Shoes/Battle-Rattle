@@ -16,15 +16,16 @@
     <defName>BattleRattle_WeaponCarriers_Scabbard</defName>
     
     <label>Scabbard</label>
-		<description>A long scabbard for a sword or gladius. Hard as hell to run with a sword flapping about and it gets the wearer pulled into large machinery at every opportunity. But, when standing still far behind the lines, it does look mighty heroic.</description>
-    
+		<description>
+      A long scabbard for a sword or gladius. Hard as hell to run with a sword flapping about and it gets the wearer pulled into large machinery at every opportunity. But, when standing still far behind the lines, it does look mighty heroic.
+    </description>
+    <techLevel>Neolithic</techLevel>
+
     <equipText>Draw</equipText>
     <storeText>Sheath</storeText>
     
     <storablePattern>(sword|gladius)</storablePattern>
     <graphicPath>BattleRattle/WeaponCarriers/Scabbard/Icon</graphicPath>
-
-    <costStuffCount>3</costStuffCount>
 
     <apparel>
       <bodyPartGroups>
@@ -35,7 +36,8 @@
         <li>Shell</li>
       </layers>
       <tags>
-        <li>Glitter</li>
+        <li>Tribal</li>
+        <li>TribalWinter</li>
       </tags>
       <worngraphicPath>BattleRattle/WeaponCarriers/Scabbard/Worn</worngraphicPath>
    </apparel>
@@ -50,13 +52,7 @@
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
       <MaxHealth>100</MaxHealth>
-      <WorkToMake>15000</WorkToMake>
     </statBases>
-    
-    <stuffCategories>
-      <li>Metallic</li>
-      <li>Woody</li>
-    </stuffCategories>
 
   </ThingDef>
 

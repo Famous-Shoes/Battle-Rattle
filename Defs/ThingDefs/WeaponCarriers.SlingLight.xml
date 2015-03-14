@@ -16,7 +16,9 @@
     <defName>BattleRattle_WeaponCarriers_SlingLight</defName>
     
     <label>Light Combat Sling</label>
-		<description>A light, three-point sling for carrying long and medium barrelled weapons, such as a sniper or assault rifle.</description>
+		<description>
+      A light, three-point sling for carrying long and medium barrelled weapons, such as a sniper or assault rifle.
+    </description>
     
     <equipText>Ready</equipText>
     <storeText>Sling</storeText>
@@ -24,8 +26,6 @@
     <storablePattern>(pdw|rifle|shotgun|smg)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/SlingLight/Icon</graphicPath>
-
-    <costStuffCount>6</costStuffCount>
 
     <apparel>
       <bodyPartGroups>
@@ -37,6 +37,7 @@
       </layers>
       <tags>
         <li>Military</li>
+        <li>MilitaryCold</li>
       </tags>
       <worngraphicPath>BattleRattle/WeaponCarriers/SlingLight/Worn</worngraphicPath>
     </apparel>
@@ -50,12 +51,7 @@
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
       <MaxHealth>100</MaxHealth>
-      <WorkToMake>15000</WorkToMake>
     </statBases>
-    
-    <stuffCategories>
-      <li>Fabric</li>
-    </stuffCategories>
     
   </ThingDef>
 

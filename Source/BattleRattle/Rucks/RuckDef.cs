@@ -8,7 +8,7 @@ namespace BattleRattle.Rucks {
     public int capacity;
     public int packRadius;
 
-    public List<string> designedForCategories;
+    public List<string> designedFor;
     public float designCapacityMultiplier;
 
     public static RuckDef Instance(string kind) {

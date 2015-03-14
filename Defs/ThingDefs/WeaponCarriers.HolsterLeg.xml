@@ -16,7 +16,9 @@
     <defName>BattleRattle_WeaponCarriers_HolsterDropLeg</defName>
     
     <label>Drop-Leg Holster</label>
-		<description>A drop-leg holster that holds a side-arm against the thigh. Tends to bruise a bit on long tabs, but easy to forget when working.</description>
+		<description>
+      A drop-leg holster that holds a side-arm against the thigh. Tends to bruise a bit on long tabs, but easy to forget when working.
+    </description>
     
     <equipText>Draw</equipText>
     <storeText>Holster</storeText>
@@ -24,8 +26,6 @@
     <storablePattern>pistol</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/HolsterDropLeg/Icon</graphicPath>
-
-    <costStuffCount>4</costStuffCount>
 
     <apparel>
       <bodyPartGroups>
@@ -37,6 +37,8 @@
       </layers>
       <tags>
         <li>Military</li>
+        <li>MilitaryCold</li>
+        <li>Spacer</li>
       </tags>
     </apparel>
     
@@ -48,12 +50,7 @@
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
       <MaxHealth>100</MaxHealth>
-      <WorkToMake>15000</WorkToMake>
     </statBases>
-    
-    <stuffCategories>
-      <li>Fabric</li>
-    </stuffCategories>
     
   </ThingDef>
 

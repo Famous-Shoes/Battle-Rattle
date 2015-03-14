@@ -16,7 +16,9 @@
     <defName>BattleRattle_WeaponCarriers_HolsterPDW</defName>
     
     <label>PDW Holster</label>
-		<description>A large drop-leg holster that clips a personal defence weapon to the thigh. Bulk and heavy, hard to run with and snags on everything.</description>
+		<description>
+      A large drop-leg holster that clips a personal defence weapon to the thigh. Bulk and heavy, hard to run with and snags on everything.
+    </description>
     
     <equipText>Draw</equipText>
     <storeText>Holster</storeText>
@@ -24,8 +26,6 @@
     <storablePattern>pdw</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/HolsterPDW/Icon</graphicPath>
-
-    <costStuffCount>4</costStuffCount>
 
     <apparel>
       <bodyPartGroups>
@@ -37,6 +37,8 @@
       </layers>
       <tags>
         <li>Military</li>
+        <li>MilitaryCold</li>
+        <li>Spacer</li>
       </tags>
     </apparel>
     
@@ -49,13 +51,8 @@
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
       <MaxHealth>100</MaxHealth>
-      <WorkToMake>15000</WorkToMake>
     </statBases>
     
-    <stuffCategories>
-      <li>Fabric</li>
-    </stuffCategories>
-
   </ThingDef>
 
 </ThingDefs>

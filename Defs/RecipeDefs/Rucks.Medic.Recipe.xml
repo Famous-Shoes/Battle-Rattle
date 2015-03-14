@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_Rucks_Medic_Recipe</defName>
+    <label>Make rucksack, medic's</label>
+    <description>Craft a medium-sized rucksack specially designed to care trauma kits; requires 180 fabric, five buckles, an expert's skill with crafting, and a practicioner's skill with medicine.</description>
+    <jobString>Crafting medic's ruck</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    
+    <workAmount>3200</workAmount>
+
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Synthread</li>
+            <li>Hyperweave</li>
+            <li>DevilstrandCloth</li>
+					</thingDefs>
+        </filter>
+        <count>180</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BattleRattle_Miscellaneous_Buckle</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_Rucks_Medic>1</BattleRattle_Rucks_Medic>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>10</minLevel>
+      </li>
+      <li>
+        <skill>Medicine</skill>
+        <minLevel>6</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

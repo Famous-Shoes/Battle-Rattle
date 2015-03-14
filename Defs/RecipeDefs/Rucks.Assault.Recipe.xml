@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_Rucks_Assault_Recipe</defName>
+    <label>Make rucksack, assault</label>
+    <description>Craft a medium-sized rucksack; requires 150 fabric, five buckles, and a practicioner's skill with crafting.</description>
+    <jobString>Crafting assault ruck</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    
+    <workAmount>2400</workAmount>
+
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+        <li>DevilstrandCloth</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Synthread</li>
+            <li>Hyperweave</li>
+            <li>DevilstrandCloth</li>
+					</thingDefs>
+        </filter>
+        <count>150</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BattleRattle_Miscellaneous_Buckle</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_Rucks_Assault>1</BattleRattle_Rucks_Assault>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>6</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

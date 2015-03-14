@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_WeaponCarriers_Scabbard_Recipe</defName>
+    <label>Make scabbard</label>
+    <description>Craft a scabbard to hold a sword. Requires ten wood; metal; or leather, a buckle, and a practicioner's skill with crafting.</description>
+    <jobString>Crafting</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    
+    <workAmount>1200</workAmount>
+    <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>Gold</li>
+        <li>Silver</li>
+        <li>WoodLog</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <categories>
+        <li>Leathers</li>
+      </categories>
+      <thingDefs>
+        <li>Gold</li>
+        <li>Plasteel</li>
+        <li>Silver</li>
+        <li>Steel</li>
+        <li>WoodLog</li>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Leathers</li>
+          </categories>
+          <thingDefs>
+            <li>Gold</li>
+            <li>Plasteel</li>
+            <li>Silver</li>
+            <li>Steel</li>
+            <li>WoodLog</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BattleRattle_Miscellaneous_Buckle</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_WeaponCarriers_Scabbard>1</BattleRattle_WeaponCarriers_Scabbard>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>6</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

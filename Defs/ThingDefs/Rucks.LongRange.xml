@@ -21,7 +21,6 @@
 
     <capacity>1000000</capacity>
     <packRadius>20</packRadius>
-    <costStuffCount>150</costStuffCount>
 
     <apparel>
       <bodyPartGroups>
@@ -33,6 +32,7 @@
       </layers>
       <tags>
         <li>Military</li>
+        <li>MilitaryCold</li>
       </tags>
       <worngraphicPath>BattleRattle/Rucks/LongRange/Worn</worngraphicPath>
     </apparel>
@@ -54,10 +54,8 @@
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
       <MaxHealth>250</MaxHealth>
-      
-      <WorkToMake>24000</WorkToMake>
     </statBases>
-
+    
   </ThingDef>
 
 </ThingDefs>

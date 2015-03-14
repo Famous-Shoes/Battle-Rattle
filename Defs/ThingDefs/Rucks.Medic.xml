@@ -16,15 +16,14 @@
     <defName>BattleRattle_Rucks_Medic</defName>
     
     <label>Medic's Ruck</label>
-		<description>A medium-sized rucksack specially designed to carry medical supplies. It can carry other stuff, but not very much.</description>
+		<description>A medium-sized rucksack specially designed to carry trauma kits. It can carry other stuff, but not very much.</description>
     <graphicPath>BattleRattle/Rucks/LongRange/Icon</graphicPath>
 
     <capacity>100000</capacity>
     <packRadius>10</packRadius>
-    <costStuffCount>150</costStuffCount>
-    <designedForCategories>
-      <li>Medicine</li>
-    </designedForCategories>
+    <designedFor>
+      <li>BattleRattle_BattleFieldMedicine_TraumaKit</li>
+    </designedFor>
     <designCapacityMultiplier>0.2</designCapacityMultiplier>
 
     <apparel>
@@ -36,7 +35,8 @@
         <li>Shell</li>
       </layers>
       <tags>
-        <li>Military</li>
+        <li>MilitaryMedic</li>
+        <li>MilitaryMedicCold</li>
       </tags>
       <worngraphicPath>BattleRattle/Rucks/LongRange/Worn</worngraphicPath>
     </apparel>
@@ -61,7 +61,7 @@
       
       <WorkToMake>24000</WorkToMake>
     </statBases>
-
+    
   </ThingDef>
 
 </ThingDefs>

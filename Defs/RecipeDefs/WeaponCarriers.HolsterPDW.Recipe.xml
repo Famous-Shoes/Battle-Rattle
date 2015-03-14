@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_WeaponCarriers_HolsterPDW_Recipe</defName>
+    <label>Make holster, PDW</label>
+    <description>Craft a thigh holster specially designed for PDW; requires thirty-five fabric or leather, a buckle, and a professional's skill with crafting.</description>
+    <jobString>Crafting</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    
+    <workAmount>720</workAmount>
+    <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+
+    <defaultIngredientFilter>
+      <categories>
+        <li>Textiles</li>
+      </categories>
+      <thingDefs>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+      <exceptedThingDefs>
+        <li>Cloth</li>
+      </exceptedThingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <categories>
+        <li>Textiles</li>
+      </categories>
+      <thingDefs>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+      <exceptedThingDefs>
+        <li>Cloth</li>
+      </exceptedThingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Textiles</li>
+          </categories>
+          <exceptedThingDefs>
+            <li>Cloth</li>
+          </exceptedThingDefs>
+        </filter>
+        <count>35</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BattleRattle_Miscellaneous_Buckle</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_WeaponCarriers_HolsterPDW>1</BattleRattle_WeaponCarriers_HolsterPDW>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>8</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

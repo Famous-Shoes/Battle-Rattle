@@ -16,7 +16,9 @@
     <defName>BattleRattle_WeaponCarriers_SlingHeavy</defName>
     
     <label>Heavy Combat Sling</label>
-		<description>A heavily padded combat sling for carrying a light machine gun. Some have been rumoured to use this to carry a minigun about. But this isn't the movies, so don't do that.</description>
+		<description>
+      A heavily padded combat sling for carrying a light machine gun. Some have been rumoured to use this to carry a minigun about. But this isn't the movies, so don't do that.
+    </description>
     
     <equipText>Ready</equipText>
     <storeText>Sling</storeText>
@@ -24,8 +26,6 @@
     <storablePattern>(lmg|minigun)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/SlingHeavy/Icon</graphicPath>
-
-    <costStuffCount>10</costStuffCount>
 
     <apparel>
       <bodyPartGroups>
@@ -37,6 +37,7 @@
       </layers>
       <tags>
         <li>Military</li>
+        <li>MilitaryCold</li>
       </tags>
       <worngraphicPath>BattleRattle/WeaponCarriers/SlingHeavy/Worn</worngraphicPath>
     </apparel>
@@ -50,12 +51,7 @@
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
       <MaxHealth>100</MaxHealth>
-      <WorkToMake>15000</WorkToMake>
     </statBases>
-
-    <stuffCategories>
-      <li>Fabric</li>
-    </stuffCategories>
     
   </ThingDef>
 

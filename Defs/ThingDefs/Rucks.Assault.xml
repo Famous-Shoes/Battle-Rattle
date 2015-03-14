@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE doc [
+  <!ENTITY ruckBase SYSTEM "Mods/Battle Rattle/Defs/BaseDefs/Rucks.Base.xml">
+]>
+
+<ThingDefs>
+
+  &ruckBase;
+
+  <ThingDef Class="BattleRattle.Rucks.RuckDef" ParentName="BattleRattle_Rucks_Base">
+    <!-- As of RW A9, thingClass and graphicClass are not correctly read from the parent. -->
+    <thingClass>BattleRattle.Rucks.Ruck</thingClass>
+    <graphicClass>Graphic_Single</graphicClass>
+    
+    <defName>BattleRattle_Rucks_Assault</defName>
+    
+    <label>Assualt Ruck</label>
+		<description>A medium-sized rucksack designed to carry only the necessities for one to two day missions. Load with a little food and wood, drop, unpack and setup some fighting positions with the wood and eat from the food pile.</description>
+    <graphicPath>BattleRattle/Rucks/Assault/Icon</graphicPath>
+
+    <capacity>25000</capacity>
+    <packRadius>10</packRadius>
+    
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+      </bodyPartGroups>
+      <commonality>1</commonality>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>Military</li>
+        <li>MilitaryCold</li>
+      </tags>
+      <worngraphicPath>BattleRattle/Rucks/Assault/Worn</worngraphicPath>
+    </apparel>
+
+    <equippedStatOffsets>
+      <AimingDelayFactor>-0.25</AimingDelayFactor>
+      <MoveSpeed>-0.01</MoveSpeed>
+      <WorkSpeedGlobal>-0.25</WorkSpeedGlobal>
+    </equippedStatOffsets>
+
+    <statBases>
+      <MarketValue>1000</MarketValue>
+      <SellPriceFactor>0.5</SellPriceFactor>
+
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+      <Insulation_Cold>-5</Insulation_Cold>
+      
+      <DeteriorationRate>1</DeteriorationRate>
+      <Flammability>1.0</Flammability>
+      <MaxHealth>250</MaxHealth>
+    </statBases>
+    
+  </ThingDef>
+
+</ThingDefs>
