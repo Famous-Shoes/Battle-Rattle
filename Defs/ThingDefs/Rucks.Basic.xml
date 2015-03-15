@@ -13,11 +13,11 @@
     <thingClass>BattleRattle.Rucks.Ruck</thingClass>
     <graphicClass>Graphic_Single</graphicClass>
     
-    <defName>BattleRattle_Rucks_Assault</defName>
+    <defName>BattleRattle_Rucks_Basic</defName>
     
-    <label>Assualt Ruck</label>
-		<description>A medium-sized rucksack designed to carry only the necessities for one to two day missions. Load with a little food and wood, drop, unpack and setup some fighting positions with the wood and eat from the food pile.</description>
-    <graphicPath>BattleRattle/Rucks/Assault/Icon</graphicPath>
+    <label>Basic Rucksack</label>
+		<description>A basic medium-sized rucksack without a frame. Uncomfortable, poorly balanced, but any fool with some cloth and a needle can make one.</description>
+    <graphicPath>BattleRattle/Rucks/Basic/Icon</graphicPath>
 
     <capacity>70000</capacity>
     <packRadius>10</packRadius>
@@ -26,34 +26,34 @@
       <bodyPartGroups>
         <li>Torso</li>
       </bodyPartGroups>
-      <commonality>0.50</commonality>
+      <commonality>1.00</commonality>
       <layers>
         <li>Shell</li>
       </layers>
       <tags>
-        <li>Military</li>
-        <li>MilitaryCold</li>
+        <li>Tribal</li>
+        <li>TribalWinter</li>
       </tags>
-      <worngraphicPath>BattleRattle/Rucks/Assault/Worn</worngraphicPath>
+      <worngraphicPath>BattleRattle/Rucks/Basic/Worn</worngraphicPath>
     </apparel>
 
     <equippedStatOffsets>
-      <AimingDelayFactor>0.10</AimingDelayFactor>
-      <MoveSpeed>-1.00</MoveSpeed>
+      <AimingDelayFactor>0.30</AimingDelayFactor>
+      <MoveSpeed>-0.01</MoveSpeed>
       <SocialImpact>0.00</SocialImpact>
-      <WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
+      <WorkSpeedGlobal>-0.01</WorkSpeedGlobal>
     </equippedStatOffsets>
 
     <statBases>
-      <ArmorRating_Blunt>0.0015</ArmorRating_Blunt>
+      <ArmorRating_Blunt>0.015</ArmorRating_Blunt>
       <ArmorRating_Electric>0.00</ArmorRating_Electric>
       <ArmorRating_Heat>0.00</ArmorRating_Heat>
-      <ArmorRating_Sharp>0.0010</ArmorRating_Sharp>
+      <ArmorRating_Sharp>0.010</ArmorRating_Sharp>
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
-      <Insulation_Cold>-1.50</Insulation_Cold>
-      <Insulation_Heat>-3.00</Insulation_Heat>
-      <MarketValue>150</MarketValue>
+      <Insulation_Cold>-2.00</Insulation_Cold>
+      <Insulation_Heat>-4.00</Insulation_Heat>
+      <MarketValue>50</MarketValue>
       <MaxHealth>100</MaxHealth>
     </statBases>
     

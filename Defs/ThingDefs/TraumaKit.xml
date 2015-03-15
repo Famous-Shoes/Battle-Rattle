@@ -23,7 +23,7 @@
 
     <useStandardHealth>true</useStandardHealth>
 
-    <graphicPath>Things/Item/Resource/Medicine</graphicPath>
+    <graphicPath>BattleRattle/BattleFieldMedicine/TraumaKit/Icon</graphicPath>
     <graphicClass>Graphic_Single</graphicClass>
     <soundInteract>Standard_Drop</soundInteract>
     <soundDrop>Standard_Drop</soundDrop>

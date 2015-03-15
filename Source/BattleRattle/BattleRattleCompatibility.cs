@@ -3,6 +3,7 @@ using Verse;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
+using BattleRattle.Compatibility;
 
 namespace BattleRattle {
   public class BattleRattleCompatibility: MonoBehaviour {
@@ -45,8 +46,8 @@ namespace BattleRattle {
 
       foreach (var mod in activeMods) {
         if (mod.Name == "Better Than Sentry Guns") {
-          Log.Message(" + Injecting compatibility for Better Than Sentry Guns.");
-          new Compatibility_BetterThanSentryGuns().Inject();
+          Log.Message(" + Injecting compatibility for " + mod.Name + ".");
+          new BetterThanSentryGuns().Inject();
 
         } else if (mod.Name == "[T] ExpandedCloth") {
           Log.Warning(" - Compatibility for Expanded Cloth not yet implemented.");
@@ -54,8 +55,9 @@ namespace BattleRattle {
         } else if (Regex.IsMatch(mod.Name, "Extended Woodworking")) {
           Log.Warning(" - Compatibility for Extended Woodworking not yet implemented.");
 
-        } else if (mod.Name == "Rimsearch") {
-          Log.Warning(" - Compatibility for Rimsearch not yet implemented.");
+        } else if (Regex.IsMatch(mod.Name, "Glassworks")) {
+          Log.Message(" + Injecting compatibility for " + mod.Name + ".");
+          new Glassworks().Inject();
 
         } else if (Regex.IsMatch(mod.Name, "NonLethals")) {
           Log.Warning(" - Compatibility for Non-Lethals not yet implemented.");

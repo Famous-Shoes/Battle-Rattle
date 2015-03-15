@@ -1,6 +1,6 @@
 ﻿using BattleRattle;
 
-public static class BattleRattle_Rucks_ResearchRucks {
+public static class BattleRattle_Rucks_ResearchAdvanced {
 
   public static void Done() {
     Recipes.Inject("TableTailor", 

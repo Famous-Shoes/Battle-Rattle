@@ -19,18 +19,19 @@
 		<description>A medium-sized rucksack specially designed to carry trauma kits. It can carry other stuff, but not very much.</description>
     <graphicPath>BattleRattle/Rucks/LongRange/Icon</graphicPath>
 
-    <capacity>100000</capacity>
+    <capacity>70000</capacity>
     <packRadius>10</packRadius>
+    
     <designedFor>
       <li>BattleRattle_BattleFieldMedicine_TraumaKit</li>
     </designedFor>
-    <designCapacityMultiplier>0.2</designCapacityMultiplier>
+    <designCapacityMultiplier>0.5</designCapacityMultiplier>
 
     <apparel>
       <bodyPartGroups>
         <li>Torso</li>
       </bodyPartGroups>
-      <commonality>1</commonality>
+      <commonality>0.05</commonality>
       <layers>
         <li>Shell</li>
       </layers>
@@ -42,24 +43,23 @@
     </apparel>
 
     <equippedStatOffsets>
-      <AimingDelayFactor>-0.5</AimingDelayFactor>
-      <MoveSpeed>-0.05</MoveSpeed>
-      <WorkSpeedGlobal>-0.5</WorkSpeedGlobal>
+      <AimingDelayFactor>0.10</AimingDelayFactor>
+      <MoveSpeed>-1.00</MoveSpeed>
+      <SocialImpact>0.00</SocialImpact>
+      <WorkSpeedGlobal>-0.10</WorkSpeedGlobal>
     </equippedStatOffsets>
 
     <statBases>
-      <MarketValue>1000</MarketValue>
-      <SellPriceFactor>0.5</SellPriceFactor>
-
-      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
-      <Insulation_Cold>-5</Insulation_Cold>
-      
+      <ArmorRating_Blunt>0.015</ArmorRating_Blunt>
+      <ArmorRating_Electric>0.00</ArmorRating_Electric>
+      <ArmorRating_Heat>0.00</ArmorRating_Heat>
+      <ArmorRating_Sharp>0.010</ArmorRating_Sharp>
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
-      <MaxHealth>250</MaxHealth>
-      
-      <WorkToMake>24000</WorkToMake>
+      <Insulation_Cold>-1.50</Insulation_Cold>
+      <Insulation_Heat>-3.00</Insulation_Heat>
+      <MarketValue>150</MarketValue>
+      <MaxHealth>175</MaxHealth>
     </statBases>
     
   </ThingDef>

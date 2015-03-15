@@ -24,5 +24,18 @@
     </requiredActivities>
     <priorityInType>100</priorityInType>
   </WorkGiverDef>
+  
+  <WorkGiverDef>
+    <defName>BattleRattle_BattleFieldMedicine_PackTraumaKit_WorkGiver</defName>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>Doctor</workType>
+    <priorityInType>100</priorityInType>
+    <singleBillGiverDef>BattleRattle_BattleFieldMedicine_TableMedical</singleBillGiverDef>
+    <verb>pack</verb>
+    <gerund>packing</gerund>
+    <requiredActivities>
+      <li>Manipulation</li>
+    </requiredActivities>
+  </WorkGiverDef>
 
 </WorkGivers>

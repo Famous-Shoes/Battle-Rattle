@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_BattleFieldMedicine_TraumaKit_Recipe</defName>
+    <label>Make trauma kit</label>
+    <description>Repackage medicine for battlefield use.</description>
+    <jobString>Packing trauma kit</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+		<workSkill>Medicine</workSkill>
+    <workSpeedStat>MedicalOperationSpeed</workSpeedStat>
+    
+    <workAmount>120</workAmount>
+    
+    <defaultIngredientFilter>
+      <thingDefs>
+        <li>Medicine</li>
+      </thingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Medicine</li>
+        <li>GlitterworldMedicine</li>
+      </thingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Medicine</li>
+            <li>GlitterworldMedicine</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_BattleFieldMedicine_TraumaKit>1</BattleRattle_BattleFieldMedicine_TraumaKit>
+    </products>
+
+    <skillRequirements>
+      <li>
+        <skill>Medicine</skill>
+        <minLevel>6</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

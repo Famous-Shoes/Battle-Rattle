@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_Rucks_Basic_Recipe</defName>
+    <label>Make basic rucksack</label>
+    <description>Craft a medium-sized rucksack without a frame; requires 150 fabric and a basic familiarity with crafting.</description>
+    <jobString>Crafting basic ruck</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    
+    <workAmount>1200</workAmount>
+
+    <defaultIngredientFilter>
+      <categories>
+        <li>Textiles</li>
+      </categories>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <categories>
+        <li>Textiles</li>
+      </categories>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Textiles</li>
+          </categories>
+        </filter>
+        <count>150</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_Rucks_Basic>1</BattleRattle_Rucks_Basic>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>3</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

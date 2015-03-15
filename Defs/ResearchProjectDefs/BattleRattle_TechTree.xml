@@ -2,14 +2,31 @@
 <ResearchProjectDefs>
 
   <ResearchProjectDef>
-    <defName>BattleRattle_Rucks_Research</defName>
-    <label>Rucksacks</label>
-    <description>Allows you to start crafting general purpose ruck sacks and research how to make rucksacks specialized for battlefield medicine.</description>
+    <defName>BattleRattle_Rucks_ResearchBasic</defName>
+    <label>Basic Rucksacks</label>
+    <description>Allows you to start crafting general purpose rucksacks and research how to craft rucksacks better designed for comfort, balance, and capacity.</description>
     <totalCost>800</totalCost>
     
     <researchMods>
       <li>
-        <specialAction>BattleRattle_Rucks_ResearchRucks.Done</specialAction>
+        <specialAction>BattleRattle_Rucks_ResearchBasic.Done</specialAction>
+      </li>
+    </researchMods>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
+    <defName>BattleRattle_Rucks_ResearchAdvanced</defName>
+    <label>Advanced Rucksacks</label>
+    <description>Allows you to start crafting rucksacks with improved comfort, balance, and capacity and research how to make rucksacks specialized for battlefield medicine.</description>
+    <totalCost>1600</totalCost>
+    
+    <prerequisites>
+      <li>BattleRattle_Rucks_ResearchBasic</li>
+    </prerequisites>
+    
+    <researchMods>
+      <li>
+        <specialAction>BattleRattle_Rucks_ResearchAdvanced.Done</specialAction>
       </li>
     </researchMods>
   </ResearchProjectDef>
@@ -31,16 +48,16 @@
     <defName>BattleRattle_BattleFieldMedicine_Research</defName>
     <label>Battlefield Medicine</label>
     <description>Allows you to craft individual first aid kits, rucksacks for medics, and the trauma packs to load them with.</description>
-    <totalCost>1600</totalCost>
+    <totalCost>3200</totalCost>
     
     <prerequisites>
-      <li>BattleRattle_Rucks_Research</li>
+      <li>BattleRattle_Rucks_ResearchAdvanced</li>
       <li>BattleRattle_Pouches_Research</li>
     </prerequisites>
     
     <researchMods>
       <li>
-        <specialAction>BattleRattle_BattleFieldMedicine_ResearchBattleFieldMedicine.Done</specialAction>
+        <specialAction>BattleRattle_BattleFieldMedicine_Research.Done</specialAction>
       </li>
     </researchMods>
   </ResearchProjectDef>

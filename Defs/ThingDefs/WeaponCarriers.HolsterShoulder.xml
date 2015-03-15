@@ -31,7 +31,7 @@
       <bodyPartGroups>
         <li>Torso</li>
       </bodyPartGroups>
-      <commonality>1</commonality>
+      <commonality>0.05</commonality>
       <layers>
         <li>Middle</li>
       </layers>
@@ -42,14 +42,23 @@
     </apparel>
 
     <equippedStatOffsets>
+      <AimingDelayFactor>0.01</AimingDelayFactor>
+      <MoveSpeed>0.00</MoveSpeed>
       <SocialImpact>0.05</SocialImpact>
       <WorkSpeedGlobal>-0.01</WorkSpeedGlobal>
     </equippedStatOffsets>
 
     <statBases>
+      <ArmorRating_Blunt>0.00</ArmorRating_Blunt>
+      <ArmorRating_Electric>0.00</ArmorRating_Electric>
+      <ArmorRating_Heat>0.00</ArmorRating_Heat>
+      <ArmorRating_Sharp>0.001</ArmorRating_Sharp>
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
-      <MaxHealth>100</MaxHealth>
+      <Insulation_Cold>0.00</Insulation_Cold>
+      <Insulation_Heat>-0.50</Insulation_Heat>
+      <MarketValue>100</MarketValue>
+      <MaxHealth>160</MaxHealth>
     </statBases>
 
   </ThingDef>

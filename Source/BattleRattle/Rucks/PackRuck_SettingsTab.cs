@@ -15,7 +15,7 @@ namespace BattleRattle.Rucks {
     protected override void FillTab() {
       var ruck = (IRuck) base.SelThing;
 
-      GUI.Label(new Rect(10f, 20f, 150f, 20f), "Search radius: " + ruck.PackRadius);
+      GUI.Label(new Rect(10f, 20f, 150f, 20f), "Pack things within: " + ruck.PackRadius);
       ruck.PackRadius = (int) GUI.HorizontalSlider(new Rect(10f, 50f, 150f, 20f), (float) ruck.PackRadius, 1f, 100f);
 
       if (Widgets.TextButton(new Rect(190f, 30f, 100f, 50f), "Clear All")) {

@@ -45,6 +45,7 @@
     <Folder Include="Source\" />
     <Folder Include="Source\BattleRattle\Pouches\" />
     <Folder Include="Source\BattleRattle\BattleFieldMedicine\" />
+    <Folder Include="Source\BattleRattle\Compatibility\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\BattleRattle\Apparel\AbstractApparel.cs" />
@@ -73,14 +74,16 @@
     <Compile Include="Source\BattleRattle\Rucks\PackRuck_WorkGiverDef.cs" />
     <Compile Include="Source\BattleRattle\BattleRattleInitializer.cs" />
     <Compile Include="Source\BattleRattle\BattleRattleMetaData.cs" />
-    <Compile Include="Source\BattleRattle\BattleRattle_Rucks_ResearchRucks.cs" />
-    <Compile Include="Source\BattleRattle\BattleRattle_BattleFieldMedicine_ResearchBattleFieldMedicine.cs" />
     <Compile Include="Source\BattleRattle\BattleRattle_WeaponCarriers_ResearchHolsters.cs" />
     <Compile Include="Source\BattleRattle\BattleRattle_WeaponCarriers_ResearchSheaths.cs" />
     <Compile Include="Source\BattleRattle\BattleRattle_WeaponCarriers_ResearchSlings.cs" />
     <Compile Include="Source\BattleRattle\BattleRattleCompatibility.cs" />
-    <Compile Include="Source\BattleRattle\Compatibility_BetterThanSentryGuns.cs" />
     <Compile Include="Source\BattleRattle\Utility\Recipes.cs" />
     <Compile Include="Source\BattleRattle\BattleRattle_Pouches_ResearchPouches.cs" />
+    <Compile Include="Source\BattleRattle\BattleRattle_Rucks_ResearchAdvanced.cs" />
+    <Compile Include="Source\BattleRattle\BattleRattle_Rucks_ResearchBasic.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\Glassworks.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\BetterThanSentryGuns.cs" />
+    <Compile Include="Source\BattleRattle\BattleRattle_BattleFieldMedicine_Research.cs" />
   </ItemGroup>
 </Project>

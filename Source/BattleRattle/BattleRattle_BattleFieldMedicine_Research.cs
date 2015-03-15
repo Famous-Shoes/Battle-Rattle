@@ -1,9 +1,9 @@
 ﻿using BattleRattle;
 
-public static class BattleRattle_BattleFieldMedicine_ResearchBattleFieldMedicine {
+public static class BattleRattle_BattleFieldMedicine_Research {
 
   public static void Done() {
-    Recipes.Inject("TableTailor", 
+    Recipes.Inject("TableTailor",
       "BattleRattle_Rucks_Medic_Recipe",
       "BattleRattle_Pouches_IFAK_Recipe"
     );

@@ -26,7 +26,7 @@
       <bodyPartGroups>
         <li>Legs</li>
       </bodyPartGroups>
-      <commonality>1</commonality>
+      <commonality>0.30</commonality>
       <layers>
         <li>Shell</li>
       </layers>
@@ -37,24 +37,23 @@
     </apparel>
 
     <equippedStatOffsets>
-      <AimingDelayFactor>-1.0</AimingDelayFactor>
-      <MoveSpeed>-0.1</MoveSpeed>
-      <WorkSpeedGlobal>-1.0</WorkSpeedGlobal>
+      <AimingDelayFactor>0.00</AimingDelayFactor>
+      <MoveSpeed>-0.01</MoveSpeed>
+      <SocialImpact>0.00</SocialImpact>
+      <WorkSpeedGlobal>-0.01</WorkSpeedGlobal>
     </equippedStatOffsets>
 
     <statBases>
-      <MarketValue>1000</MarketValue>
-      <SellPriceFactor>0.5</SellPriceFactor>
-
-      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
-      <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
-      <Insulation_Cold>-5</Insulation_Cold>
-      
+      <ArmorRating_Blunt>0.001</ArmorRating_Blunt>
+      <ArmorRating_Electric>0.00</ArmorRating_Electric>
+      <ArmorRating_Heat>0.00</ArmorRating_Heat>
+      <ArmorRating_Sharp>0.002</ArmorRating_Sharp>
       <DeteriorationRate>1</DeteriorationRate>
       <Flammability>1.0</Flammability>
-      <MaxHealth>250</MaxHealth>
-      
-      <WorkToMake>24000</WorkToMake>
+      <Insulation_Cold>0.00</Insulation_Cold>
+      <Insulation_Heat>-0.50</Insulation_Heat>
+      <MarketValue>70</MarketValue>
+      <MaxHealth>100</MaxHealth>
     </statBases>
 
   </ThingDef>

@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 using RimWorld;
 using Verse;
-using Verse.AI;
 
 using UnityEngine;
 
 using BattleRattle.Apparel;
 using BattleRattle.Utility;
-using System.Text;
 
 namespace BattleRattle.Rucks {
 
@@ -20,9 +19,7 @@ namespace BattleRattle.Rucks {
       Closed, Packing, Unpacking
     }
 
-    public ThingFilter PackableCurrent {get; set;}
-    public ThingFilter PackableAll {get; set;}
-    public int PackRadius {get; set;}
+    public static int FULL_CELL_MULT = 1000000;
 
     private Command_Action closeGizmo;
     private Command_Action closeDisabledGizmo;
@@ -32,8 +29,9 @@ namespace BattleRattle.Rucks {
     private Mode mode;
     private int capacityUsed;
     private ThingContainer container;
-
-    public static int FULL_CELL_MULT = 1000000;
+    private ThingFilter packableAll;
+    private ThingFilter packableCurrent;
+    private int packRadius;
 
 
     public RuckDef Def {
@@ -48,23 +46,12 @@ namespace BattleRattle.Rucks {
     public override void PostMake() {
       base.PostMake();
 
-      PackRadius = Math.Min(10, this.Def.packRadius);
+      this.packRadius = Math.Min(10, Def.packRadius);
 
-      PackableAll = new ThingFilter();
-      PackableAll.SetAllow(ThingCategoryDef.Named("Apparel"), true);
-      PackableAll.SetAllow(ThingCategoryDef.Named("Art"), true);
-      PackableAll.SetAllow(ThingCategoryDef.Named("BodyParts"), true);
-      PackableAll.SetAllow(ThingCategoryDef.Named("Chunks"), true);
-      PackableAll.SetAllow(ThingCategoryDef.Named("Corpses"), true);
-      PackableAll.SetAllow(ThingCategoryDef.Named("Items"), true);
-      PackableAll.SetAllow(ThingCategoryDef.Named("Resources"), true);
-      PackableAll.SetAllow(ThingCategoryDef.Named("Weapons"), true);
-      PackableAll.ResolveReferences();
-
-      PackableCurrent = new ThingFilter();
+      this.packableCurrent = new ThingFilter();
       PackableCurrent.DisallowAll();
-      if (this.Def.designedFor != null) {
-        foreach (var defName in this.Def.designedFor) {
+      if (Def.designedFor != null) {
+        foreach (var defName in Def.designedFor) {
           PackableCurrent.SetAllow(ThingDef.Named(defName), true);
         }
       }
@@ -74,12 +61,24 @@ namespace BattleRattle.Rucks {
       this.capacityUsed = 0;
     }
 
-    public override void SpawnSetup () {
+    public override void SpawnSetup() {
       base.SpawnSetup();
 
-      StopPacking();
+      this.capacityUsed = 0;
+      foreach (var t in this.container) {
+        this.capacityUsed += CapacityUnitFor(t);
+      }
     }
 
+    public override void ExposeData() {
+      base.ExposeData();
+
+      Scribe_Deep.LookDeep(ref this.container, "container");
+      Scribe_Values.LookValue(ref this.mode, "mode", Mode.Closed);
+      Scribe_Deep.LookDeep(ref this.packableCurrent, "packableCurrent");
+      Scribe_Values.LookValue(ref this.packRadius, "packRadius", Def.packRadius);
+    }
+      
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish) {
       base.Destroy(mode);
       this.container.DestroyContents();
@@ -123,7 +122,7 @@ namespace BattleRattle.Rucks {
        
         var qualityAdjustment = 1 + ((int) quality * 0.1f);
 
-        return Mathf.RoundToInt(this.Def.capacity * qualityAdjustment);
+        return Mathf.RoundToInt(Def.capacity * qualityAdjustment);
       }
     }
 
@@ -197,24 +196,62 @@ namespace BattleRattle.Rucks {
       // Crafted items: ingredient count
       // Resources: stack limit
       // Should also be cached/singletonized or something
-      int unit;
 
-      if (thing.def.IsApparel || thing.def.IsMeleeWeapon || thing.def.IsRangedWeapon) {
-        unit = 100000;
+      int limit;
+      if (thing.def.stackLimit <= 0) {
+        limit = 75;
+
+      } else if (thing.def.stackLimit == 1) {
+        limit = 10;
 
       } else {
-        var limit = (thing.def.stackLimit > 0) ? thing.def.stackLimit : 75;
-
-        unit = FULL_CELL_MULT / limit;
+        limit = thing.def.stackLimit;
       }
 
-      if (this.Def.designedFor != null) {
-        if (this.Def.designedFor.IndexOf(thing.def.defName) != -1) {
-          unit *= Mathf.RoundToInt(this.Def.designCapacityMultiplier);
+      int unit = Mathf.RoundToInt((1f / limit) * FULL_CELL_MULT);
+
+      if (Def.designedFor != null) {
+        if (Def.designedFor.IndexOf(thing.def.defName) != -1) {
+          unit *= Mathf.RoundToInt(Def.designCapacityMultiplier);
         }
       }
 
       return unit;
+    }
+
+    public ThingFilter PackableAll {
+      get {
+        if (this.packableAll == null) {
+          this.packableAll = new ThingFilter();
+          this.packableAll.SetAllow(ThingCategoryDef.Named("Apparel"), true);
+          this.packableAll.SetAllow(ThingCategoryDef.Named("Art"), true);
+          this.packableAll.SetAllow(ThingCategoryDef.Named("BodyParts"), true);
+          this.packableAll.SetAllow(ThingCategoryDef.Named("Chunks"), true);
+          this.packableAll.SetAllow(ThingCategoryDef.Named("Corpses"), true);
+          this.packableAll.SetAllow(ThingCategoryDef.Named("Items"), true);
+          this.packableAll.SetAllow(ThingCategoryDef.Named("Resources"), true);
+          this.packableAll.SetAllow(ThingCategoryDef.Named("Weapons"), true);
+          this.packableAll.ResolveReferences();
+        }
+
+        return this.packableAll;
+      }
+    }
+
+    public ThingFilter PackableCurrent {
+      get {
+        return this.packableCurrent;
+      }
+    }
+
+    public int PackRadius {
+      get {
+        return this.packRadius;
+      }
+
+      set {
+        this.packRadius = value;
+      }
     }
 
     #endregion
@@ -259,27 +296,33 @@ namespace BattleRattle.Rucks {
     public override string GetInspectString() {
       var text = new StringBuilder();
       text.Append(base.GetInspectString());
+
       if (this.capacityUsed > 0) {
         var percent = (int) Math.Round(
           (100 / (double) this.Capacity) * this.capacityUsed
         );
-        text.AppendLine();
-        text.AppendLine(percent + "% full.");
-        foreach (Thing t in this.container) {
-          text.AppendLine("  » " +  t.stackCount + " " + Labels.ForTitleBrief(t));
+
+        text.Append(", Packed to ");
+        text.Append(percent);
+        text.AppendLine("% of Capacity: ");
+
+        var labels = this.container.Contents.Select(
+          t => t.stackCount + " " + Labels.ForTitleBrief(t)
+        ).ToArray<string>();
+
+        if (labels.Length > 5) {
+          text.Append("Contains ");
+          text.Append(String.Join(", ", labels));
+          text.Insert(text.Length - labels.Last().Length, "and ");
+          text.AppendLine(".");
+
+        } else {
+          foreach (string l in labels) {
+            text.Append("  » ");
+            text.AppendLine(l);
+          }
         }
       }
-
-      #if DEBUG
-      var quality = QualityCategory.Awful;
-      this.TryGetQuality(out quality);
-      var qualityAdjustment = 1 + ((int) quality * 0.1f);
-
-      text.AppendLine();
-      text.AppendLine("Quality: " + (int) quality);
-      text.AppendLine("Quality Adjustment for Capacity: " + qualityAdjustment);
-      text.AppendLine("Capacity: " + this.Capacity + ", Used: " + this.capacityUsed);
-      #endif
 
       return text.ToString();
     }
@@ -393,7 +436,7 @@ namespace BattleRattle.Rucks {
           this.packDisabledGizmo = new Command_Action();
           this.packDisabledGizmo.icon = Buttons.Icon(this, "PackDisabled");
           this.packDisabledGizmo.Disable("Already packing.");
-          this.packGizmo.defaultDesc = "The "
+          this.packDisabledGizmo.defaultDesc = "The "
             + Labels.ForSentenceBrief(this) + " is being packed.";
         }
 

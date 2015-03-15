@@ -2,8 +2,8 @@
 using Verse;
 using System.Collections.Generic;
 
-namespace BattleRattle {
-  public class Compatibility_BetterThanSentryGuns {
+namespace BattleRattle.Compatibility {
+  public class BetterThanSentryGuns {
 
     public void Inject() {
       var tailoring = DefDatabase<ResearchProjectDef>.GetNamed("BTSGTailoring");

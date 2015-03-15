@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+  <ThingDef>
+    <DefName>BattleRattle_BattleFieldMedicine_TableMedical</DefName>
+    <category>Building</category>
+    <DesignationCategory>Production</DesignationCategory>
+    <EType>BuildingComplex</EType>
+    <ThingClass>Building_WorkTable</ThingClass>
+
+    <label>Medic's Workbench</label>
+    <Description>A workbench equipped for repackaging medicine into trauma kits.</Description>
+
+    <selectable>true</selectable>
+
+    <repairEffect>Repair</repairEffect>
+    <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+
+    <AltitudeLayer>Waist</AltitudeLayer>
+    <itemSurface>True</itemSurface>
+    <pathCost>70</pathCost>
+    <Passability>PassThroughOnly</Passability>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+
+    <costStuffCount>6</costStuffCount>
+    <fillPercent>0.5</fillPercent>
+    <filthLeaving>BuildingRubble</filthLeaving>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <researchPrerequisite>BattleRattle_BattleFieldMedicine_Research</researchPrerequisite>
+    <UseStandardHealth>True</UseStandardHealth>
+    
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicPath>BattleRattle/BattleFieldMedicine/MedicsTable/Icon</graphicPath>
+    <graphicClass>Graphic_Single</graphicClass>
+    <graphicOverdraw>False</graphicOverdraw>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionSquareOffset>(0,0,-1)</interactionSquareOffset>
+    <Size>(1,1)</Size>
+    
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    
+    <comps>
+      <li>
+        <compClass>CompForbiddable</compClass>
+      </li>
+    </comps>
+    
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    
+    <recipes>
+      <li>BattleRattle_BattleFieldMedicine_TraumaKit_Recipe</li>
+    </recipes>
+
+    <statBases>
+      <WorkToMake>25</WorkToMake>
+      <MaxHealth>100</MaxHealth>
+      <Flammability>1.0</Flammability>
+    </statBases>
+
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    
+  </ThingDef>
+</ThingDefs>

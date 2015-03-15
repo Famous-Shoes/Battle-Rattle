@@ -21,6 +21,12 @@ namespace BattleRattle.Pouches {
       }
     }
 
+    public override void ExposeData() {
+      base.ExposeData();
+
+      Scribe_Deep.LookDeep(ref this.medicine, "medicine");
+    }
+
     public static IFAK UsableFrom(Pawn target) {
       foreach (RimWorld.Apparel apparel in target.apparel.WornApparel) {
         var ifak = apparel as IFAK;
