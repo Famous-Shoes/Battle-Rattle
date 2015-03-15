@@ -1,4 +1,6 @@
-﻿using BattleRattle;
+﻿using UnityEngine;
+
+using BattleRattle;
 
 
 public static class BattleRattle_WeaponCarriers_ResearchHolsters {
@@ -11,5 +13,9 @@ public static class BattleRattle_WeaponCarriers_ResearchHolsters {
     );
 
     Recipes.Inject("TableSmithing", "BattleRattle_Miscellaneous_Buckles_Recipe");
+
+    BattleRattleCompatibility.Instance.ResearchDone(
+      "BattleRattle_WeaponCarriers_ResearchHolsters"
+    );
   }
 }

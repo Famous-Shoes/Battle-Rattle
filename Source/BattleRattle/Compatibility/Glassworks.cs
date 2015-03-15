@@ -3,7 +3,8 @@ using RimWorld;
 
 
 namespace BattleRattle.Compatibility {
-  public class Glassworks {
+  public class Glassworks: ICompatibility {
+
     public void Inject() {
       var medicsTableDef = ThingDef.Named(
         "BattleRattle_BattleFieldMedicine_TableMedical"
@@ -14,5 +15,8 @@ namespace BattleRattle.Compatibility {
         medicsTableDef.stuffCategories.Add(glassy);
       }
     }
+
+    public void ResearchDone(string researchDefName) {}
+
   }
 }

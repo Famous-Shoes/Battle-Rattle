@@ -10,6 +10,10 @@ public static class BattleRattle_WeaponCarriers_ResearchSheathes {
     );
 
     Recipes.Inject("TableSmithing", "BattleRattle_Miscellaneous_Buckles_Recipe");
+
+    BattleRattleCompatibility.Instance.ResearchDone(
+      "BattleRattle_WeaponCarriers_ResearchSheathes"
+    );
   }
 
 }

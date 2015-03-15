@@ -4,12 +4,29 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 using BattleRattle.Compatibility;
+using System;
+using System.IO;
 
 namespace BattleRattle {
   public class BattleRattleCompatibility: MonoBehaviour {
+  
+    private List<ICompatibility> listeners;
 
+    public static BattleRattleCompatibility Instance {
+      get {
+        var initializer = GameObject.Find("BattleRattleInitializer");
+        return initializer.GetComponent<BattleRattleCompatibility>();
+      }
+    }
+      
     public void Start() {
-      var activeMods = InstalledModLister.AllInstalledMods.Where(m => m.Active);
+      this.enabled = false;
+
+      // As of Alpha 9e, InstalledModLister doesn't return a full listing.
+      var allModDirs = new DirectoryInfo(GenFilePaths.ModsFolderPath).GetDirectories();
+      var allMods = allModDirs.Select(d => new InstalledMod(d));
+      var activeMods = allMods.Where(m => ModsConfig.IsActive(m.FolderName)).ToArray();
+
       InstalledMod battleRattle = null;
       int installationsCount = 0;
 
@@ -26,54 +43,82 @@ namespace BattleRattle {
       }
 
       if (installationsCount > 1) {
-        Log.Error("Multiple installations of Battle Rattle found; this won't end well.");
+        Log.Error("Multiple active installations of Battle Rattle found; this won't end well.");
+      } 
 
-      } else {
-        // In theory a Class attribute on the ModMetaData element would work 
-        // here, but when BattleRattle is inactive, RimWorld won't load the DLL 
-        // and so will throw an exception when the user opens the mod listing 
-        // dialogue.
+      // In theory a Class attribute on the ModMetaData element would work 
+      // here, but when BattleRattle is inactive, RimWorld won't load the DLL 
+      // and so will throw an exception when the user opens the mod listing 
+      // dialogue.
 
-        var metaData = XmlLoader.ItemFromXmlFile<BattleRattleMetaData>(
-          battleRattle.dir + "/About/About.xml", false
-        );
+      var metaData = XmlLoader.ItemFromXmlFile<BattleRattleMetaData>(
+        battleRattle.dir + "/About/About.xml", false
+      );
 
-        Log.Message(
-          metaData.name + " " + metaData.version 
-          + " checking for compatible and incompatible mods:"
-        );
-      }
+      Log.Message(
+        metaData.name + " " + metaData.version 
+        + " checking for compatible and incompatible mods:"
+      );
 
       foreach (var mod in activeMods) {
         if (mod.Name == "Better Than Sentry Guns") {
-          Log.Message(" + Injecting compatibility for " + mod.Name + ".");
-          new BetterThanSentryGuns().Inject();
+          RegisterCompatibility<BetterThanSentryGuns>(mod);
 
         } else if (mod.Name == "[T] ExpandedCloth") {
           Log.Warning(" - Compatibility for Expanded Cloth not yet implemented.");
 
         } else if (Regex.IsMatch(mod.Name, "Extended Woodworking")) {
-          Log.Warning(" - Compatibility for Extended Woodworking not yet implemented.");
+          RegisterCompatibility<ExpandedWoodworking>(mod);
 
         } else if (Regex.IsMatch(mod.Name, "Glassworks")) {
-          Log.Message(" + Injecting compatibility for " + mod.Name + ".");
-          new Glassworks().Inject();
+          RegisterCompatibility<Glassworks>(mod);
 
         } else if (Regex.IsMatch(mod.Name, "NonLethals")) {
-          Log.Warning(" - Compatibility for Non-Lethals not yet implemented.");
+          RegisterCompatibility<NonLethals>(mod);
+
+        } else if (mod.Name == "Project Armory") {
+          Log.Warning(" - Compatibility for Project Armory not yet implemented.");
 
         } else if (Regex.IsMatch(mod.Name, "Right Tool For The Job")) {
           Log.Warning(" - Compatibility for The Right Tool for the Job not yet implemented.");
         
         } else if (mod.Name == "Rimsearch") {
           Log.Warning(" - Compatibility for Rimsearch not yet implemented.");
-        
+         
+        } else if (mod.Name == "Thingamajigs") {
+          Log.Warning(" - Compatibility for Thingamajigs not yet implemented.");
+                  
         } else if (mod.Name == "Winter Is Here") {
           Log.Warning(" - Compatibility for Winter is Here not yet implemented.");
         }
       }
 
       Log.Message(" * Compatibility checking complete.");
+    }
+
+    private void RegisterCompatibility<T>(InstalledMod mod) {
+      if (this.listeners == null) {
+        this.listeners = new List<ICompatibility>();
+      }
+
+      try {
+        var compatibility = (ICompatibility) Activator.CreateInstance<T>();
+        compatibility.Inject();
+        this.listeners.Add(compatibility);
+
+        Log.Message(" + Injected compatibility for " + mod.Name + ".");
+
+      } catch (Exception ex) {
+        Log.Error(
+          " - Failed injecting compatibility for " + mod.Name + ": " + ex
+        );
+      }
+    }
+
+    public void ResearchDone(string name) {
+      foreach(var l in this.listeners) {
+        l.ResearchDone(name);
+      }
     }
 
   }

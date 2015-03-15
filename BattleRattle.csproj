@@ -85,5 +85,8 @@
     <Compile Include="Source\BattleRattle\Compatibility\Glassworks.cs" />
     <Compile Include="Source\BattleRattle\Compatibility\BetterThanSentryGuns.cs" />
     <Compile Include="Source\BattleRattle\BattleRattle_BattleFieldMedicine_Research.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\ExpandedWoodworking.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\NonLethals.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\ICompatibility.cs" />
   </ItemGroup>
 </Project>

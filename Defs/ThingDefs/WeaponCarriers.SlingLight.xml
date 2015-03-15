@@ -23,7 +23,7 @@
     <equipText>Ready</equipText>
     <storeText>Sling</storeText>
     
-    <storablePattern>(pdw|rifle|shotgun|smg)</storablePattern>
+    <storablePattern>(ak47|mp5|pdw|rifle|sa80|shotgun|smg|tar21)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/SlingLight/Icon</graphicPath>
 

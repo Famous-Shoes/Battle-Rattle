@@ -23,7 +23,7 @@
     <equipText>Draw</equipText>
     <storeText>Holster</storeText>
     
-    <storablePattern>pistol</storablePattern>
+    <storablePattern>(pistol|revolver)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/HolsterDropLeg/Icon</graphicPath>
 
