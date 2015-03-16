@@ -23,6 +23,7 @@
 
     <equipText>Draw</equipText>
     <storeText>Sheath</storeText>
+    <capacity>1</capacity>
     
     <storablePattern>(machete|gladius|sword)</storablePattern>
     <graphicPath>BattleRattle/WeaponCarriers/Scabbard/Icon</graphicPath>

@@ -22,6 +22,7 @@
     
     <equipText>Ready</equipText>
     <storeText>Sling</storeText>
+    <capacity>1</capacity>
     
     <storablePattern>(lmg|minigun)</storablePattern>
     

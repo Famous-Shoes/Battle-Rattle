@@ -13,20 +13,20 @@
     <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
     <graphicClass>Graphic_Single</graphicClass>
     
-    <defName>BattleRattle_WeaponCarriers_SlingLight</defName>
+    <defName>BattleRattle_ToolCarriers_ToolBelt</defName>
     
-    <label>Light Combat Sling</label>
+    <label>Engineer's Belt</label>
 		<description>
-      A light, three-point sling for carrying long and medium barrelled weapons, such as a sniper or assault rifle.
+      A heavy engineer's toolbelt, which can hold three tools.
     </description>
     
     <equipText>Ready</equipText>
-    <storeText>Sling</storeText>
-    <capacity>1</capacity>
+    <storeText>Stow</storeText>
+    <capacity>3</capacity>
     
-    <storablePattern>(ak47|mp5|pdw|rifle|sa80|shotgun|smg|tar21)</storablePattern>
+    <storablePattern>(chiphook|hammer|nailgun|wrench)</storablePattern>
     
-    <graphicPath>BattleRattle/WeaponCarriers/SlingLight/Icon</graphicPath>
+    <graphicPath>BattleRattle/ToolCarriers/ToolBelt/Icon</graphicPath>
 
     <apparel>
       <bodyPartGroups>
@@ -37,10 +37,10 @@
         <li>Shell</li>
       </layers>
       <tags>
-        <li>Military</li>
-        <li>MilitaryCold</li>
+        <li>Outlander</li>
+        <li>Spacer</li>
       </tags>
-      <worngraphicPath>BattleRattle/WeaponCarriers/SlingLight/Worn</worngraphicPath>
+      <worngraphicPath>BattleRattle/ToolCarriers/ToolBelt/Worn</worngraphicPath>
     </apparel>
 
     <equippedStatOffsets>

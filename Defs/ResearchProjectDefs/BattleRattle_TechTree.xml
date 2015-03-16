@@ -76,6 +76,22 @@
   </ResearchProjectDef>
   
   <ResearchProjectDef>
+    <defName>BattleRattle_ToolCarriers_Research</defName>
+    <label>Engineer's Equipment</label>
+    <description>Allows you to craft gear to carry tools.</description>
+    <totalCost>1600</totalCost>
+    <prerequisites>
+      <li>BattleRattle_WeaponCarriers_Holster_Research</li>
+    </prerequisites>
+    
+    <researchMods>
+      <li>
+        <specialAction>BattleRattle_ToolCarriers_Research.Done</specialAction>
+      </li>
+    </researchMods>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef>
     <defName>BattleRattle_WeaponCarriers_Slings_Research</defName>
     <label>Tactical Weapon Slings</label>
     <description>Allows you to craft tactical slings for carrying long guns.</description>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<RecipeDefs>
+
+  <RecipeDef>
+    <defName>BattleRattle_ToolCarriers_ToolBelt_Recipe</defName>
+    <label>Make weapon sling</label>
+    <description>Craft a heavy engineer's belt; requires fifty fabric or leather, two buckles, and a practicioner's skill with crafting.</description>
+    <jobString>Crafting</jobString>
+    
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>TailoringSpeed</workSpeedStat>
+    <workAmount>1020</workAmount>
+    
+    <defaultIngredientFilter>
+      <categories>
+        <li>Textiles</li>
+      </categories>
+      <thingDefs>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+      <exceptedThingDefs>
+        <li>Cloth</li>
+      </exceptedThingDefs>
+    </defaultIngredientFilter>
+    
+    <fixedIngredientFilter>
+      <categories>
+        <li>Textiles</li>
+      </categories>
+      <thingDefs>
+        <li>BattleRattle_Miscellaneous_Buckle</li>
+      </thingDefs>
+      <exceptedThingDefs>
+        <li>Cloth</li>
+      </exceptedThingDefs>
+    </fixedIngredientFilter>        
+    
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Textiles</li>
+          </categories>
+          <exceptedThingDefs>
+            <li>Cloth</li>
+          </exceptedThingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BattleRattle_Miscellaneous_Buckle</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    
+    <products>
+      <BattleRattle_ToolCarriers_ToolBelt>1</BattleRattle_ToolCarriers_ToolBelt>
+    </products>
+    
+    <skillRequirements>
+      <li>
+        <skill>Crafting</skill>
+        <minLevel>6</minLevel>
+      </li>
+    </skillRequirements>
+  </RecipeDef>
+
+</RecipeDefs>

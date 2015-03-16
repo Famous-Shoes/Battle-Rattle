@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
-
-using UnityEngine;
 
 using RimWorld;
 using Verse;
@@ -16,11 +15,8 @@ namespace BattleRattle.WeaponCarriers {
     private Regex storableRegex;
 
     private Command_Action storePrimaryGizmo;
-    private Command_Action equipPrimaryGizmo;
-    private Command_Action removeStoredGizmo;
 
     private ThingContainer container;
-    private Equipment stored;
     private WeaponCarrierDef carrierDef;
 
 
@@ -47,7 +43,6 @@ namespace BattleRattle.WeaponCarriers {
       base.ExposeData();
 
       Scribe_Deep.LookDeep(ref this.container, "container");
-      Scribe_References.LookReference(ref this.stored, "stored");
     }
 
     #endregion
@@ -71,16 +66,6 @@ namespace BattleRattle.WeaponCarriers {
       }
     }
 
-    public Equipment Stored { 
-      get {
-        return this.stored;
-      }
-
-      set {
-        this.stored = value;
-      }
-    }
-
     #endregion
 
 
@@ -88,16 +73,14 @@ namespace BattleRattle.WeaponCarriers {
 
     public virtual bool StorePrimary() {
       Equipment transferred;
-      Stored = this.wearer.equipment.Primary;
 
       var success = this.wearer.equipment.TryTransferEquipmentToContainer(
-        Stored, this.container, out transferred
+        this.wearer.equipment.Primary, this.container, out transferred
       );
 
       if (!success) {
-        Stored = null;
         Log.Warning(
-          "Unable to store primary (" + Stored 
+          "Unable to store primary (" + this.wearer.equipment.Primary 
           + ") in carrier's container (" + this.container + ")."
         );
       }
@@ -105,7 +88,7 @@ namespace BattleRattle.WeaponCarriers {
       return true;
     }
 
-    public virtual bool EquipPrimary() {
+    public virtual bool EquipPrimary(Thing stored) {
       Equipment dropped;
       if (this.wearer.equipment.Primary != null) {
         var success = this.wearer.equipment.TryDropEquipment(
@@ -115,7 +98,7 @@ namespace BattleRattle.WeaponCarriers {
         if (!success) {
           Messages.Message(
             this.wearer.Nickname + " cannot equip "
-            + Labels.ForSentenceBrief(Stored) + " because they have " 
+            + Labels.ForSentenceBrief(stored) + " because they have " 
             + Labels.ForSentenceBrief(this.wearer.equipment.Primary)
             + " equipped and no place to drop that."
           );
@@ -123,26 +106,24 @@ namespace BattleRattle.WeaponCarriers {
         }
       }
 
-      this.container.Remove(Stored);
-      this.wearer.equipment.AddEquipment(Stored);
-      Stored = null;
+      this.container.Remove(stored);
+      this.wearer.equipment.AddEquipment((Equipment) stored);
 
       return true;
     }
 
-    public bool RemoveStored() {
+    public bool RemoveStored(Thing stored) {
       if (!this.SpawnedInWorld) {
         return false;
       }
 
       Thing dropped;
       var success = this.container.TryDrop(
-        Stored, this.Position, ThingPlaceMode.Near, out dropped
+        stored, this.Position, ThingPlaceMode.Near, out dropped
       );
 
       if (success) {
-        GenForbid.SetForbidden(Stored, true, false);
-        Stored = null;
+        GenForbid.SetForbidden(stored, true, false);
       }
 
       return true;
@@ -153,6 +134,12 @@ namespace BattleRattle.WeaponCarriers {
 
     #region UI
 
+    private int StoredCount {
+      get {
+        return this.container.ContentsListForReading.Count;
+      }
+    }
+
     public override IEnumerable<Gizmo> GetWornGizmos()  {
       foreach (var g in base.GetWornGizmos()) {
         yield return g;
@@ -162,12 +149,24 @@ namespace BattleRattle.WeaponCarriers {
         yield break;
       }
 
-      if (Stored == null && this.CanStoreThing(this.wearer.equipment.Primary)) {
+      if (!IsFull && CanStoreThing(this.wearer.equipment.Primary)) {
         yield return StorePrimaryGizmo;
       }
 
-      if (Stored != null) {
-        yield return EquipPrimaryGizmo;
+      foreach (var t in this.container) {
+        yield return EquipPrimaryGizmo(t);
+      }
+    }
+
+    public bool IsEmpty {
+      get {
+        return StoredCount <= 0;
+      }
+    }
+
+    public bool IsFull {
+      get {
+        return StoredCount >= Def.capacity;
       }
     }
 
@@ -176,28 +175,26 @@ namespace BattleRattle.WeaponCarriers {
         yield return g;
       }
 
-      if (this.wearer == null && Stored != null && this.SpawnedInWorld) {
-        yield return RemoveStoredGizmo;
+      if (this.wearer == null && this.SpawnedInWorld) {
+        foreach (var t in this.container) {
+          yield return RemoveStoredGizmo(t);
+        }
       }
     }
 
-    private Gizmo EquipPrimaryGizmo {
-      get {
-        if (this.equipPrimaryGizmo == null) {
-          this.equipPrimaryGizmo = new Command_Action();
-          this.equipPrimaryGizmo.action = () => EquipPrimary();
-          this.equipPrimaryGizmo.activateSound = SoundDef.Named("Click");
-          this.equipPrimaryGizmo.icon = Buttons.Icon(this, "EquipStored");
-        }
+    private Gizmo EquipPrimaryGizmo(Thing thing) {
+      var equipPrimaryGizmo = new Command_Action();
+      equipPrimaryGizmo.action = () => EquipPrimary(thing);
+      equipPrimaryGizmo.activateSound = SoundDef.Named("Click");
+      equipPrimaryGizmo.icon = Buttons.Icon(this, "EquipStored");
+     
+      equipPrimaryGizmo.defaultLabel = Def.equipText
+        + " " + Labels.ForTitleBrief(thing);
+      equipPrimaryGizmo.defaultDesc = Def.equipText
+        + " " + this.wearer.Nickname + "'s "
+        + Labels.ForSentenceBrief(thing) + ".";
 
-        this.equipPrimaryGizmo.defaultLabel = Def.equipText
-          + " " + Labels.ForTitleBrief(Stored);
-        this.equipPrimaryGizmo.defaultDesc = Def.equipText
-          + " " + this.wearer.Nickname + "'s "
-          + Labels.ForSentenceBrief(Stored) + ".";
-
-        return this.equipPrimaryGizmo;
-      }
+      return equipPrimaryGizmo;
     }
       
     private Gizmo StorePrimaryGizmo {
@@ -220,23 +217,20 @@ namespace BattleRattle.WeaponCarriers {
       }
     }
 
-    private Gizmo RemoveStoredGizmo {
-      get {
-        if (this.removeStoredGizmo == null) {
-          this.removeStoredGizmo = new Command_Action();
-          this.removeStoredGizmo.action = () => RemoveStored();
-          this.removeStoredGizmo.activateSound = SoundDef.Named("Click");
-          this.removeStoredGizmo.icon = Buttons.Icon(this, "RemoveStored");
-        }
+    private Gizmo RemoveStoredGizmo(Thing thing) {
+      var removeStoredGizmo = new Command_Action();
+      removeStoredGizmo.action = () => RemoveStored(thing);
+      removeStoredGizmo.activateSound = SoundDef.Named("Click");
+      removeStoredGizmo.icon = Buttons.Icon(this, "RemoveStored");
 
-        this.removeStoredGizmo.defaultLabel = "Remove "
-          + " " + Labels.ForTitleBrief(Stored);
-        this.removeStoredGizmo.defaultDesc = "Remove "
-          + Labels.ForSentenceBrief(Stored) 
-          + " from the " + Labels.ForSentenceBrief(this) + ".";
+      removeStoredGizmo.defaultLabel = "Remove "
+        + " " + Labels.ForTitleBrief(thing);
 
-        return this.removeStoredGizmo;
-      }
+      removeStoredGizmo.defaultDesc = "Remove "
+        + Labels.ForSentenceBrief(thing) 
+        + " from the " + Labels.ForSentenceBrief(this) + ".";
+
+      return removeStoredGizmo;
     }
 
     public override string Label {
@@ -245,10 +239,11 @@ namespace BattleRattle.WeaponCarriers {
 
         label = Labels.ForTitleFull(this);
 
-        if (Stored != null) {
+        if (StoredCount == 1) {
           // FIXME Inefficient (called very frequently)-- though base.Label is 
           // far worse.
-          return label + " and " + Labels.ForTitleBrief(Stored);
+          return label + " and " 
+            + Labels.ForTitleBrief(this.container.ContentsListForReading.First());
         }
 
         return label;

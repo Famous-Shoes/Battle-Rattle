@@ -22,6 +22,7 @@
     
     <equipText>Draw</equipText>
     <storeText>Sheath</storeText>
+    <capacity>1</capacity>
     
     <storablePattern>knife</storablePattern>
     

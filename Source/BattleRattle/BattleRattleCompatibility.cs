@@ -80,16 +80,16 @@ namespace BattleRattle {
           Log.Warning(" - Compatibility for Project Armory not yet implemented.");
 
         } else if (Regex.IsMatch(mod.Name, "Right Tool For The Job")) {
-          Log.Warning(" - Compatibility for The Right Tool for the Job not yet implemented.");
+          RegisterCompatibility<RightToolForTheJob>(mod);
         
         } else if (mod.Name == "Rimsearch") {
-          Log.Warning(" - Compatibility for Rimsearch not yet implemented.");
+          RegisterCompatibility<Rimsearch>(mod);
          
         } else if (mod.Name == "Thingamajigs") {
-          Log.Warning(" - Compatibility for Thingamajigs not yet implemented.");
+          RegisterCompatibility<Thingamjigs>(mod);
                   
         } else if (mod.Name == "Winter Is Here") {
-          Log.Warning(" - Compatibility for Winter is Here not yet implemented.");
+          RegisterCompatibility<WinterIsHere>(mod);
         }
       }
 

@@ -22,6 +22,7 @@
     
     <equipText>Draw</equipText>
     <storeText>Holster</storeText>
+    <capacity>1</capacity>
     
     <storablePattern>tazer</storablePattern>
     

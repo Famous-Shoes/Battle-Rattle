@@ -88,5 +88,10 @@
     <Compile Include="Source\BattleRattle\Compatibility\ExpandedWoodworking.cs" />
     <Compile Include="Source\BattleRattle\Compatibility\NonLethals.cs" />
     <Compile Include="Source\BattleRattle\Compatibility\ICompatibility.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\Rimsearch.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\WinterIsHere.cs" />
+    <Compile Include="Source\BattleRattle\BattleRattle_ToolCarriers_Research.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\Thingamajigs.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\RightToolForTheJob.cs" />
   </ItemGroup>
 </Project>

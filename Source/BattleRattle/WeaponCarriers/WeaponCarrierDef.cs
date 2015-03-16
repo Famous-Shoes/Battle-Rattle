@@ -11,5 +11,7 @@ namespace BattleRattle.WeaponCarriers {
     public string equipText;
     public string storeText;
 
+    public int capacity;
+
   }
 }
