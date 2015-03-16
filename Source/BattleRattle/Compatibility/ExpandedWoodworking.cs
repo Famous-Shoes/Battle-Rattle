@@ -14,26 +14,23 @@ namespace BattleRattle.Compatibility {
         "BattleRattle_WeaponCarriers_Sheath_Recipe"
       };
 
+      var woodTypesDef = ThingCategoryDef.Named("WoodTypes");
+
       foreach (var n in woodRecipeNames) {
         var recipe = DefDatabase<RecipeDef>.GetNamed(n);
         if (recipe == null) {
           Log.Error("Missing recipe " + n + ".");
         
         } else {
-          if (recipe.defaultIngredientFilter.categories == null) {
-            recipe.defaultIngredientFilter.categories = new List<string>();
-          }
-          recipe.defaultIngredientFilter.categories.Add("WoodTypes");
+          var filters = new ThingFilter[] {
+            recipe.defaultIngredientFilter,
+            recipe.fixedIngredientFilter,
+            recipe.ingredients.First().filter
+          };
 
-          if (recipe.fixedIngredientFilter.categories == null) {
-            recipe.fixedIngredientFilter.categories = new List<string>();
+          foreach (var f in filters) {
+            f.SetAllow(woodTypesDef, true);
           }
-          recipe.fixedIngredientFilter.categories.Add("WoodTypes");
-
-          if (recipe.ingredients.First().filter.categories == null) {
-            recipe.ingredients.First().filter.categories = new List<string>();
-          }
-          recipe.ingredients.First().filter.categories.Add("WoodTypes");
         }
       }
     }
