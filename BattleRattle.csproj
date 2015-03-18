@@ -93,5 +93,6 @@
     <Compile Include="Source\BattleRattle\BattleRattle_ToolCarriers_Research.cs" />
     <Compile Include="Source\BattleRattle\Compatibility\Thingamajigs.cs" />
     <Compile Include="Source\BattleRattle\Compatibility\RightToolForTheJob.cs" />
+    <Compile Include="Source\BattleRattle\Compatibility\FlareGun.cs" />
   </ItemGroup>
 </Project>

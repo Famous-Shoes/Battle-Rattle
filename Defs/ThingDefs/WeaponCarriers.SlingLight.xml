@@ -24,7 +24,7 @@
     <storeText>Sling</storeText>
     <capacity>1</capacity>
     
-    <storablePattern>(ak47|mp5|pdw|rifle|sa80|shotgun|smg|tar21)</storablePattern>
+    <storablePattern>(rifle|shotgun|smg|aatwelve|beanbagshotty|cerharrier|galil|greasegun|gun_ak|gun_sa|gun_tar|m29mantis|m300claymore|m8avenger|m98widow|mosin|mp5|n7hurricane|scout|skorpion|striker|vector|wa2k|xmeight)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/SlingLight/Icon</graphicPath>
 

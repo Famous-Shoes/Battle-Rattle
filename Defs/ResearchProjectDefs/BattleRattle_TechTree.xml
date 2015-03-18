@@ -32,7 +32,7 @@
   </ResearchProjectDef>
   
   <ResearchProjectDef>
-    <defName>BattleRattle_Pouches_Research</defName>
+    <defName>BattleRattle_Pouches_ResearchPouches</defName>
     <label>Combat Pouches</label>
     <description>Allows you to start crafting special purpose pouches for things like grenades and is a necessary step towards understanding battlefield medicine.</description>
     <totalCost>800</totalCost>
@@ -52,7 +52,7 @@
     
     <prerequisites>
       <li>BattleRattle_Rucks_ResearchAdvanced</li>
-      <li>BattleRattle_Pouches_Research</li>
+      <li>BattleRattle_Pouches_ResearchPouches</li>
     </prerequisites>
     
     <researchMods>
@@ -63,7 +63,7 @@
   </ResearchProjectDef>
 
   <ResearchProjectDef>
-    <defName>BattleRattle_WeaponCarriers_Holster_Research</defName>
+    <defName>BattleRattle_WeaponCarriers_ResearchHolsters</defName>
     <label>Sidearm Holsters</label>
     <description>Allows you to craft holsters for side-arms, including the shoulder holster and research how to make tactical slings for carrying long guns.</description>
     <totalCost>800</totalCost>
@@ -81,7 +81,7 @@
     <description>Allows you to craft gear to carry tools.</description>
     <totalCost>1600</totalCost>
     <prerequisites>
-      <li>BattleRattle_WeaponCarriers_Holster_Research</li>
+      <li>BattleRattle_WeaponCarriers_ResearchHolsters</li>
     </prerequisites>
     
     <researchMods>
@@ -92,12 +92,12 @@
   </ResearchProjectDef>
   
   <ResearchProjectDef>
-    <defName>BattleRattle_WeaponCarriers_Slings_Research</defName>
+    <defName>BattleRattle_WeaponCarriers_ResearchSlings</defName>
     <label>Tactical Weapon Slings</label>
     <description>Allows you to craft tactical slings for carrying long guns.</description>
     <totalCost>1600</totalCost>
     <prerequisites>
-      <li>BattleRattle_WeaponCarriers_Holster_Research</li>
+      <li>BattleRattle_WeaponCarriers_ResearchHolsters</li>
     </prerequisites>
     
     <researchMods>
@@ -108,7 +108,7 @@
   </ResearchProjectDef>
   
   <ResearchProjectDef>
-    <defName>BattleRattle_WeaponCarriers_Sheaths_Research</defName>
+    <defName>BattleRattle_WeaponCarriers_ResearchSheathes</defName>
     <label>Sheathes &amp; Scabbards</label>
     <description>Allows you to craft sheaths for knives and scabbards for swords.</description>
     <totalCost>800</totalCost>

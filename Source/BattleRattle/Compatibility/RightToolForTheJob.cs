@@ -8,9 +8,11 @@ namespace BattleRattle.Compatibility {
     public void Inject() {}
 
     public void ResearchDone(string researchDefName) {
-      Recipes.Inject("TableTailor",
-        "BattleRattle_ToolCarriers_ToolBelt_Recipe"
-      );
+      if (researchDefName == "BattleRattle_ToolCarriers_Research") {
+        Recipes.Inject("TableTailor",
+          "BattleRattle_ToolCarriers_ToolBelt_Recipe"
+        );
+      }
     }
 
   }

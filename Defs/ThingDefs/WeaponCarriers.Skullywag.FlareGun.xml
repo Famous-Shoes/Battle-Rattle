@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!DOCTYPE doc [
+  <!ENTITY weaponCarrierBase SYSTEM "Mods/Battle Rattle/Defs/BaseDefs/WeaponCarriers.Base.xml">
+]>
+
+<ThingDefs>
+
+  &weaponCarrierBase;
+
+  <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
+    <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
+    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
+    <graphicClass>Graphic_Single</graphicClass>
+    
+    <defName>BattleRattle_WeaponCarriers_Skullywag_FlareGun</defName>
+    
+    <label>Flare Gun Holster</label>
+		<description>
+      A belt holster that holds a flare gun.
+    </description>
+    
+    <equipText>Draw</equipText>
+    <storeText>Holster</storeText>
+    <capacity>1</capacity>
+    
+    <storablePattern>flaregun</storablePattern>
+    
+    <graphicPath>BattleRattle/WeaponCarriers/Skullywag/FlareGun/Icon</graphicPath>
+
+    <apparel>
+      <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <commonality>0.50</commonality>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>Spacer</li>
+      </tags>
+    </apparel>
+    
+    <equippedStatOffsets>
+      <AimingDelayFactor>0.00</AimingDelayFactor>
+      <MoveSpeed>0.00</MoveSpeed>
+      <SocialImpact>0.00</SocialImpact>
+      <WorkSpeedGlobal>0.00</WorkSpeedGlobal>
+    </equippedStatOffsets>
+
+    <statBases>
+      <ArmorRating_Blunt>0.001</ArmorRating_Blunt>
+      <ArmorRating_Electric>0.00</ArmorRating_Electric>
+      <ArmorRating_Heat>0.00</ArmorRating_Heat>
+      <ArmorRating_Sharp>0.001</ArmorRating_Sharp>
+      <DeteriorationRate>1</DeteriorationRate>
+      <Flammability>1.0</Flammability>
+      <Insulation_Cold>0.00</Insulation_Cold>
+      <Insulation_Heat>0.00</Insulation_Heat>
+      <MarketValue>100</MarketValue>
+      <MaxHealth>100</MaxHealth>
+    </statBases>
+    
+  </ThingDef>
+
+</ThingDefs>

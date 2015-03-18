@@ -24,7 +24,7 @@
     <storeText>Holster</storeText>
     <capacity>1</capacity>
     
-    <storablePattern>(pistol|revolver)</storablePattern>
+    <storablePattern>(m3predator|m5phalanx|pistol|revolver)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/HolsterDropLeg/Icon</graphicPath>
 

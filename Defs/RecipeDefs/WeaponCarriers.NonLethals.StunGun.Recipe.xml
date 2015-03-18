@@ -4,7 +4,7 @@
 
   <RecipeDef>
     <defName>BattleRattle_WeaponCarriers_NonLethals_StunGun_Recipe</defName>
-    <label>Make tazer holster</label>
+    <label>Make stun gun holster</label>
     <description>Craft a drop-leg holster for a stun gun; requires twenty-five fabric or leather, a buckle, and a practicioner's skill with crafting.</description>
     <jobString>Crafting stun gun holster</jobString>
     

@@ -70,6 +70,9 @@ namespace BattleRattle {
         } else if (Regex.IsMatch(mod.Name, "Extended Woodworking")) {
           RegisterCompatibility<ExpandedWoodworking>(mod);
 
+        } else if (Regex.IsMatch(mod.Name, "Flare Gun")) {
+          RegisterCompatibility<FlareGun>(mod);
+
         } else if (Regex.IsMatch(mod.Name, "Glassworks")) {
           RegisterCompatibility<Glassworks>(mod);
 

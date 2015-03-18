@@ -24,7 +24,7 @@
     <storeText>Holster</storeText>
     <capacity>1</capacity>
     
-    <storablePattern>pdw</storablePattern>
+    <storablePattern>(pdw|gun_93r|gun_tmp|m4shuriken|tecnine)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/HolsterPDW/Icon</graphicPath>
 

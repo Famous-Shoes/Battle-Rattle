@@ -7,7 +7,7 @@ namespace BattleRattle.Compatibility {
     public void Inject() {}
 
     public void ResearchDone(string researchDefName) {
-      if (researchDefName == "BattleRattle_WeaponCarriers_Holsters") {
+      if (researchDefName == "BattleRattle_WeaponCarriers_ResearchHolsters") {
         Recipes.Inject("TableTailor", 
           "BattleRattle_WeaponCarriers_NonLethals_StunGun_Recipe",
           "BattleRattle_WeaponCarriers_NonLethals_Tazer_Recipe"
@@ -17,4 +17,3 @@ namespace BattleRattle.Compatibility {
 
   }
 }
-

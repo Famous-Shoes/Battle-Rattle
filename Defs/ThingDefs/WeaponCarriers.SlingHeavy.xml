@@ -24,7 +24,7 @@
     <storeText>Sling</storeText>
     <capacity>1</capacity>
     
-    <storablePattern>(lmg|minigun)</storablePattern>
+    <storablePattern>(lmg|m76revenant|mhundredthirtyfour|minigun|milkormgl|railgun)</storablePattern>
     
     <graphicPath>BattleRattle/WeaponCarriers/SlingHeavy/Icon</graphicPath>
 

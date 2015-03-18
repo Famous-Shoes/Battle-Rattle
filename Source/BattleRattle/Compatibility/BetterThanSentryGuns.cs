@@ -14,14 +14,15 @@ namespace BattleRattle.Compatibility {
       var tailorResearchNames = new [] {
         "BattleRattle_Rucks_ResearchBasic",
         "BattleRattle_Rucks_ResearchAdvanced",
-        "BattleRattle_Pouches_Research",
-        "BattleRattle_WeaponCarriers_Holster_Research",
-        "BattleRattle_WeaponCarriers_Sheaths_Research"
+        "BattleRattle_Pouches_ResearchPouches",
+        "BattleRattle_ToolCarriers_Research",
+        "BattleRattle_WeaponCarriers_ResearchHolsters",
+        "BattleRattle_WeaponCarriers_ResearchSheathes",
+        "BattleRattle_WeaponCarriers_ResearchSlings"
       };
 
       var otherResearchNames = new [] {
         "BattleRattle_BattleFieldMedicine_Research",
-        "BattleRattle_WeaponCarriers_Slings_Research"
       };
 
       foreach (string name in tailorResearchNames) {

@@ -51,7 +51,7 @@ namespace BattleRattle.WeaponCarriers {
     #region Storing
 
     public virtual bool CanStoreThing(Thing thing) {
-      return thing != null && StorableRegex.IsMatch(thing.def.label);
+      return thing != null && StorableRegex.IsMatch(thing.def.defName);
     }
 
     public Regex StorableRegex {

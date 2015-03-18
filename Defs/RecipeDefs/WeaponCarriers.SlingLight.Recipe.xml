@@ -4,7 +4,7 @@
 
   <RecipeDef>
     <defName>BattleRattle_WeaponCarriers_SlingLight_Recipe</defName>
-    <label>Make weapon sling</label>
+    <label>Make weapon sling, light</label>
     <description>Craft a combat sling for carrying a long gun; requires forty fabric, two buckles, and an expert's skill with crafting.</description>
     <jobString>Crafting</jobString>
     

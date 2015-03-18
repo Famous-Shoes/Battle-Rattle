@@ -4,7 +4,7 @@
 
   <RecipeDef>
     <defName>BattleRattle_ToolCarriers_ToolBelt_Recipe</defName>
-    <label>Make weapon sling</label>
+    <label>Make engineer's belt</label>
     <description>Craft a heavy engineer's belt; requires fifty fabric or leather, two buckles, and a practicioner's skill with crafting.</description>
     <jobString>Crafting</jobString>
     
