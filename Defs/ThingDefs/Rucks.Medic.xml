@@ -17,7 +17,7 @@
     
     <label>Medic's Ruck</label>
 		<description>A medium-sized rucksack specially designed to carry trauma kits. It can carry other stuff, but not very much.</description>
-    <graphicPath>BattleRattle/Rucks/LongRange/Icon</graphicPath>
+    <graphicPath>BattleRattle/Rucks/Medic/Icon</graphicPath>
 
     <capacity>70000</capacity>
     <packRadius>10</packRadius>
@@ -39,7 +39,6 @@
         <li>MilitaryMedic</li>
         <li>MilitaryMedicCold</li>
       </tags>
-      <worngraphicPath>BattleRattle/Rucks/LongRange/Worn</worngraphicPath>
     </apparel>
 
     <equippedStatOffsets>

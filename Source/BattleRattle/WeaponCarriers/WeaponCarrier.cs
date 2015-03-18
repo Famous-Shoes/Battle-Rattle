@@ -188,11 +188,11 @@ namespace BattleRattle.WeaponCarriers {
       equipPrimaryGizmo.activateSound = SoundDef.Named("Click");
       equipPrimaryGizmo.icon = Buttons.Icon(this, "EquipStored");
      
-      equipPrimaryGizmo.defaultLabel = Def.equipText
-        + " " + Labels.ForTitleBrief(thing);
+      equipPrimaryGizmo.defaultLabel = Labels.ForTitleBrief(thing);
       equipPrimaryGizmo.defaultDesc = Def.equipText
         + " " + this.wearer.Nickname + "'s "
-        + Labels.ForSentenceBrief(thing) + ".";
+        + Labels.ForSentenceBrief(thing) 
+        + " from the " + Labels.ForSentenceBrief(thing) + ".";
 
       return equipPrimaryGizmo;
     }
@@ -206,12 +206,12 @@ namespace BattleRattle.WeaponCarriers {
           this.storePrimaryGizmo.icon = Buttons.Icon(this, "StorePrimary");
         }
 
-        this.storePrimaryGizmo.defaultLabel = Def.storeText
-          + " " + Labels.ForTitleBrief(this.wearer.equipment.Primary);
+        this.storePrimaryGizmo.defaultLabel = Labels.ForTitleBrief(this);
 
         this.storePrimaryGizmo.defaultDesc = Def.storeText 
           + " " + this.wearer.Nickname + "'s "
-          + Labels.ForSentenceBrief(this.wearer.equipment.Primary) + ".";
+          + Labels.ForSentenceBrief(this.wearer.equipment.Primary)
+          + " with the " + Labels.ForSentenceBrief(this) + ".";
 
         return this.storePrimaryGizmo;
       }
@@ -223,8 +223,7 @@ namespace BattleRattle.WeaponCarriers {
       removeStoredGizmo.activateSound = SoundDef.Named("Click");
       removeStoredGizmo.icon = Buttons.Icon(this, "RemoveStored");
 
-      removeStoredGizmo.defaultLabel = "Remove "
-        + " " + Labels.ForTitleBrief(thing);
+      removeStoredGizmo.defaultLabel = Labels.ForTitleBrief(thing);
 
       removeStoredGizmo.defaultDesc = "Remove "
         + Labels.ForSentenceBrief(thing) 
