@@ -5,9 +5,9 @@
     <giverClass>BattleRattle.Rucks.PackRuck_WorkGiver</giverClass> 
     <verb>packing</verb>
     <gerund>packing</gerund>
-    <requiredActivities>
+    <requiredCapacities>
       <li>Manipulation</li>
-    </requiredActivities>
+    </requiredCapacities>
   </WorkGiverDef>
   
   <WorkGiverDef Class="BattleRattle.Rucks.PackRuck_WorkGiverDef" ParentName="PackRuck_Abstract">

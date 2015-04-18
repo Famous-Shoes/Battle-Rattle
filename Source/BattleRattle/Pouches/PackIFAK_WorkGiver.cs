@@ -9,8 +9,6 @@ using BattleRattle.Pouches;
 namespace BattleRattle.Pouches {
   public class PackIFAK_WorkGiver: WorkGiver {
 
-    public PackIFAK_WorkGiver(WorkGiverDef def): base(def) {}
-
     public override ThingRequest PotentialWorkThingRequest {
       get {
         return ThingRequest.ForDef(IFAKDef.Instance);
@@ -39,7 +37,7 @@ namespace BattleRattle.Pouches {
         return null;
       }
 
-      if (!pawn.CanReserveAndReach(thing, ReservationType.Use, PathMode.Touch, pawn.NormalMaxDanger())) {
+      if (!pawn.CanReserveAndReach(thing, PathMode.Touch, pawn.NormalMaxDanger())) {
         #if DEBUG
         Log.Message(
           "Checked for pack IFAK job on " + ifak 
@@ -69,7 +67,7 @@ namespace BattleRattle.Pouches {
         return null;
       }
 
-      if (!pawn.CanReserveAndReach(closest, ReservationType.Use, PathMode.Touch, pawn.NormalMaxDanger())) {
+      if (!pawn.CanReserveAndReach(closest, PathMode.Touch, pawn.NormalMaxDanger())) {
         #if DEBUG
         Log.Message(
           "Checked for pack IFAK job on " + ifak 

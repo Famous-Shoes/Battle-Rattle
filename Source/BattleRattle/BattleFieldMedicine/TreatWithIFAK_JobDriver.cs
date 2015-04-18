@@ -9,7 +9,7 @@ using BattleRattle.Pouches;
 namespace BattleRattle.BattleFieldMedicine {
   public class TreatWithIFAK_JobDriver: JobDriver {
 
-    public TreatWithIFAK_JobDriver(Pawn pawn): base(pawn) {}
+    public TreatWithIFAK_JobDriver(Pawn pawn): base() {}
 
     public static JobDef Def {
       get {
@@ -43,8 +43,8 @@ namespace BattleRattle.BattleFieldMedicine {
       this.FailOnDestroyedOrForbidden(TargetIndex.A);
       this.FailOnDestroyedOrForbidden(TargetIndex.B);
 
-      yield return Toils_Reserve.Reserve(TargetIndex.A, ReservationType.Use);
-      yield return Toils_Reserve.Reserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Reserve(TargetIndex.A);
+      yield return Toils_Reserve.Reserve(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + responder + " will reserve " + patient + " and " + ifak + ".");
@@ -72,7 +72,7 @@ namespace BattleRattle.BattleFieldMedicine {
         yield return Toils_Goto.GotoThing(TargetIndex.A, PathMode.Touch);
       }
 
-      yield return Toils_Reserve.Unreserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Release(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + responder + " will treat " + patient + " with " + ifak.PackedKit + ".");
@@ -87,12 +87,12 @@ namespace BattleRattle.BattleFieldMedicine {
       applyIFAK.defaultCompleteMode = ToilCompleteMode.Instant;
       yield return applyIFAK;
 
-      yield return Toils_Reserve.Unreserve(TargetIndex.A, ReservationType.Use);
+      yield return Toils_Reserve.Release(TargetIndex.A);
       // This is going to error, but the alternative is to copy a bunch of logic
       // from RimWorld. Really, unreserve should just quietly succeed if the 
       // target doesn't need to be unreserved for some reason rather than getting
       // prissy about it.
-      yield return Toils_Reserve.Unreserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Release(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + responder + " will unreserve " + patient + " and " + ifak + ".");

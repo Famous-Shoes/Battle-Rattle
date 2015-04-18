@@ -7,9 +7,9 @@
     <workType>Doctor</workType>
     <verb>treat</verb>
     <gerund>treating</gerund>
-    <requiredActivities>
+    <requiredCapacities>
       <li>Manipulation</li>
-    </requiredActivities>
+    </requiredCapacities>
     <priorityInType>100</priorityInType>
   </WorkGiverDef>
   
@@ -19,9 +19,9 @@
     <workType>Patient</workType>
     <verb>treat</verb>
     <gerund>treating</gerund>
-    <requiredActivities>
+    <requiredCapacities>
       <li>Manipulation</li>
-    </requiredActivities>
+    </requiredCapacities>
     <priorityInType>100</priorityInType>
   </WorkGiverDef>
   
@@ -33,9 +33,9 @@
     <singleBillGiverDef>BattleRattle_BattleFieldMedicine_TableMedical</singleBillGiverDef>
     <verb>pack</verb>
     <gerund>packing</gerund>
-    <requiredActivities>
+    <requiredCapacities>
       <li>Manipulation</li>
-    </requiredActivities>
+    </requiredCapacities>
   </WorkGiverDef>
 
 </WorkGivers>

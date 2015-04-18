@@ -7,8 +7,6 @@ using Verse.AI;
 namespace BattleRattle.Rucks {
   public class PackRuck_WorkGiver: WorkGiver {
 
-    public PackRuck_WorkGiver(WorkGiverDef def): base(def) {}
-
     public PackRuck_WorkGiverDef Def {
       get {
         return (PackRuck_WorkGiverDef) this.def;
@@ -39,7 +37,7 @@ namespace BattleRattle.Rucks {
         return null;
       }
 
-      if (!pawn.CanReserveAndReach(thing, ReservationType.Use, PathMode.Touch, pawn.NormalMaxDanger())) {
+      if (!pawn.CanReserveAndReach(thing, PathMode.Touch, pawn.NormalMaxDanger())) {
         #if DEBUG
         Log.Message("Checked for pack ruck job on " + ruck + ": no job, pawn cannot reach and reserve it.");
         #endif

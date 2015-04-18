@@ -47,7 +47,7 @@ namespace BattleRattle.Pouches {
         yield break;
       }
 
-      if (!this.IsEmpty && this.wearer.healthTracker.ShouldGetTreatment) {
+      if (!this.IsEmpty && this.wearer.health.ShouldGetTreatment) {
         var use = new Command_Action();
 
         use.action = () => UseOn(this.wearer, this.wearer);

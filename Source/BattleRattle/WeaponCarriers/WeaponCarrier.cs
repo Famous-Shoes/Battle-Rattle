@@ -72,7 +72,7 @@ namespace BattleRattle.WeaponCarriers {
     #region Actions
 
     public virtual bool StorePrimary() {
-      Equipment transferred;
+      ThingWithComps transferred;
 
       var success = this.wearer.equipment.TryTransferEquipmentToContainer(
         this.wearer.equipment.Primary, this.container, out transferred
@@ -89,7 +89,7 @@ namespace BattleRattle.WeaponCarriers {
     }
 
     public virtual bool EquipPrimary(Thing stored) {
-      Equipment dropped;
+      ThingWithComps dropped;
       if (this.wearer.equipment.Primary != null) {
         var success = this.wearer.equipment.TryDropEquipment(
           this.wearer.equipment.Primary, out dropped, this.wearer.Position
@@ -107,7 +107,7 @@ namespace BattleRattle.WeaponCarriers {
       }
 
       this.container.Remove(stored);
-      this.wearer.equipment.AddEquipment((Equipment) stored);
+      this.wearer.equipment.AddEquipment((ThingWithComps) stored);
 
       return true;
     }

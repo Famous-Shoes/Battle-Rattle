@@ -1,8 +1,6 @@
 <ThingDef Name="BattleRattle_WeaponCarriers_Base" Abstract="True">
-  <eType>Apparel</eType>
- 
   <category>Item</category>
-  <useStandardHealth>True</useStandardHealth>
+  <useHitPoints>True</useHitPoints>
   <techLevel>Midworld</techLevel>
 
   <alwaysHaulable>True</alwaysHaulable>
@@ -10,7 +8,6 @@
       
   <drawGUIOverlay>True</drawGUIOverlay>
   <graphicClass>Graphic_Single</graphicClass>
-  <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
   
   <altitudeLayer>Item</altitudeLayer>
   <pathCost>0</pathCost>

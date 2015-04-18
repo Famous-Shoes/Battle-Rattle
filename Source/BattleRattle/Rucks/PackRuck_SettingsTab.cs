@@ -22,7 +22,7 @@ namespace BattleRattle.Rucks {
         ruck.PackableCurrent.DisallowAll();
       }
 
-      ThingFilterGui.DoThingFilterConfigWindow(new Rect(10f, 110f, this.size.x - 20f, this.size.y - 120f), ref this.scrollPosition, ruck.PackableCurrent, ruck.PackableAll);
+      ThingFilterUI.DoThingFilterConfigWindow(new Rect(10f, 110f, this.size.x - 20f, this.size.y - 120f), ref this.scrollPosition, ruck.PackableCurrent, ruck.PackableAll);
       GUI.EndGroup();
     }
   }

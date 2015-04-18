@@ -4,11 +4,10 @@
 
   <ThingDef>
     <defName>BattleRattle_Miscellaneous_Buckle</defName>
-        <thingClass>ThingWithComponents</thingClass>
+    <thingClass>ThingWithComps</thingClass>
     <category>Item</category>
-    <eType>Item</eType>
     <resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <useStandardHealth>true</useStandardHealth>
+    <useHitPoints>true</useHitPoints>
     <selectable>true</selectable>
     <altitudeLayer>Item</altitudeLayer>
     <stackLimit>500</stackLimit>
@@ -29,7 +28,6 @@
     <resourceReadoutPriority>First</resourceReadoutPriority>
     <soundInteract>Metal_Drop</soundInteract>
     <soundDrop>Metal_Drop</soundDrop>
-    <useStandardHealth>false</useStandardHealth>
     <resourceReadoutAlwaysShow>true</resourceReadoutAlwaysShow>
     <statBases>
       <MarketValue>0.1</MarketValue>

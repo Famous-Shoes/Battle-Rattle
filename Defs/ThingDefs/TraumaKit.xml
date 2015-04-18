@@ -3,7 +3,6 @@
 
   <ThingDef Class="BattleRattle.BattleFieldMedicine.TraumaKitDef">
     <defName>BattleRattle_BattleFieldMedicine_TraumaKit</defName>
-    <eType>Medicine</eType>
     <category>Item</category>
     <thingClass>Medicine</thingClass>
 
@@ -21,7 +20,7 @@
     <selectable>true</selectable>
     <stackLimit>75</stackLimit>
 
-    <useStandardHealth>true</useStandardHealth>
+    <useHitPoints>true</useHitPoints>
 
     <graphicPath>BattleRattle/BattleFieldMedicine/TraumaKit/Icon</graphicPath>
     <graphicClass>Graphic_Single</graphicClass>
@@ -37,7 +36,7 @@
     </comps>
 
     <statBases>
-      <MaxHealth>100</MaxHealth>
+      <MaxHitPoints>100</MaxHitPoints>
       <MarketValue>25</MarketValue>
       <Flammability>1.0</Flammability>
       <MedicalPotency>0.5</MedicalPotency>

@@ -10,8 +10,6 @@ namespace BattleRattle.BattleFieldMedicine {
     public const float SIGNIFICANT_BLEEDING = 0.1f;
     public const float MAX_DISTANCE_TO_TRAVEL_TO_BED = 50f;
 
-    public TreatSelf_WorkGiver(WorkGiverDef giverDef) : base(giverDef) {}
-
     public override ThingRequest PotentialWorkThingRequest {
       get {
         return ThingRequest.ForGroup(ThingRequestGroup.Pawn);
@@ -148,7 +146,7 @@ namespace BattleRattle.BattleFieldMedicine {
         && ((Building_Bed) x).Medical
         && !x.IsForbidden(patient.Faction) 
         && patient.AwareOf(x) 
-        && patient.CanReserve(x, ReservationType.Total)
+        && patient.CanReserve(x)
       ;
 
       return GenClosest.ClosestThing_Global_Reachable(
@@ -162,7 +160,7 @@ namespace BattleRattle.BattleFieldMedicine {
     }
 
     private static bool NeedImmediateTreatment(Pawn pawn) {
-      if (!pawn.healthTracker.ShouldGetTreatment) {
+      if (!pawn.health.ShouldGetTreatment) {
         #if DEBUG
         Log.Message(
         "Patient " + pawn + " doesn't need treatment according to their "
@@ -172,7 +170,7 @@ namespace BattleRattle.BattleFieldMedicine {
 
         return false;
       }
-      float bleedingRate = pawn.healthTracker.hediffSet.BleedingRate;
+      float bleedingRate = pawn.health.hediffSet.BleedingRate;
       if (bleedingRate < SIGNIFICANT_BLEEDING) {
         #if DEBUG
         Log.Message(

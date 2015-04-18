@@ -14,9 +14,7 @@ namespace BattleRattle.Pouches {
         );
       }
     }
-
-    public PackIFAK_JobDriver(Pawn pawn): base(pawn) {}
-
+      
     protected override IEnumerable<Toil> MakeNewToils() {
       var ifak = this.pawn.CurJob.GetTarget(TargetIndex.A).Thing as IFAK;
       var traumaKit = this.pawn.CurJob.GetTarget(TargetIndex.B).Thing;
@@ -30,8 +28,8 @@ namespace BattleRattle.Pouches {
       this.FailOnDestroyedOrForbidden(TargetIndex.B);
       this.FailOnBurningImmobile(TargetIndex.B);
 
-      yield return Toils_Reserve.Reserve(TargetIndex.A, ReservationType.Use);
-      yield return Toils_Reserve.Reserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Reserve(TargetIndex.A);
+      yield return Toils_Reserve.Reserve(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will reserve " + traumaKit + " and " + ifak + ".");
@@ -62,8 +60,8 @@ namespace BattleRattle.Pouches {
       packToil.defaultCompleteMode = ToilCompleteMode.Instant;
       yield return packToil;
 
-      yield return Toils_Reserve.Unreserve(TargetIndex.A, ReservationType.Use);
-      yield return Toils_Reserve.Unreserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Release(TargetIndex.A);
+      yield return Toils_Reserve.Release(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will unreserve " + traumaKit + " and " + ifak + ".");

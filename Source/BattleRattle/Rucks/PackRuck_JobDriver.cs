@@ -7,7 +7,7 @@ using Verse.AI;
 namespace BattleRattle.Rucks {
   public class PackRuck_JobDriver: JobDriver {
 
-    public PackRuck_JobDriver(Pawn pawn): base(pawn) {}
+    public PackRuck_JobDriver(Pawn pawn): base() {}
 
     protected override IEnumerable<Toil> MakeNewToils() {
       var ruck = this.pawn.CurJob.GetTarget(TargetIndex.A).Thing as IRuck;
@@ -24,8 +24,8 @@ namespace BattleRattle.Rucks {
 //      this.FailOn(ruck.NotPackable);
 //      this.FailOn(() => ruck.CheckNotPackable(packing));
 
-      yield return Toils_Reserve.Reserve(TargetIndex.A, ReservationType.Use);
-      yield return Toils_Reserve.Reserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Reserve(TargetIndex.A);//, ReservationType.Use);
+      yield return Toils_Reserve.Reserve(TargetIndex.B);//, ReservationType.Total);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will reserve " + packing + " and " + ruck + ".");
@@ -55,8 +55,8 @@ namespace BattleRattle.Rucks {
       packToil.defaultCompleteMode = ToilCompleteMode.Instant;
       yield return packToil;
 
-      yield return Toils_Reserve.Unreserve(TargetIndex.A, ReservationType.Use);
-      yield return Toils_Reserve.Unreserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Release(TargetIndex.A);
+      yield return Toils_Reserve.Release(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will unreserve " + packing + " and " + ruck + ".");

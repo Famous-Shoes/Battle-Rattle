@@ -58,7 +58,7 @@
       <Insulation_Cold>-1.50</Insulation_Cold>
       <Insulation_Heat>-3.00</Insulation_Heat>
       <MarketValue>150</MarketValue>
-      <MaxHealth>175</MaxHealth>
+      <MaxHitPoints>175</MaxHitPoints>
     </statBases>
     
   </ThingDef>

@@ -164,7 +164,7 @@ namespace BattleRattle.Rucks {
         return false;
       }
 
-      if (Find.Reservations.ReserverOf(thing, Faction.OfColony) != null) {
+      if (Find.Reservations.IsReserved(thing, Faction.OfColony)) {
         #if DEBUG
         Log.Message(thing + " is reserved and cannot be packed into " + this + ".");
         #endif

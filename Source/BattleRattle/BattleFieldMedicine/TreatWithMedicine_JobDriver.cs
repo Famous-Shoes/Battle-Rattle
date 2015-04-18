@@ -8,8 +8,6 @@ using RimWorld;
 namespace BattleRattle.BattleFieldMedicine {
   public class TreatWithMedicine_JobDriver: JobDriver {
 
-    public TreatWithMedicine_JobDriver(Pawn pawn): base(pawn) {}
-
     public static JobDef Def {
       get {
         return DefDatabase<JobDef>.GetNamed(
@@ -30,8 +28,8 @@ namespace BattleRattle.BattleFieldMedicine {
       this.FailOnDestroyedOrForbidden(TargetIndex.A);
       this.FailOnDestroyedOrForbidden(TargetIndex.B);
 
-      yield return Toils_Reserve.Reserve(TargetIndex.A, ReservationType.Use);
-      yield return Toils_Reserve.Reserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Reserve(TargetIndex.A);
+      yield return Toils_Reserve.Reserve(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will reserve " + patient + " and " + medicine + ".");
@@ -62,12 +60,12 @@ namespace BattleRattle.BattleFieldMedicine {
         yield return Toils_Heal.ApplyMedicine(patient);
       }
 
-      yield return Toils_Reserve.Unreserve(TargetIndex.A, ReservationType.Use);
+      yield return Toils_Reserve.Release(TargetIndex.A);
       // This is going to error, but the alternative is to copy a bunch of logic
       // from RimWorld. Really, unreserve should just quietly succeed if the 
       // target doesn't need to be unreserved for some reason rather than getting
       // prissy about it.
-      yield return Toils_Reserve.Unreserve(TargetIndex.B, ReservationType.Total);
+      yield return Toils_Reserve.Release(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will unreserve " + patient + " and " + medicine + ".");

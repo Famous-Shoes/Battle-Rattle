@@ -9,7 +9,7 @@ namespace BattleRattle.BattleFieldMedicine {
 
     public const float SIGNIFICANT_BLEEDING = 0.1f;
 
-    public TreatOther_WorkGiver(WorkGiverDef giverDef) : base(giverDef) {}
+    public TreatOther_WorkGiver() : base() {}
 
     public override ThingRequest PotentialWorkThingRequest {
       get {
@@ -41,7 +41,7 @@ namespace BattleRattle.BattleFieldMedicine {
         return false;
       }
 
-      if (!patient.RaceProps.humanoid) {
+      if (!patient.RaceProps.Humanlike) {
         #if DEBUG
         Log.Message(
           "Checked for battlefield medicine job by " + responder 
@@ -85,7 +85,7 @@ namespace BattleRattle.BattleFieldMedicine {
         return false;
       }
 
-      if (!responder.CanReserveAndReach(patient, ReservationType.Heal, PathMode.Touch, Danger.Deadly)) {
+      if (!responder.CanReserveAndReach(patient, PathMode.Touch, Danger.Deadly)) {
         #if DEBUG
         Log.Message(
           "Checked for battlefield medicine job by " + responder 
@@ -110,7 +110,7 @@ namespace BattleRattle.BattleFieldMedicine {
         return false;
       }
 
-      if (!responder.CanReserveAndReach(medicine, ReservationType.Total, PathMode.Touch, Danger.Deadly)) {
+      if (!responder.CanReserveAndReach(medicine, PathMode.Touch, Danger.Deadly)) {
         #if DEBUG
         Log.Message(
           "Checked for battlefield medicine job by " + responder 
@@ -171,7 +171,7 @@ namespace BattleRattle.BattleFieldMedicine {
       Predicate<Thing> onlyUsableTraumaKits = (Thing x) => 
         !x.IsForbidden(responder.Faction) 
         && responder.AwareOf(x) 
-        && responder.CanReserve(x, ReservationType.Total)
+        && responder.CanReserve(x)
       ;
 
       return GenClosest.ClosestThing_Global_Reachable(
@@ -189,7 +189,7 @@ namespace BattleRattle.BattleFieldMedicine {
         !x.IsForbidden(responder.Faction) 
         && !((IFAK) x).IsEmpty
         && responder.AwareOf(x) 
-        && responder.CanReserve(x, ReservationType.Total)
+        && responder.CanReserve(x)
       ;
 
       return FindWornIFAK(responder, patient) ?? GenClosest.ClosestThing_Global_Reachable(
@@ -207,7 +207,7 @@ namespace BattleRattle.BattleFieldMedicine {
     }
 
     private static bool PawnNeedsImmediateTreatment(Pawn pawn) {
-      if (!pawn.healthTracker.ShouldGetTreatment) {
+      if (!pawn.health.ShouldGetTreatment) {
         #if DEBUG
         Log.Message(
           "Patient " + pawn + " doesn't need treatment according to their "
@@ -217,7 +217,7 @@ namespace BattleRattle.BattleFieldMedicine {
 
         return false;
       }
-      float bleedingRate = pawn.healthTracker.hediffSet.BleedingRate;
+      float bleedingRate = pawn.health.hediffSet.BleedingRate;
       if (bleedingRate < SIGNIFICANT_BLEEDING) {
         #if DEBUG
         Log.Message(

@@ -7,9 +7,9 @@
     <workType>Doctor</workType>
     <verb>packing</verb>
     <gerund>packing</gerund>
-    <requiredActivities>
+    <requiredCapacities>
       <li>Manipulation</li>
-    </requiredActivities>
+    </requiredCapacities>
   </WorkGiverDef>
   
 </WorkGivers>
