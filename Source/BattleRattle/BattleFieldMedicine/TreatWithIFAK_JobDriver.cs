@@ -9,8 +9,6 @@ using BattleRattle.Pouches;
 namespace BattleRattle.BattleFieldMedicine {
   public class TreatWithIFAK_JobDriver: JobDriver {
 
-    public TreatWithIFAK_JobDriver(Pawn pawn): base() {}
-
     public static JobDef Def {
       get {
         return DefDatabase<JobDef>.GetNamed(

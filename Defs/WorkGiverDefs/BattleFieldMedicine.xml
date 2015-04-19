@@ -5,8 +5,8 @@
     <defName>BattleRattle_BattleFieldMedicine_TreatOther_WorkGiver</defName>
     <giverClass>BattleRattle.BattleFieldMedicine.TreatOther_WorkGiver</giverClass>
     <workType>Doctor</workType>
-    <verb>treat</verb>
-    <gerund>treating</gerund>
+    <verb>emergency treatment for</verb>
+    <gerund>emergency treatment for</gerund>
     <requiredCapacities>
       <li>Manipulation</li>
     </requiredCapacities>
@@ -17,8 +17,8 @@
     <defName>BattleRattle_BattleFieldMedicine_TreatSelf_WorkGiver</defName>
     <giverClass>BattleRattle.BattleFieldMedicine.TreatSelf_WorkGiver</giverClass>
     <workType>Patient</workType>
-    <verb>treat</verb>
-    <gerund>treating</gerund>
+    <verb>emergency treatment for</verb>
+    <gerund>emergency treatment for</gerund>
     <requiredCapacities>
       <li>Manipulation</li>
     </requiredCapacities>

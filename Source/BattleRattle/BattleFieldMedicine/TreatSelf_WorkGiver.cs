@@ -101,11 +101,14 @@ namespace BattleRattle.BattleFieldMedicine {
         );
         #endif
 
-        return new Job(
+        var job = new Job(
           TreatWithIFAK_JobDriver.Def,
           patient, 
           ifak
         );
+
+        job.maxNumToCarry = 1;
+        return job;
       }
 
       #if DEBUG

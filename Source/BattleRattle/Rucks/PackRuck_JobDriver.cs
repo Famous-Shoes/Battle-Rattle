@@ -7,8 +7,6 @@ using Verse.AI;
 namespace BattleRattle.Rucks {
   public class PackRuck_JobDriver: JobDriver {
 
-    public PackRuck_JobDriver(Pawn pawn): base() {}
-
     protected override IEnumerable<Toil> MakeNewToils() {
       var ruck = this.pawn.CurJob.GetTarget(TargetIndex.A).Thing as IRuck;
       var packing = this.pawn.CurJob.GetTarget(TargetIndex.B).Thing;
@@ -24,8 +22,8 @@ namespace BattleRattle.Rucks {
 //      this.FailOn(ruck.NotPackable);
 //      this.FailOn(() => ruck.CheckNotPackable(packing));
 
-      yield return Toils_Reserve.Reserve(TargetIndex.A);//, ReservationType.Use);
-      yield return Toils_Reserve.Reserve(TargetIndex.B);//, ReservationType.Total);
+      yield return Toils_Reserve.Reserve(TargetIndex.A);
+      yield return Toils_Reserve.Reserve(TargetIndex.B);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will reserve " + packing + " and " + ruck + ".");

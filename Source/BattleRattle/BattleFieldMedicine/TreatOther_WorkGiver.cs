@@ -148,11 +148,18 @@ namespace BattleRattle.BattleFieldMedicine {
         );
         #endif
 
-        var driver = (medicine is IFAK) 
-          ? TreatWithIFAK_JobDriver.Def 
-          : TreatWithMedicine_JobDriver.Def;
+        Job job;
 
-        return new Job(driver, patient, medicine);
+        if (medicine is IFAK) {
+          job = new Job(TreatWithIFAK_JobDriver.Def, patient, medicine);
+          job.maxNumToCarry = 1;
+        
+        } else {
+          job = new Job(TreatWithMedicine_JobDriver.Def, patient, medicine);
+          job.maxNumToCarry = Medicine.GetMedicineCountToFullyHeal(patient);
+        }
+
+        return job;
       }
 
       return null;
