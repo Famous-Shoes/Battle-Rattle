@@ -10,9 +10,6 @@
 
   <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
     <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
-    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
-    <graphicClass>Graphic_Single</graphicClass>
-    
     <defName>BattleRattle_WeaponCarriers_SlingLight</defName>
     
     <label>Light Combat Sling</label>
@@ -26,8 +23,11 @@
     
     <storablePattern>(rifle|shotgun|smg|aatwelve|beanbagshotty|cerharrier|galil|greasegun|gun_ak|gun_sa|gun_tar|m29mantis|m300claymore|m8avenger|m98widow|mosin|mp5|n7hurricane|scout|skorpion|striker|vector|wa2k|xmeight)</storablePattern>
     
-    <graphicPath>BattleRattle/WeaponCarriers/SlingLight/Icon</graphicPath>
-
+    <graphicData>
+      <texPath>BattleRattle/WeaponCarriers/SlingLight/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    
     <apparel>
       <bodyPartGroups>
         <li>Torso</li>

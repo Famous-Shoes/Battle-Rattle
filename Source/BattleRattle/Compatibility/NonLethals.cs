@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Verse;
+
 
 namespace BattleRattle.Compatibility {
   public class NonLethals: ICompatibility {
 
 
-    public void Inject() {}
+    public void Inject(InstalledMod mod, InstalledMod battleRattle) {}
 
     public void ResearchDone(string researchDefName) {
       if (researchDefName == "BattleRattle_WeaponCarriers_ResearchHolsters") {

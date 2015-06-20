@@ -7,7 +7,7 @@ using Verse;
 namespace BattleRattle.Compatibility {
   public class BetterThanSentryGuns: ICompatibility {
 
-    public void Inject() {
+    public void Inject(InstalledMod mod, InstalledMod battleRattle) {
       var tailoring = DefDatabase<ResearchProjectDef>.GetNamed("BTSGTailoring");
 
       var allResearch = new List<ResearchProjectDef>();

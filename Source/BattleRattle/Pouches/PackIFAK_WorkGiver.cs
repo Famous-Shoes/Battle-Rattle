@@ -37,7 +37,7 @@ namespace BattleRattle.Pouches {
         return null;
       }
 
-      if (!pawn.CanReserveAndReach(thing, PathMode.Touch, pawn.NormalMaxDanger())) {
+      if (!pawn.CanReserveAndReach(thing, PathEndMode.Touch, pawn.NormalMaxDanger())) {
         #if DEBUG
         Log.Message(
           "Checked for pack IFAK job on " + ifak 
@@ -51,8 +51,8 @@ namespace BattleRattle.Pouches {
       var closest = GenClosest.ClosestThingReachable(
         ifak.Position, 
         ThingRequest.ForDef(TraumaKitDef.Instance), 
-        PathMode.Touch, 
-        TraverseParms.For(pawn, pawn.NormalMaxDanger(), false), 
+        PathEndMode.Touch, 
+        TraverseParms.For(pawn, pawn.NormalMaxDanger(), TraverseMode.ByPawn, false), 
         ifak.PackRadius
       );
 
@@ -67,7 +67,7 @@ namespace BattleRattle.Pouches {
         return null;
       }
 
-      if (!pawn.CanReserveAndReach(closest, PathMode.Touch, pawn.NormalMaxDanger())) {
+      if (!pawn.CanReserveAndReach(closest, PathEndMode.Touch, pawn.NormalMaxDanger())) {
         #if DEBUG
         Log.Message(
           "Checked for pack IFAK job on " + ifak 

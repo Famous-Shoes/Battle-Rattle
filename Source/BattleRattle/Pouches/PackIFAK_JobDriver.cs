@@ -36,7 +36,7 @@ namespace BattleRattle.Pouches {
       Log.Message(" - " + pawn + " will move to " + traumaKit + ".");
       #endif
 
-      yield return Toils_Goto.GotoThing(TargetIndex.B, PathMode.Touch);
+      yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.Touch);
 
       #if DEBUG
       Log.Message(" - " + pawn + " carry " + traumaKit + ".");
@@ -47,7 +47,7 @@ namespace BattleRattle.Pouches {
       Log.Message(" - " + pawn + " will move to  " + ifak + " with " + traumaKit + ".");
       #endif
 
-      yield return Toils_Goto.GotoThing(TargetIndex.A, PathMode.Touch);
+      yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
       yield return Toils_General.Wait(IFAKDef.Instance.ticksForPacking);
 
       #if DEBUG

@@ -36,7 +36,7 @@ namespace BattleRattle.BattleFieldMedicine {
       Log.Message(pawn + " moving to " + medicine + ".");
       #endif
 
-      yield return Toils_Goto.GotoThing(TargetIndex.B, PathMode.Touch);
+      yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.Touch);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will carry " + medicine + ".");
@@ -47,7 +47,7 @@ namespace BattleRattle.BattleFieldMedicine {
       Log.Message(" - " + pawn + " will move to  " + patient + " with " + medicine + ".");
       #endif
 
-      yield return Toils_Goto.GotoThing(TargetIndex.A, PathMode.Touch);
+      yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will treat " + patient + " with " + medicine + ".");

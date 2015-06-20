@@ -9,15 +9,15 @@
   &pouchBase;
 
   <ThingDef Class="BattleRattle.Pouches.IFAKDef" ParentName="BattleRattle_Pouches_Base">
-    <!-- As of RW A9, thingClass and graphicClass are not correctly read from the parent. -->
     <thingClass>BattleRattle.Pouches.IFAK</thingClass>
-    <graphicClass>Graphic_Single</graphicClass>
-    
     <defName>BattleRattle_Pouches_IFAK</defName>
     
     <label>IFAK</label>
 		<description>A pouch containing a medical kit for immediate battlefield treatment. The wearer can use this themselves and doctors can use it to treat the wearer.</description>
-    <graphicPath>BattleRattle/Pouches/IFAK/Icon</graphicPath>
+    <graphicData>
+      <texPath>BattleRattle/Pouches/IFAK/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
 
     <ticksForPacking>120</ticksForPacking>
     <packRadius>20</packRadius>

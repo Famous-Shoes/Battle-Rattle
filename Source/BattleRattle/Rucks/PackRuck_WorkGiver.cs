@@ -37,7 +37,7 @@ namespace BattleRattle.Rucks {
         return null;
       }
 
-      if (!pawn.CanReserveAndReach(thing, PathMode.Touch, pawn.NormalMaxDanger())) {
+      if (!pawn.CanReserveAndReach(thing, PathEndMode.Touch, pawn.NormalMaxDanger())) {
         #if DEBUG
         Log.Message("Checked for pack ruck job on " + ruck + ": no job, pawn cannot reach and reserve it.");
         #endif
@@ -48,8 +48,8 @@ namespace BattleRattle.Rucks {
       var closest = GenClosest.ClosestThingReachable(
         ruck.Position, 
         ThingRequest.ForGroup(ThingRequestGroup.HaulableAlways), 
-        PathMode.Touch, 
-        TraverseParms.For(pawn, pawn.NormalMaxDanger(), false), 
+        PathEndMode.Touch, 
+        TraverseParms.For(pawn, pawn.NormalMaxDanger(), TraverseMode.ByPawn, false), 
         ruck.PackRadius, 
         new Predicate<Thing>(ruck.CheckPackable)
       );

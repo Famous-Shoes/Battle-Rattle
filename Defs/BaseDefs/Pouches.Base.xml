@@ -7,7 +7,6 @@
   <selectable>True</selectable>
       
   <drawGUIOverlay>True</drawGUIOverlay>
-  <graphicClass>Graphic_Single</graphicClass>
   
   <altitudeLayer>Item</altitudeLayer>
   <pathCost>0</pathCost>

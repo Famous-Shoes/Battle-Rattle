@@ -11,7 +11,6 @@
   <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
     <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
     <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
-    <graphicClass>Graphic_Single</graphicClass>
     
     <defName>BattleRattle_ToolCarriers_ToolBelt</defName>
     
@@ -26,8 +25,11 @@
     
     <storablePattern>(chiphook|hammer|nailgun|wrench)</storablePattern>
     
-    <graphicPath>BattleRattle/ToolCarriers/ToolBelt/Icon</graphicPath>
-
+    <graphicData>
+      <texPath>BattleRattle/ToolCarriers/ToolBelt/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    
     <apparel>
       <bodyPartGroups>
         <li>Torso</li>

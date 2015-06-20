@@ -100,7 +100,7 @@ namespace BattleRattle.WeaponCarriers {
             this.wearer.Nickname + " cannot equip "
             + Labels.ForSentenceBrief(stored) + " because they have " 
             + Labels.ForSentenceBrief(this.wearer.equipment.Primary)
-            + " equipped and no place to drop that."
+            + " equipped and no place to drop that.", MessageSound.Silent
           );
           return false;
         }
@@ -123,7 +123,7 @@ namespace BattleRattle.WeaponCarriers {
       );
 
       if (success) {
-        GenForbid.SetForbidden(stored, true, false);
+        stored.SetForbidden(true, false);
       }
 
       return true;
@@ -136,7 +136,7 @@ namespace BattleRattle.WeaponCarriers {
 
     private int StoredCount {
       get {
-        return this.container.ContentsListForReading.Count;
+        return this.container.Contents.Count;
       }
     }
 
@@ -242,7 +242,7 @@ namespace BattleRattle.WeaponCarriers {
           // FIXME Inefficient (called very frequently)-- though base.Label is 
           // far worse.
           return label + " and " 
-            + Labels.ForTitleBrief(this.container.ContentsListForReading.First());
+            + Labels.ForTitleBrief(this.container.Contents.First());
         }
 
         return label;

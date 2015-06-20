@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Verse;
 
@@ -7,7 +6,7 @@ using Verse;
 namespace BattleRattle.Compatibility {
   public class Rimsearch: ICompatibility {
 
-    public void Inject() {
+    public void Inject(InstalledMod mod, InstalledMod battleRattle) {
       var researchNames = new [] {
         "BattleRattle_Rucks_ResearchBasic",
         "BattleRattle_Rucks_ResearchAdvanced",

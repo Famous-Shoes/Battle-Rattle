@@ -54,7 +54,7 @@ namespace BattleRattle.BattleFieldMedicine {
         Log.Message(" - " + responder + " will move to " + ifak + ".");
         #endif
 
-        yield return Toils_Goto.GotoThing(TargetIndex.B, PathMode.Touch);
+        yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.Touch);
 
         #if DEBUG
         Log.Message(" - " + responder + " will pick up " + ifak + ".");
@@ -67,7 +67,7 @@ namespace BattleRattle.BattleFieldMedicine {
         Log.Message(" - " + responder + " will move to  " + patient + " with " + ifak + ".");
         #endif
 
-        yield return Toils_Goto.GotoThing(TargetIndex.A, PathMode.Touch);
+        yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
       }
 
       yield return Toils_Reserve.Release(TargetIndex.B);

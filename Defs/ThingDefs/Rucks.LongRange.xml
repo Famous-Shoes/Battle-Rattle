@@ -11,14 +11,16 @@
   <ThingDef Class="BattleRattle.Rucks.RuckDef" ParentName="BattleRattle_Rucks_Base">
     <!-- As of RW A9, thingClass and graphicClass are not correctly read from the parent. -->
     <thingClass>BattleRattle.Rucks.Ruck</thingClass>
-    <graphicClass>Graphic_Single</graphicClass>
     
     <defName>BattleRattle_Rucks_LongRange</defName>
     
     <label>Long-Range Ruck</label>
 		<description>A large-frame rucksack for carrying all the ammo all the way. When carried, it's almost impossible to fight, work, or do anything other than tab on.</description>
-    <graphicPath>BattleRattle/Rucks/LongRange/Icon</graphicPath>
-
+    <graphicData>
+      <texPath>BattleRattle/Rucks/LongRange/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    
     <capacity>400000</capacity>
     <packRadius>20</packRadius>
 

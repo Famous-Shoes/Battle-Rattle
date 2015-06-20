@@ -10,8 +10,6 @@
 
   <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
     <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
-    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
-    <graphicClass>Graphic_Single</graphicClass>
     
     <defName>BattleRattle_WeaponCarriers_HolsterDropLeg</defName>
     
@@ -26,8 +24,11 @@
     
     <storablePattern>(m3predator|m5phalanx|pistol|revolver)</storablePattern>
     
-    <graphicPath>BattleRattle/WeaponCarriers/HolsterDropLeg/Icon</graphicPath>
-
+    <graphicData>
+      <texPath>BattleRattle/WeaponCarriers/HolsterDropLeg/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    
     <apparel>
       <bodyPartGroups>
         <li>Legs</li>

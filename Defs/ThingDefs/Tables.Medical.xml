@@ -16,7 +16,7 @@
     <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
 
     <AltitudeLayer>Waist</AltitudeLayer>
-    <itemSurface>True</itemSurface>
+    <surfaceType>Item</surfaceType>
     <pathCost>70</pathCost>
     <Passability>PassThroughOnly</Passability>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
@@ -29,9 +29,11 @@
     <useHitPoints>True</useHitPoints>
     
     <drawerType>MapMeshAndRealTime</drawerType>
-    <graphicPath>BattleRattle/BattleFieldMedicine/MedicsTable/Icon</graphicPath>
-    <graphicClass>Graphic_Single</graphicClass>
-    <graphicOverdraw>False</graphicOverdraw>
+    <graphicData>
+      <texPath>BattleRattle/BattleFieldMedicine/MedicsTable/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <Size>(1,1)</Size>

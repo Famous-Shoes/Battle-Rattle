@@ -10,9 +10,6 @@
 
   <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
     <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
-    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
-    <graphicClass>Graphic_Single</graphicClass>
-    
     <defName>BattleRattle_Pouches_Grenade_Frag</defName>
     
     <label>Grenade Pouch</label>
@@ -25,7 +22,10 @@
     
     <storablePattern>grenade</storablePattern>
     
-    <graphicPath>BattleRattle/Pouches/Grenade_Frag/Icon</graphicPath>
+    <graphicData>
+      <texPath>BattleRattle/Pouches/Grenade_Frag/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
 
     <apparel>
       <bodyPartGroups>

@@ -19,7 +19,7 @@ namespace BattleRattle.Rucks {
       ruck.PackRadius = (int) GUI.HorizontalSlider(new Rect(10f, 50f, 150f, 20f), (float) ruck.PackRadius, 1f, 100f);
 
       if (Widgets.TextButton(new Rect(190f, 30f, 100f, 50f), "Clear All")) {
-        ruck.PackableCurrent.DisallowAll();
+        ruck.PackableCurrent.SetDisallowAll();
       }
 
       ThingFilterUI.DoThingFilterConfigWindow(new Rect(10f, 110f, this.size.x - 20f, this.size.y - 120f), ref this.scrollPosition, ruck.PackableCurrent, ruck.PackableAll);

@@ -10,9 +10,6 @@
 
   <ThingDef Class="BattleRattle.WeaponCarriers.WeaponCarrierDef" ParentName="BattleRattle_WeaponCarriers_Base">
     <thingClass>BattleRattle.WeaponCarriers.WeaponCarrier</thingClass>
-    <!-- As of RW A9e, the graphicClass is not correctly read from the parent. -->
-    <graphicClass>Graphic_Single</graphicClass>
-    
     <defName>BattleRattle_WeaponCarriers_NonLethals_Tazer</defName>
     
     <label>Tazer Holster</label>
@@ -26,8 +23,11 @@
     
     <storablePattern>tazer</storablePattern>
     
-    <graphicPath>BattleRattle/WeaponCarriers/NonLethals/Tazer/Icon</graphicPath>
-
+    <graphicData>
+      <texPath>BattleRattle/WeaponCarriers/NonLethals/Tazer/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    
     <apparel>
       <bodyPartGroups>
         <li>Legs</li>

@@ -1,11 +1,11 @@
-﻿using Verse;
-using RimWorld;
+﻿using RimWorld;
+using Verse;
 
 
 namespace BattleRattle.Compatibility {
   public class Glassworks: ICompatibility {
 
-    public void Inject() {
+    public void Inject(InstalledMod mod, InstalledMod battleRattle) {
       var medicsTableDef = ThingDef.Named(
         "BattleRattle_BattleFieldMedicine_TableMedical"
       );

@@ -9,15 +9,15 @@
   &ruckBase;
 
   <ThingDef Class="BattleRattle.Rucks.RuckDef" ParentName="BattleRattle_Rucks_Base">
-    <!-- As of RW A9, thingClass and graphicClass are not correctly read from the parent. -->
     <thingClass>BattleRattle.Rucks.Ruck</thingClass>
-    <graphicClass>Graphic_Single</graphicClass>
-    
     <defName>BattleRattle_Rucks_Basic</defName>
     
     <label>Basic Rucksack</label>
 		<description>A basic medium-sized rucksack without a frame. Uncomfortable, poorly balanced, but any fool with some cloth and a needle can make one.</description>
-    <graphicPath>BattleRattle/Rucks/Basic/Icon</graphicPath>
+    <graphicData>
+      <texPath>BattleRattle/Rucks/Basic/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
 
     <capacity>70000</capacity>
     <packRadius>10</packRadius>

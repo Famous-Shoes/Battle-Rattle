@@ -85,7 +85,7 @@ namespace BattleRattle.BattleFieldMedicine {
         return false;
       }
 
-      if (!responder.CanReserveAndReach(patient, PathMode.Touch, Danger.Deadly)) {
+      if (!responder.CanReserveAndReach(patient, PathEndMode.Touch, Danger.Deadly)) {
         #if DEBUG
         Log.Message(
           "Checked for battlefield medicine job by " + responder 
@@ -110,7 +110,7 @@ namespace BattleRattle.BattleFieldMedicine {
         return false;
       }
 
-      if (!responder.CanReserveAndReach(medicine, PathMode.Touch, Danger.Deadly)) {
+      if (!responder.CanReserveAndReach(medicine, PathEndMode.Touch, Danger.Deadly)) {
         #if DEBUG
         Log.Message(
           "Checked for battlefield medicine job by " + responder 
@@ -184,8 +184,8 @@ namespace BattleRattle.BattleFieldMedicine {
       return GenClosest.ClosestThing_Global_Reachable(
         patient.Position, 
         Find.ListerThings.ThingsOfDef(TraumaKitDef.Instance), 
-        PathMode.ClosestTouch, 
-        TraverseParms.For(responder, Danger.Deadly, true), 
+        PathEndMode.ClosestTouch, 
+        TraverseParms.For(responder, Danger.Deadly, TraverseMode.ByPawn, true), 
         9999f, 
         onlyUsableTraumaKits
       );
@@ -202,8 +202,8 @@ namespace BattleRattle.BattleFieldMedicine {
       return FindWornIFAK(responder, patient) ?? GenClosest.ClosestThing_Global_Reachable(
         patient.Position, 
         Find.ListerThings.ThingsOfDef(IFAKDef.Instance), 
-        PathMode.ClosestTouch, 
-        TraverseParms.For(responder, Danger.Deadly, true), 
+        PathEndMode.ClosestTouch, 
+        TraverseParms.For(responder, Danger.Deadly, TraverseMode.ByPawn, true), 
         9999f, 
         onlyUsableIFAKs
       );

@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 
-using RimWorld;
 using Verse;
 
 
 namespace BattleRattle.Compatibility {
   public class ExpandedWoodworking: ICompatibility {
 
-    public void Inject() {     
+    public void Inject(InstalledMod mod, InstalledMod battleRattle) {
       var woodRecipeNames = new string[] {
         "BattleRattle_WeaponCarriers_Scabbard_Recipe",
         "BattleRattle_WeaponCarriers_Sheath_Recipe"

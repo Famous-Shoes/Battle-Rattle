@@ -11,6 +11,7 @@ namespace BattleRattle {
   public class BattleRattleCompatibility: MonoBehaviour {
   
     private List<ICompatibility> listeners;
+    private InstalledMod battleRattle = null;
 
     public static BattleRattleCompatibility Instance {
       get {
@@ -27,7 +28,6 @@ namespace BattleRattle {
       var allMods = allModDirs.Select(d => new InstalledMod(d));
       var activeMods = allMods.Where(m => ModsConfig.IsActive(m.FolderName)).ToArray();
 
-      InstalledMod battleRattle = null;
       int installationsCount = 0;
 
       foreach (var mod in activeMods) {
@@ -52,7 +52,7 @@ namespace BattleRattle {
       // dialogue.
 
       var metaData = XmlLoader.ItemFromXmlFile<BattleRattleMetaData>(
-        battleRattle.dir + "/About/About.xml", false
+        Path.Combine(battleRattle.dir.ToString(), Path.Combine("About", "About.xml")), false
       );
 
       Log.Message(
@@ -69,9 +69,6 @@ namespace BattleRattle {
 
         } else if (Regex.IsMatch(mod.Name, "Extended Woodworking")) {
           RegisterCompatibility<ExpandedWoodworking>(mod);
-
-        } else if (Regex.IsMatch(mod.Name, "Flare Gun")) {
-          RegisterCompatibility<FlareGun>(mod);
 
         } else if (Regex.IsMatch(mod.Name, "Glassworks")) {
           RegisterCompatibility<Glassworks>(mod);
@@ -106,7 +103,7 @@ namespace BattleRattle {
 
       try {
         var compatibility = (ICompatibility) Activator.CreateInstance<T>();
-        compatibility.Inject();
+        compatibility.Inject(mod, this.battleRattle);
         this.listeners.Add(compatibility);
 
         Log.Message(" + Injected compatibility for " + mod.Name + ".");

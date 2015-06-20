@@ -23,8 +23,10 @@
     
     <label>buckle</label>
     <description>Buckles, used when crafting rucksacks, holsters, and such.</description>
-    <graphicPath>BattleRattle/Miscellaneous/Buckle/Icon</graphicPath>
-    <graphicClass>Graphic_Single</graphicClass>
+    <graphicData>
+      <texPath>BattleRattle/Miscellaneous/Buckle/Icon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
     <resourceReadoutPriority>First</resourceReadoutPriority>
     <soundInteract>Metal_Drop</soundInteract>
     <soundDrop>Metal_Drop</soundDrop>

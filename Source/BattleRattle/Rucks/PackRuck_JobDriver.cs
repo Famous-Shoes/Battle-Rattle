@@ -30,7 +30,7 @@ namespace BattleRattle.Rucks {
       Log.Message(" - " + pawn + " will move to " + packing + ".");
       #endif
 
-      yield return Toils_Goto.GotoThing(TargetIndex.B, PathMode.Touch);
+      yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.Touch);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will carry " + packing + ".");
@@ -41,7 +41,7 @@ namespace BattleRattle.Rucks {
       Log.Message(" - " + pawn + " will move to  " + ruck + " with " + packing + ".");
       #endif
 
-      yield return Toils_Goto.GotoThing(TargetIndex.A, PathMode.Touch);
+      yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
 
       #if DEBUG
       Log.Message(" - " + pawn + " will pack " + packing + " into " + ruck + ".");

@@ -13,7 +13,7 @@ using BattleRattle.Utility;
 
 namespace BattleRattle.Rucks {
 
-  class Ruck: AbstractApparel, IRuck, ThingContainerGiver {
+  class Ruck: AbstractApparel, IRuck, IThingContainerGiver {
 
     enum Mode {
       Closed, Packing, Unpacking
@@ -49,7 +49,7 @@ namespace BattleRattle.Rucks {
       this.packRadius = Math.Min(10, Def.packRadius);
 
       this.packableCurrent = new ThingFilter();
-      PackableCurrent.DisallowAll();
+      PackableCurrent.SetDisallowAll();
       if (Def.designedFor != null) {
         foreach (var defName in Def.designedFor) {
           PackableCurrent.SetAllow(ThingDef.Named(defName), true);
@@ -446,6 +446,9 @@ namespace BattleRattle.Rucks {
 
     #endregion
 
+    public IntVec3 GetPosition() {
+      throw new NotImplementedException ();
+    }
   }
 }
 

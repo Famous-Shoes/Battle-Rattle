@@ -136,8 +136,8 @@ namespace BattleRattle.BattleFieldMedicine {
       return GenClosest.ClosestThing_Global_Reachable(
         thing.Position, 
         Find.ListerThings.ThingsInGroup(ThingRequestGroup.Pawn),
-        PathMode.ClosestTouch, 
-        TraverseParms.For(patient, Danger.Deadly, true), 
+        PathEndMode.ClosestTouch, 
+        TraverseParms.For(patient, Danger.Deadly, TraverseMode.ByPawn, true), 
         MAX_DISTANCE_TO_TRAVEL_TO_BED, 
         (x) => OnlyFriendlyDoctors(patient, x)
       );
@@ -155,8 +155,8 @@ namespace BattleRattle.BattleFieldMedicine {
       return GenClosest.ClosestThing_Global_Reachable(
         patient.Position, 
         Find.ListerThings.ThingsInGroup(ThingRequestGroup.BuildingArtificial), 
-        PathMode.ClosestTouch, 
-        TraverseParms.For(patient, Danger.Deadly, true), 
+        PathEndMode.ClosestTouch, 
+        TraverseParms.For(patient, Danger.Deadly, TraverseMode.ByPawn, true), 
         MAX_DISTANCE_TO_TRAVEL_TO_BED, 
         onlyMedicalBeds
       );

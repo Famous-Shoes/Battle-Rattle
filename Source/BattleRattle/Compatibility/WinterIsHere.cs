@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Verse;
+
 
 namespace BattleRattle.Compatibility {
   public class WinterIsHere: ICompatibility {
 
-    public void Inject() {}
+    public void Inject(InstalledMod mod, InstalledMod battleRattle) {}
 
     public void ResearchDone(string researchDefName) {
       var tailor = DefDatabase<ThingDef>.GetNamed("TableTailor");
